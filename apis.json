@@ -1,0 +1,106 @@
+{
+    "name": "Apple",
+    "description": "https:\/\/t.co\/jw2s2L0RLt",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/155-apple.jpg",
+    "tags": [
+        "api provider",
+        "have api",
+        "storage",
+        "wearables"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/apple\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Apple",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/155-apple.jpg",
+            "humanURL": "http:\/\/www.apple.com\/itunes\/affiliates\/resources\/documentation\/itunes-store-web-service-search-api.html",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/apple-postman-collection.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Base",
+            "url": "https:\/\/itunes.apple.com\/"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/apple"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/apple"
+        },
+        {
+            "type": "Developers",
+            "url": "https:\/\/developer.apple.com\/documentation\/"
+        },
+        {
+            "type": "Email",
+            "url": "contactus.at@euro.apple.com"
+        },
+        {
+            "type": "Email",
+            "url": "contactus.befr@euro.apple.com"
+        },
+        {
+            "type": "Email",
+            "url": "contactus.benl@euro.apple.com"
+        },
+        {
+            "type": "Email",
+            "url": "contactus.chde@euro.apple.com"
+        },
+        {
+            "type": "Email",
+            "url": "contactus.chfr@euro.apple.com"
+        },
+        {
+            "type": "Email",
+            "url": "contactus.cz@apple.com"
+        },
+        {
+            "type": "Email",
+            "url": "contactus.de@euro.apple.com"
+        },
+        {
+            "type": "Email",
+            "url": "contactus.dk@euro.apple.com"
+        },
+        {
+            "type": "Email",
+            "url": "contactus.es@euro.apple.com"
+        },
+        {
+            "type": "Email",
+            "url": "contactus.fi@euro.apple.com"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/Apple"
+        },
+        {
+            "type": "Transparency Report",
+            "url": "http:\/\/www.apple.com\/privacy\/transparency-reports\/"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/Apple"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/www.apple.com\/itunes\/affiliates\/resources\/documentation\/itunes-store-web-service-search-api.html"
+        }
+    ]
+}
