@@ -1,0 +1,112 @@
+name: Apple
+description: Collection of Apple's public APIs and developer resources
+image: https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png
+created: 2024-01-15 00:00:00+00:00
+modified: 2024-01-15 00:00:00+00:00
+url: https://developer.apple.com
+specificationVersion: '0.16'
+tags:
+- mobile
+- ios
+- macos
+- developer
+- technology
+apis:
+- name: Apple Music API
+  description: Access Apple Music catalog, user library, and playback controls
+  image: https://www.apple.com/v/apple-music/s/images/shared/og_image.png
+  humanURL: https://developer.apple.com/documentation/applemusicapi
+  baseURL: https://api.music.apple.com/v1
+  tags:
+  - music
+  - streaming
+  - media
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/applemusicapi
+  - type: Authentication
+    url: https://developer.apple.com/documentation/applemusicapi/getting_keys_and_creating_tokens
+  - type: OpenAPI
+    url: https://developer.apple.com/documentation/applemusicapi/api_reference
+- name: WeatherKit REST API
+  description: Access weather forecasts, current conditions, and historical weather data
+  humanURL: https://developer.apple.com/documentation/weatherkitrestapi
+  baseURL: https://weatherkit.apple.com/api/v1
+  tags:
+  - weather
+  - forecast
+  - data
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/weatherkitrestapi
+  - type: Authentication
+    url: https://developer.apple.com/documentation/weatherkitrestapi/request_authentication_for_weatherkit_rest_api
+- name: App Store Connect API
+  description: Automate tasks for App Store Connect and access app metadata
+  humanURL: https://developer.apple.com/documentation/appstoreconnectapi
+  baseURL: https://api.appstoreconnect.apple.com/v1
+  tags:
+  - app-store
+  - publishing
+  - analytics
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/appstoreconnectapi
+  - type: OpenAPI
+    url: https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip
+  - type: Authentication
+    url: https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api
+- name: MapKit JS
+  description: Embed interactive Apple Maps on websites
+  humanURL: https://developer.apple.com/documentation/mapkitjs
+  baseURL: https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js
+  tags:
+  - maps
+  - location
+  - javascript
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/mapkitjs
+  - type: Getting Started
+    url: https://developer.apple.com/documentation/mapkitjs/creating_and_using_tokens_with_mapkit_js
+- name: Sign in with Apple REST API
+  description: Integrate Sign in with Apple authentication
+  humanURL: https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_rest_api
+  baseURL: https://appleid.apple.com/auth
+  tags:
+  - authentication
+  - oauth
+  - identity
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_rest_api
+  - type: Authentication
+    url: https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens
+- name: Apple Push Notification Service (APNs)
+  description: Send push notifications to iOS, macOS, watchOS, and tvOS devices
+  humanURL: https://developer.apple.com/documentation/usernotifications
+  baseURL: https://api.push.apple.com
+  tags:
+  - notifications
+  - push
+  - messaging
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server
+  - type: Authentication
+    url: https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_token-based_connection_to_apns
+common:
+- type: Developer Portal
+  url: https://developer.apple.com
+- type: Terms of Service
+  url: https://developer.apple.com/terms/
+- type: Privacy Policy
+  url: https://www.apple.com/legal/privacy/
+- type: Support
+  url: https://developer.apple.com/support/
+- type: Forums
+  url: https://developer.apple.com/forums/
+maintainers:
+- name: Apple Developer Relations
+  email: developer@apple.com
+  url: https://developer.apple.com/contact/
