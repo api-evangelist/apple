@@ -1,0 +1,946 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.apple.com/schemas/apple-app-schema.json",
+  "title": "Apple App Store Connect Core Models",
+  "description": "JSON Schema definitions for core Apple App Store Connect API models including Apps, Builds, Beta Testers, and Beta Groups. Based on the App Store Connect API documentation at developer.apple.com.",
+  "type": "object",
+  "$defs": {
+    "Platform": {
+      "$id": "#Platform",
+      "title": "Platform",
+      "description": "Strings that represent Apple operating system platforms.",
+      "type": "string",
+      "enum": [
+        "IOS",
+        "MAC_OS",
+        "TV_OS",
+        "VISION_OS"
+      ]
+    },
+
+    "AppStoreVersionState": {
+      "$id": "#AppStoreVersionState",
+      "title": "App Store Version State",
+      "description": "Strings that represent the state of an app version in the App Store.",
+      "type": "string",
+      "enum": [
+        "ACCEPTED",
+        "DEVELOPER_REJECTED",
+        "DEVELOPER_REMOVED_FROM_SALE",
+        "IN_REVIEW",
+        "INVALID_BINARY",
+        "METADATA_REJECTED",
+        "PENDING_APPLE_RELEASE",
+        "PENDING_DEVELOPER_RELEASE",
+        "PREPARE_FOR_SUBMISSION",
+        "PREORDER_READY_FOR_SALE",
+        "PROCESSING_FOR_APP_STORE",
+        "READY_FOR_REVIEW",
+        "READY_FOR_SALE",
+        "REJECTED",
+        "REMOVED_FROM_SALE",
+        "REPLACED_WITH_NEW_VERSION",
+        "WAITING_FOR_EXPORT_COMPLIANCE",
+        "WAITING_FOR_REVIEW"
+      ]
+    },
+
+    "BuildProcessingState": {
+      "$id": "#BuildProcessingState",
+      "title": "Build Processing State",
+      "description": "Strings that represent the processing state of a build.",
+      "type": "string",
+      "enum": [
+        "PROCESSING",
+        "FAILED",
+        "INVALID",
+        "VALID"
+      ]
+    },
+
+    "BuildAudienceType": {
+      "$id": "#BuildAudienceType",
+      "title": "Build Audience Type",
+      "description": "Strings that represent the audience type for a build.",
+      "type": "string",
+      "enum": [
+        "INTERNAL_ONLY",
+        "APP_STORE_ELIGIBLE"
+      ]
+    },
+
+    "BetaInviteType": {
+      "$id": "#BetaInviteType",
+      "title": "Beta Invite Type",
+      "description": "Strings that represent how a beta tester was invited.",
+      "type": "string",
+      "enum": [
+        "EMAIL",
+        "PUBLIC_LINK"
+      ]
+    },
+
+    "BetaTesterState": {
+      "$id": "#BetaTesterState",
+      "title": "Beta Tester State",
+      "description": "Strings that represent the state of a beta tester invitation.",
+      "type": "string",
+      "enum": [
+        "NOT_INVITED",
+        "INVITED",
+        "ACCEPTED",
+        "INSTALLED",
+        "REVOKED"
+      ]
+    },
+
+    "ContentRightsDeclaration": {
+      "$id": "#ContentRightsDeclaration",
+      "title": "Content Rights Declaration",
+      "description": "Strings that represent the content rights declaration for an app.",
+      "type": "string",
+      "enum": [
+        "DOES_NOT_USE_THIRD_PARTY_CONTENT",
+        "USES_THIRD_PARTY_CONTENT"
+      ]
+    },
+
+    "ResourceLink": {
+      "$id": "#ResourceLink",
+      "title": "Resource Link",
+      "description": "Self link for a resource in the JSON:API response.",
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL to the resource"
+        }
+      }
+    },
+
+    "RelationshipData": {
+      "$id": "#RelationshipData",
+      "title": "Relationship Data",
+      "description": "A resource linkage object identifying a related resource by type and ID.",
+      "type": "object",
+      "required": ["type", "id"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The resource type identifier"
+        },
+        "id": {
+          "type": "string",
+          "description": "The opaque resource ID"
+        }
+      }
+    },
+
+    "RelationshipLinks": {
+      "$id": "#RelationshipLinks",
+      "title": "Relationship Links",
+      "description": "Links related to a relationship, including self and related resource URLs.",
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL to the relationship itself"
+        },
+        "related": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL to the related resources"
+        }
+      }
+    },
+
+    "PagedDocumentLinks": {
+      "$id": "#PagedDocumentLinks",
+      "title": "Paged Document Links",
+      "description": "Pagination links for a collection response.",
+      "type": "object",
+      "required": ["self"],
+      "properties": {
+        "self": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL for the current page"
+        },
+        "first": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL for the first page"
+        },
+        "next": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL for the next page"
+        }
+      }
+    },
+
+    "PagingInformation": {
+      "$id": "#PagingInformation",
+      "title": "Paging Information",
+      "description": "Paging metadata for paginated responses.",
+      "type": "object",
+      "required": ["paging"],
+      "properties": {
+        "paging": {
+          "type": "object",
+          "required": ["total", "limit"],
+          "properties": {
+            "total": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "The total number of resources matching the request"
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200,
+              "description": "The maximum number of resources per page"
+            }
+          }
+        }
+      }
+    },
+
+    "IconAssetToken": {
+      "$id": "#IconAssetToken",
+      "title": "Icon Asset Token",
+      "description": "A token that represents an app or build icon asset.",
+      "type": "object",
+      "properties": {
+        "templateUrl": {
+          "type": "string",
+          "description": "The URL template for the icon asset"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The width of the icon in pixels"
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The height of the icon in pixels"
+        }
+      }
+    },
+
+    "App": {
+      "$id": "#App",
+      "title": "App",
+      "description": "The data structure that represents an Apps resource in the App Store Connect API. An app represents an application registered in App Store Connect with associated metadata, versions, and builds.",
+      "type": "object",
+      "required": ["type", "id"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "apps",
+          "description": "The resource type identifier"
+        },
+        "id": {
+          "type": "string",
+          "description": "The opaque resource ID that uniquely identifies the app"
+        },
+        "attributes": {
+          "type": "object",
+          "description": "The resource's attributes",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the app as it appears in App Store Connect"
+            },
+            "bundleId": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9\\-\\.]*$",
+              "description": "The bundle identifier that uniquely identifies the app (e.g., com.example.myapp)"
+            },
+            "sku": {
+              "type": "string",
+              "description": "A unique identifier for your app that is not visible on the App Store"
+            },
+            "primaryLocale": {
+              "type": "string",
+              "description": "The primary locale for the app metadata (e.g., en-US)"
+            },
+            "isOrEverWasMadeForKids": {
+              "type": "boolean",
+              "description": "Indicates whether the app is or was ever made for kids"
+            },
+            "contentRightsDeclaration": {
+              "$ref": "#/$defs/ContentRightsDeclaration"
+            },
+            "streamlinedPurchasingEnabled": {
+              "type": "boolean",
+              "description": "Whether streamlined purchasing is enabled for this app"
+            },
+            "subscriptionStatusUrl": {
+              "type": ["string", "null"],
+              "format": "uri",
+              "description": "The URL for production App Store Server Notifications"
+            },
+            "subscriptionStatusUrlForSandbox": {
+              "type": ["string", "null"],
+              "format": "uri",
+              "description": "The URL for sandbox App Store Server Notifications"
+            },
+            "subscriptionStatusUrlVersion": {
+              "type": ["string", "null"],
+              "enum": ["V1", "V2", null],
+              "description": "Version of the production subscription status URL endpoint"
+            },
+            "subscriptionStatusUrlVersionForSandbox": {
+              "type": ["string", "null"],
+              "enum": ["V1", "V2", null],
+              "description": "Version of the sandbox subscription status URL endpoint"
+            }
+          }
+        },
+        "relationships": {
+          "type": "object",
+          "description": "The resource's relationships to other resources",
+          "properties": {
+            "builds": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            },
+            "betaGroups": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            },
+            "betaTesters": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" }
+              }
+            },
+            "appStoreVersions": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            },
+            "preReleaseVersions": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            },
+            "appInfos": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            },
+            "inAppPurchasesV2": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            },
+            "subscriptionGroups": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/$defs/ResourceLink"
+        }
+      }
+    },
+
+    "Build": {
+      "$id": "#Build",
+      "title": "Build",
+      "description": "The data structure that represents a Builds resource in the App Store Connect API. A build is a compiled version of an app that has been uploaded to App Store Connect for testing or distribution.",
+      "type": "object",
+      "required": ["type", "id"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "builds",
+          "description": "The resource type identifier"
+        },
+        "id": {
+          "type": "string",
+          "description": "The opaque resource ID that uniquely identifies the build"
+        },
+        "attributes": {
+          "type": "object",
+          "description": "The resource's attributes",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "The build version string (CFBundleVersion) as defined in the app's Info.plist"
+            },
+            "uploadedDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date and time the build was uploaded to App Store Connect"
+            },
+            "expirationDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date and time when the build expires and is no longer available for testing"
+            },
+            "expired": {
+              "type": "boolean",
+              "description": "Whether the build has expired"
+            },
+            "minOsVersion": {
+              "type": "string",
+              "description": "The minimum OS version required to run the app"
+            },
+            "lsMinimumSystemVersion": {
+              "type": "string",
+              "description": "The minimum macOS system version from LSMinimumSystemVersion"
+            },
+            "computedMinMacOsVersion": {
+              "type": "string",
+              "description": "The computed minimum macOS version for the build"
+            },
+            "iconAssetToken": {
+              "$ref": "#/$defs/IconAssetToken"
+            },
+            "processingState": {
+              "$ref": "#/$defs/BuildProcessingState"
+            },
+            "buildAudienceType": {
+              "$ref": "#/$defs/BuildAudienceType"
+            },
+            "usesNonExemptEncryption": {
+              "type": ["boolean", "null"],
+              "description": "Whether the build uses non-exempt encryption"
+            }
+          }
+        },
+        "relationships": {
+          "type": "object",
+          "description": "The resource's relationships to other resources",
+          "properties": {
+            "app": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": { "$ref": "#/$defs/RelationshipData" }
+              }
+            },
+            "preReleaseVersion": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": { "$ref": "#/$defs/RelationshipData" }
+              }
+            },
+            "individualTesters": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            },
+            "betaGroups": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            },
+            "betaBuildLocalizations": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            },
+            "appEncryptionDeclaration": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": { "$ref": "#/$defs/RelationshipData" }
+              }
+            },
+            "betaAppReviewSubmission": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": { "$ref": "#/$defs/RelationshipData" }
+              }
+            },
+            "buildBetaDetail": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": { "$ref": "#/$defs/RelationshipData" }
+              }
+            },
+            "appStoreVersion": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": { "$ref": "#/$defs/RelationshipData" }
+              }
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/$defs/ResourceLink"
+        }
+      }
+    },
+
+    "BetaTester": {
+      "$id": "#BetaTester",
+      "title": "Beta Tester",
+      "description": "The data structure that represents a Beta Testers resource in the App Store Connect API. A beta tester is a person who has been invited or has access to test pre-release builds of an app through TestFlight.",
+      "type": "object",
+      "required": ["type", "id"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "betaTesters",
+          "description": "The resource type identifier"
+        },
+        "id": {
+          "type": "string",
+          "description": "The opaque resource ID that uniquely identifies the beta tester"
+        },
+        "attributes": {
+          "type": "object",
+          "description": "The resource's attributes",
+          "properties": {
+            "firstName": {
+              "type": ["string", "null"],
+              "description": "The first name of the beta tester"
+            },
+            "lastName": {
+              "type": ["string", "null"],
+              "description": "The last name of the beta tester"
+            },
+            "email": {
+              "type": ["string", "null"],
+              "format": "email",
+              "description": "The email address of the beta tester"
+            },
+            "inviteType": {
+              "$ref": "#/$defs/BetaInviteType"
+            },
+            "state": {
+              "$ref": "#/$defs/BetaTesterState"
+            }
+          }
+        },
+        "relationships": {
+          "type": "object",
+          "description": "The resource's relationships to other resources",
+          "properties": {
+            "apps": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            },
+            "betaGroups": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            },
+            "builds": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/$defs/ResourceLink"
+        }
+      }
+    },
+
+    "BetaGroup": {
+      "$id": "#BetaGroup",
+      "title": "Beta Group",
+      "description": "The data structure that represents a Beta Groups resource in the App Store Connect API. A beta group organizes beta testers and provides them access to test builds through TestFlight.",
+      "type": "object",
+      "required": ["type", "id"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "betaGroups",
+          "description": "The resource type identifier"
+        },
+        "id": {
+          "type": "string",
+          "description": "The opaque resource ID that uniquely identifies the beta group"
+        },
+        "attributes": {
+          "type": "object",
+          "description": "The resource's attributes",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the beta group"
+            },
+            "createdDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date and time the beta group was created"
+            },
+            "isInternalGroup": {
+              "type": "boolean",
+              "description": "Whether the group is an internal testing group (members of your App Store Connect team)"
+            },
+            "hasAccessToAllBuilds": {
+              "type": "boolean",
+              "description": "Whether the group automatically gets access to all new builds"
+            },
+            "publicLinkEnabled": {
+              "type": "boolean",
+              "description": "Whether the public TestFlight link is enabled"
+            },
+            "publicLinkId": {
+              "type": ["string", "null"],
+              "description": "The ID portion of the public TestFlight link"
+            },
+            "publicLink": {
+              "type": ["string", "null"],
+              "format": "uri",
+              "description": "The full public TestFlight invitation URL"
+            },
+            "publicLinkLimitEnabled": {
+              "type": "boolean",
+              "description": "Whether there is a limit on the number of testers who can join via the public link"
+            },
+            "publicLinkLimit": {
+              "type": ["integer", "null"],
+              "minimum": 1,
+              "maximum": 10000,
+              "description": "The maximum number of testers who can join via the public link"
+            },
+            "feedbackEnabled": {
+              "type": "boolean",
+              "description": "Whether beta testers in this group can submit feedback through TestFlight"
+            },
+            "iosBuildsAvailableForAppleSiliconMac": {
+              "type": "boolean",
+              "description": "Whether iOS builds are available for testing on Apple Silicon Macs"
+            }
+          }
+        },
+        "relationships": {
+          "type": "object",
+          "description": "The resource's relationships to other resources",
+          "properties": {
+            "app": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": { "$ref": "#/$defs/RelationshipData" }
+              }
+            },
+            "betaTesters": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            },
+            "builds": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/$defs/ResourceLink"
+        }
+      }
+    },
+
+    "AppStoreVersion": {
+      "$id": "#AppStoreVersion",
+      "title": "App Store Version",
+      "description": "The data structure that represents an App Store Versions resource. An app store version represents a specific version of an app submitted to or available on the App Store.",
+      "type": "object",
+      "required": ["type", "id"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "appStoreVersions",
+          "description": "The resource type identifier"
+        },
+        "id": {
+          "type": "string",
+          "description": "The opaque resource ID"
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "platform": {
+              "$ref": "#/$defs/Platform"
+            },
+            "versionString": {
+              "type": "string",
+              "description": "The version number string displayed on the App Store (CFBundleShortVersionString)"
+            },
+            "appStoreState": {
+              "$ref": "#/$defs/AppStoreVersionState"
+            },
+            "appVersionState": {
+              "type": "string",
+              "description": "The version-level state of the app"
+            },
+            "copyright": {
+              "type": ["string", "null"],
+              "description": "The copyright text for this version"
+            },
+            "reviewType": {
+              "type": "string",
+              "enum": ["APP_STORE", "NOTARIZATION"],
+              "description": "The type of review for this version"
+            },
+            "releaseType": {
+              "type": "string",
+              "enum": ["MANUAL", "AFTER_APPROVAL", "SCHEDULED"],
+              "description": "The release type for this version"
+            },
+            "earliestReleaseDate": {
+              "type": ["string", "null"],
+              "format": "date-time",
+              "description": "The earliest date the version can be released (for scheduled releases)"
+            },
+            "downloadable": {
+              "type": "boolean",
+              "description": "Whether the version is downloadable"
+            },
+            "createdDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date and time the version was created"
+            }
+          }
+        },
+        "relationships": {
+          "type": "object",
+          "properties": {
+            "app": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": { "$ref": "#/$defs/RelationshipData" }
+              }
+            },
+            "build": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": { "$ref": "#/$defs/RelationshipData" }
+              }
+            },
+            "appStoreVersionLocalizations": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            },
+            "appStoreReviewDetail": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": { "$ref": "#/$defs/RelationshipData" }
+              }
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/$defs/ResourceLink"
+        }
+      }
+    },
+
+    "PreReleaseVersion": {
+      "$id": "#PreReleaseVersion",
+      "title": "Pre-Release Version",
+      "description": "The data structure that represents a Pre-Release Versions resource. A pre-release version is a version of an app available for beta testing through TestFlight.",
+      "type": "object",
+      "required": ["type", "id"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "preReleaseVersions",
+          "description": "The resource type identifier"
+        },
+        "id": {
+          "type": "string",
+          "description": "The opaque resource ID"
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "The pre-release version number string"
+            },
+            "platform": {
+              "$ref": "#/$defs/Platform"
+            }
+          }
+        },
+        "relationships": {
+          "type": "object",
+          "properties": {
+            "builds": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/RelationshipData" }
+                }
+              }
+            },
+            "app": {
+              "type": "object",
+              "properties": {
+                "links": { "$ref": "#/$defs/RelationshipLinks" },
+                "data": { "$ref": "#/$defs/RelationshipData" }
+              }
+            }
+          }
+        },
+        "links": {
+          "$ref": "#/$defs/ResourceLink"
+        }
+      }
+    },
+
+    "ErrorResponse": {
+      "$id": "#ErrorResponse",
+      "title": "Error Response",
+      "description": "The error response structure returned by the App Store Connect API when a request fails.",
+      "type": "object",
+      "required": ["errors"],
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["status", "title"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "A unique identifier for this particular occurrence of the error"
+              },
+              "status": {
+                "type": "string",
+                "description": "The HTTP status code applicable to this error"
+              },
+              "code": {
+                "type": "string",
+                "description": "An application-specific error code"
+              },
+              "title": {
+                "type": "string",
+                "description": "A short, human-readable summary of the error"
+              },
+              "detail": {
+                "type": "string",
+                "description": "A human-readable explanation specific to this occurrence of the error"
+              },
+              "source": {
+                "type": "object",
+                "properties": {
+                  "pointer": {
+                    "type": "string",
+                    "description": "A JSON Pointer to the associated entity in the request document"
+                  },
+                  "parameter": {
+                    "type": "string",
+                    "description": "The URI query parameter that caused the error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
