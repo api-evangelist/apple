@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BuildAttributes",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "The build version string (CFBundleVersion)"
+    },
+    "uploadedDate": {
+      "type": "string",
+      "description": "The date and time the build was uploaded"
+    },
+    "expirationDate": {
+      "type": "string",
+      "description": "The date and time the build expires"
+    },
+    "expired": {
+      "type": "boolean",
+      "description": "Whether the build has expired"
+    },
+    "minOsVersion": {
+      "type": "string",
+      "description": "The minimum OS version required"
+    },
+    "lsMinimumSystemVersion": {
+      "type": "string",
+      "description": "The minimum macOS system version"
+    },
+    "computedMinMacOsVersion": {
+      "type": "string",
+      "description": "The computed minimum macOS version"
+    },
+    "iconAssetToken": {
+      "type": "object",
+      "description": "Token for the build's icon asset"
+    },
+    "processingState": {
+      "type": "string",
+      "description": "The processing state of the build"
+    },
+    "buildAudienceType": {
+      "type": "string",
+      "description": "The audience type for the build"
+    },
+    "usesNonExemptEncryption": {
+      "type": "['boolean', 'null']",
+      "description": "Whether the build uses non-exempt encryption"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "BetaGroupAttributes",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "string"
+    },
+    "isInternalGroup": {
+      "type": "boolean"
+    },
+    "hasAccessToAllBuilds": {
+      "type": "boolean"
+    },
+    "publicLinkEnabled": {
+      "type": "boolean"
+    },
+    "publicLinkId": {
+      "type": "['string', 'null']"
+    },
+    "publicLink": {
+      "type": "['string', 'null']"
+    },
+    "publicLinkLimitEnabled": {
+      "type": "boolean"
+    },
+    "publicLinkLimit": {
+      "type": "['integer', 'null']"
+    },
+    "feedbackEnabled": {
+      "type": "boolean"
+    },
+    "iosBuildsAvailableForAppleSiliconMac": {
+      "type": "boolean"
+    }
+  }
+}

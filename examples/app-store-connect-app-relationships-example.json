@@ -1,0 +1,8 @@
+{
+  "builds": "example_value",
+  "betaGroups": "example_value",
+  "betaTesters": "example_value",
+  "appStoreVersions": "example_value",
+  "preReleaseVersions": "example_value",
+  "appInfos": "example_value"
+}

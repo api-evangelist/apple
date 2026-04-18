@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "BuildRelationships",
+  "type": "object",
+  "properties": {
+    "app": {
+      "type": "object"
+    },
+    "preReleaseVersion": {
+      "type": "object"
+    },
+    "individualTesters": {
+      "type": "object"
+    },
+    "betaGroups": {
+      "type": "object"
+    },
+    "betaBuildLocalizations": {
+      "type": "object"
+    },
+    "appEncryptionDeclaration": {
+      "type": "object"
+    },
+    "betaAppReviewSubmission": {
+      "type": "object"
+    },
+    "buildBetaDetail": {
+      "type": "object"
+    },
+    "appStoreVersion": {
+      "type": "object"
+    }
+  }
+}

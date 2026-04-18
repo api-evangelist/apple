@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AppRelationships",
+  "type": "object",
+  "properties": {
+    "builds": {
+      "type": "object"
+    },
+    "betaGroups": {
+      "type": "object"
+    },
+    "betaTesters": {
+      "type": "object"
+    },
+    "appStoreVersions": {
+      "type": "object"
+    },
+    "preReleaseVersions": {
+      "type": "object"
+    },
+    "appInfos": {
+      "type": "object"
+    }
+  }
+}

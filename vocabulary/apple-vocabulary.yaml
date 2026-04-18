@@ -1,0 +1,10 @@
+name: apple API Vocabulary
+provider: apple
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 22
+schemas: 34
+tags:
+- Apps
+- Beta Testers
+- Builds

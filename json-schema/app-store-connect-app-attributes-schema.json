@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AppAttributes",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the app"
+    },
+    "bundleId": {
+      "type": "string",
+      "description": "The bundle ID of the app"
+    },
+    "sku": {
+      "type": "string",
+      "description": "The SKU of the app"
+    },
+    "primaryLocale": {
+      "type": "string",
+      "description": "The primary locale for the app (e.g., en-US)"
+    },
+    "isOrEverWasMadeForKids": {
+      "type": "boolean",
+      "description": "Whether the app is or was made for kids"
+    },
+    "contentRightsDeclaration": {
+      "type": "string",
+      "description": "Declaration of whether the app uses third-party content"
+    },
+    "streamlinedPurchasingEnabled": {
+      "type": "boolean",
+      "description": "Whether streamlined purchasing is enabled"
+    },
+    "subscriptionStatusUrl": {
+      "type": "['string', 'null']",
+      "description": "URL for subscription status notifications"
+    },
+    "subscriptionStatusUrlForSandbox": {
+      "type": "['string', 'null']",
+      "description": "URL for sandbox subscription status notifications"
+    },
+    "subscriptionStatusUrlVersion": {
+      "type": "['string', 'null']",
+      "description": "Version of the subscription status URL"
+    },
+    "subscriptionStatusUrlVersionForSandbox": {
+      "type": "['string', 'null']",
+      "description": "Version of the sandbox subscription status URL"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Example Title",
+  "bundleId": "500123",
+  "sku": "example_value",
+  "primaryLocale": "example_value",
+  "isOrEverWasMadeForKids": true,
+  "contentRightsDeclaration": "example_value",
+  "streamlinedPurchasingEnabled": true,
+  "subscriptionStatusUrl": "https://www.example.com",
+  "subscriptionStatusUrlForSandbox": "https://www.example.com",
+  "subscriptionStatusUrlVersion": "https://www.example.com",
+  "subscriptionStatusUrlVersionForSandbox": "https://www.example.com"
+}

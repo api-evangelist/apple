@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ErrorDetail",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "A unique identifier for this error occurrence"
+    },
+    "status": {
+      "type": "string",
+      "description": "The HTTP status code for this error"
+    },
+    "code": {
+      "type": "string",
+      "description": "A machine-readable error code"
+    },
+    "title": {
+      "type": "string",
+      "description": "A short summary of the error"
+    },
+    "detail": {
+      "type": "string",
+      "description": "A detailed explanation of the error"
+    },
+    "source": {
+      "type": "object"
+    }
+  }
+}

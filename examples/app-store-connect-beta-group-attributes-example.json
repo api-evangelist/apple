@@ -1,0 +1,13 @@
+{
+  "name": "Example Title",
+  "createdDate": "example_value",
+  "isInternalGroup": true,
+  "hasAccessToAllBuilds": true,
+  "publicLinkEnabled": true,
+  "publicLinkId": "500123",
+  "publicLink": "example_value",
+  "publicLinkLimitEnabled": true,
+  "publicLinkLimit": "example_value",
+  "feedbackEnabled": true,
+  "iosBuildsAvailableForAppleSiliconMac": true
+}

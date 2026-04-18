@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BetaTesterAttributes",
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "['string', 'null']",
+      "description": "The first name of the beta tester"
+    },
+    "lastName": {
+      "type": "['string', 'null']",
+      "description": "The last name of the beta tester"
+    },
+    "email": {
+      "type": "['string', 'null']",
+      "description": "The email address of the beta tester"
+    },
+    "inviteType": {
+      "type": "string",
+      "description": "How the tester was invited"
+    },
+    "state": {
+      "type": "string",
+      "description": "The current state of the beta tester invitation"
+    }
+  }
+}

@@ -2,14 +2,17 @@ name: Apple
 description: >-
   Collection of Apple's public APIs and developer resources.
 image: https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png
-created: 2024-01-15 00:00:00+00:00
-modified: 2026-03-03 00:00:00+00:00
+created: '2024-01-15'
+modified: '2026-04-18'
 url: https://developer.apple.com
-specificationVersion: '0.16'
+specificationVersion: '0.19'
+type: Index
+access: 3rd-Party
+position: Consumer
 tags:
   - Developer
-  - Ios
-  - Macos
+  - iOS
+  - macOS
   - Mobile
   - Technology
 apis:
@@ -28,8 +31,6 @@ apis:
         url: https://developer.apple.com/documentation/applemusicapi
       - type: Authentication
         url: https://developer.apple.com/documentation/applemusicapi/getting_keys_and_creating_tokens
-      - type: OpenAPI
-        url: https://developer.apple.com/documentation/applemusicapi/api_reference
       - type: GettingStarted
         url: https://developer.apple.com/documentation/applemusicapi/getting_keys_and_creating_tokens
       - type: Portal
@@ -50,7 +51,7 @@ apis:
         url: https://developer.apple.com/documentation/weatherkitrestapi/request_authentication_for_weatherkit_rest_api
       - type: Portal
         url: https://developer.apple.com/weatherkit/
-      - type: Changelog
+      - type: ChangeLog
         url: https://developer.apple.com/documentation/updates/weatherkit
   - name: App Store Connect API
     description: >-
@@ -59,7 +60,7 @@ apis:
     baseURL: https://api.appstoreconnect.apple.com/v1
     tags:
       - Analytics
-      - App-Store
+      - App Store
       - Publishing
     properties:
       - type: Documentation
@@ -70,15 +71,83 @@ apis:
         url: openapi/app-store-connect-api.yml
       - type: JSONSchema
         url: json-schema/apple-app-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-resource-link-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-paged-document-links-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-document-links-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-paging-information-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-relationship-links-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-relationship-data-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-error-response-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-error-detail-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-app-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-app-attributes-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-app-relationships-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-app-response-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-apps-response-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-app-update-request-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-build-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-build-attributes-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-build-relationships-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-build-response-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-builds-response-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-build-update-request-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-beta-tester-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-beta-tester-attributes-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-beta-tester-relationships-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-beta-tester-response-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-beta-testers-response-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-beta-tester-create-request-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-beta-group-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-beta-group-attributes-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-beta-group-relationships-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-beta-group-response-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-beta-groups-response-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-beta-group-create-request-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-beta-group-update-request-schema.json
+      - type: JSONSchema
+        url: json-schema/app-store-connect-beta-group-beta-testers-linkages-request-schema.json
       - type: JSONLD
-        url: json-ld/apple-context.jsonld
+        url: json-ld/app-store-connect-context.jsonld
       - type: Authentication
         url: https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api
       - type: GettingStarted
         url: https://developer.apple.com/help/app-store-connect/get-started/app-store-connect-api/
       - type: Portal
         url: https://developer.apple.com/app-store-connect/api/
-      - type: Changelog
+      - type: ChangeLog
         url: https://developer.apple.com/documentation/appstoreconnectapi/app-store-connect-api-release-notes
   - name: MapKit JS
     description: >-
@@ -92,7 +161,7 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/mapkitjs
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.apple.com/documentation/mapkitjs/creating_and_using_tokens_with_mapkit_js
       - type: Portal
         url: https://developer.apple.com/maps/
@@ -104,7 +173,7 @@ apis:
     tags:
       - Authentication
       - Identity
-      - Oauth
+      - OAuth
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_rest_api
@@ -126,12 +195,11 @@ apis:
         url: https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_token-based_connection_to_apns
   - name: App Store Server API
     description: >-
-      Manage customer App Store transactions from your server, including in-app purchases
-      and subscriptions.
+      Manage customer App Store transactions from your server, including in-app purchases and subscriptions.
     humanURL: https://developer.apple.com/documentation/appstoreserverapi
     baseURL: https://api.storekit.itunes.apple.com
     tags:
-      - In-App-Purchases
+      - In-App Purchases
       - Subscriptions
       - Transactions
     properties:
@@ -139,15 +207,14 @@ apis:
         url: https://developer.apple.com/documentation/appstoreserverapi
       - type: Authentication
         url: https://developer.apple.com/documentation/appstoreserverapi/creating-api-keys-to-authorize-api-requests
-      - type: Changelog
+      - type: ChangeLog
         url: https://developer.apple.com/documentation/appstoreserverapi/app-store-server-api-changelog
   - name: App Store Server Notifications V2
     description: >-
-      Receive real-time notifications about in-app purchase events and subscription
-      lifecycle changes.
+      Receive real-time notifications about in-app purchase events and subscription lifecycle changes.
     humanURL: https://developer.apple.com/documentation/appstoreservernotifications
     tags:
-      - In-App-Purchases
+      - In-App Purchases
       - Subscriptions
       - Webhooks
     properties:
@@ -157,8 +224,7 @@ apis:
         url: https://developer.apple.com/documentation/appstoreservernotifications/enabling-app-store-server-notifications
   - name: Apple Maps Server API
     description: >-
-      Server-side geocoding, reverse geocoding, search, and estimated time of arrival
-      using Apple Maps.
+      Server-side geocoding, reverse geocoding, search, and estimated time of arrival using Apple Maps.
     humanURL: https://developer.apple.com/documentation/applemapsserverapi/
     baseURL: https://maps-api.apple.com
     tags:
@@ -192,13 +258,12 @@ apis:
         url: https://developer.apple.com/documentation/apple_news/apple_news_api/about_the_apple_news_security_model
   - name: DeviceCheck API
     description: >-
-      Reduce fraudulent use of your services by managing device state and asserting
-      app integrity.
+      Reduce fraudulent use of your services by managing device state and asserting app integrity.
     humanURL: https://developer.apple.com/documentation/devicecheck
     baseURL: https://api.devicecheck.apple.com
     tags:
       - Device
-      - Fraud-Prevention
+      - Fraud Prevention
       - Security
     properties:
       - type: Documentation
@@ -213,7 +278,7 @@ apis:
     tags:
       - Advertising
       - Campaigns
-      - Search-Ads
+      - Search Ads
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/apple_ads
@@ -236,8 +301,7 @@ apis:
         url: https://developer.apple.com/documentation/walletpasses/adding-a-web-service-to-update-passes
   - name: Enterprise Program API
     description: >-
-      Automate management of users, roles, provisioning profiles, and bundle identifiers
-      for enterprise apps.
+      Automate management of users, roles, provisioning profiles, and bundle identifiers for enterprise apps.
     humanURL: https://developer.apple.com/documentation/enterpriseprogramapi
     tags:
       - Certificates
@@ -248,17 +312,16 @@ apis:
         url: https://developer.apple.com/documentation/enterpriseprogramapi
       - type: Authentication
         url: https://developer.apple.com/documentation/enterpriseprogramapi/creating-api-keys-for-enterprise-program-api
-      - type: Changelog
+      - type: ChangeLog
         url: https://developer.apple.com/documentation/enterpriseprogramapi/enterprise-api-release-notes
       - type: RateLimits
         url: https://developer.apple.com/documentation/enterpriseprogramapi/identifying-rate-limits
   - name: Apple School and Business Manager API
     description: >-
-      Automate device management actions and access data about devices enrolled via
-      Automated Device Enrollment.
+      Automate device management actions and access data about devices enrolled via Automated Device Enrollment.
     humanURL: https://developer.apple.com/documentation/apple-school-and-business-manager-api
     tags:
-      - Device-Management
+      - Device Management
       - Education
       - Enrollment
       - Enterprise
@@ -272,7 +335,7 @@ apis:
       Accept Apple Pay payments on your website using JavaScript-based APIs.
     humanURL: https://developer.apple.com/documentation/applepayontheweb
     tags:
-      - Apple-Pay
+      - Apple Pay
       - Payments
       - Web
     properties:
@@ -299,7 +362,7 @@ apis:
     humanURL: https://developer.apple.com/documentation/classkitcatalogapi
     baseURL: https://classkit-catalog.apple.com
     tags:
-      - Classkit
+      - ClassKit
       - Education
       - Schoolwork
     properties:
@@ -319,56 +382,82 @@ apis:
       - type: Documentation
         url: https://developer.apple.com/documentation/applemusicfeed
 common:
-  - type: JSONSchema
-    url: json-schema/apple-app-schema.json
-  - type: JSONLD
-    url: json-ld/apple-context.jsonld
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://developer.apple.com
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://developer.apple.com/terms/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.apple.com/legal/privacy/
   - type: Support
     url: https://developer.apple.com/support/
-  - type: Forums
-    url: https://developer.apple.com/forums/
   - type: Blog
     url: https://developer.apple.com/news/
-  - type: BlogFeed
-    url: https://developer.apple.com/news/rss/news.rss
-  - type: ReleasesFeed
-    url: https://developer.apple.com/news/releases/rss/releases.rss
-  - type: Status
+  - type: StatusPage
     url: https://developer.apple.com/system-status/
   - type: SignUp
     url: https://developer.apple.com/programs/enroll/
   - type: Pricing
     url: https://developer.apple.com/support/compare-memberships/
-  - type: GitHub
+  - type: GitHubOrganization
     url: https://github.com/apple
-  - type: OpenSource
-    url: https://opensource.apple.com/releases/
-  - type: Videos
+  - type: YouTube
     url: https://developer.apple.com/videos/
-  - type: Changelog
+  - type: ChangeLog
     url: https://developer.apple.com/documentation/updates
   - type: Authentication
     url: https://developer.apple.com/documentation/appstoreconnectapi/generating-tokens-for-api-requests
   - type: Tutorials
     url: https://developer.apple.com/tutorials/
-  - type: SampleCode
+  - type: CodeExamples
     url: https://developer.apple.com/sample-code/
-  - type: SDKs
+  - type: SDK
     url: https://developer.apple.com/download/
-  - type: WWDC
-    url: https://developer.apple.com/wwdc25/
-  - type: MachineLearning
-    url: https://developer.apple.com/machine-learning/api/
   - type: Contact
     url: https://developer.apple.com/contact/
-  - type: License
-    url: https://developer.apple.com/support/terms/apple-developer-program-license-agreement/
+  - type: JSONLD
+    url: json-ld/apple-context.jsonld
+  - type: SpectralRules
+    url: rules/apple-spectral-rules.yml
+  - type: NaftikoCapability
+    url: capabilities/app-lifecycle.yaml
+  - type: Features
+    data:
+      - name: App Store Connect
+        description: Automate app management, TestFlight, submissions, and analytics through a comprehensive REST API.
+      - name: Apple Pay
+        description: Accept payments seamlessly on web and in apps with secure tokenized transactions.
+      - name: Push Notifications
+        description: Send real-time notifications to billions of Apple devices across iOS, macOS, watchOS, and tvOS.
+      - name: Sign in with Apple
+        description: Privacy-focused authentication that lets users sign in without sharing personal information.
+      - name: MapKit and Maps Server
+        description: Embed interactive maps and perform server-side geocoding with Apple Maps infrastructure.
+      - name: WeatherKit
+        description: Access hyper-local weather forecasts, conditions, and historical data worldwide.
+      - name: MusicKit
+        description: Integrate Apple Music catalog, user library, and playback into apps and websites.
+  - type: UseCases
+    data:
+      - name: App Distribution
+        description: Automate app submissions, manage TestFlight beta testing, and handle app metadata at scale.
+      - name: In-App Purchases
+        description: Manage subscriptions, consumables, and transaction history with server-side verification.
+      - name: Enterprise Device Management
+        description: Automate device enrollment and management for schools and businesses at scale.
+      - name: Content Publishing
+        description: Publish and manage articles in Apple News with rich media and analytics.
+      - name: Location Services
+        description: Build location-aware applications with geocoding, routing, and interactive maps.
+  - type: Integrations
+    data:
+      - name: Xcode
+        description: Full IDE integration for building, testing, and deploying apps across all Apple platforms.
+      - name: TestFlight
+        description: Beta testing platform for distributing pre-release builds to internal and external testers.
+      - name: App Analytics
+        description: View app performance metrics, downloads, and user engagement data.
+      - name: CloudKit
+        description: Store and sync app data across devices using Apple's cloud infrastructure.
 maintainers:
   - name: Apple Developer Relations
     email: developer@apple.com

@@ -1,0 +1,13 @@
+{
+  "version": "example_value",
+  "uploadedDate": "example_value",
+  "expirationDate": "example_value",
+  "expired": true,
+  "minOsVersion": "example_value",
+  "lsMinimumSystemVersion": "example_value",
+  "computedMinMacOsVersion": "example_value",
+  "iconAssetToken": "example_value",
+  "processingState": "example_value",
+  "buildAudienceType": "example_value",
+  "usesNonExemptEncryption": "example_value"
+}

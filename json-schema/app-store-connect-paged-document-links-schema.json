@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PagedDocumentLinks",
+  "type": "object",
+  "properties": {
+    "self": {
+      "type": "string",
+      "description": "The URL for the current page of results"
+    },
+    "first": {
+      "type": "string",
+      "description": "The URL for the first page of results"
+    },
+    "next": {
+      "type": "string",
+      "description": "The URL for the next page of results"
+    }
+  }
+}

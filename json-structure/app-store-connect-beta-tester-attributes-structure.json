@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "BetaTesterAttributes",
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "['string', 'null']"
+    },
+    "lastName": {
+      "type": "['string', 'null']"
+    },
+    "email": {
+      "type": "['string', 'null']"
+    },
+    "inviteType": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    }
+  }
+}

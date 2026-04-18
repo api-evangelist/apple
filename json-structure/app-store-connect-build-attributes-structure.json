@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "BuildAttributes",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "uploadedDate": {
+      "type": "string"
+    },
+    "expirationDate": {
+      "type": "string"
+    },
+    "expired": {
+      "type": "boolean"
+    },
+    "minOsVersion": {
+      "type": "string"
+    },
+    "lsMinimumSystemVersion": {
+      "type": "string"
+    },
+    "computedMinMacOsVersion": {
+      "type": "string"
+    },
+    "iconAssetToken": {
+      "type": "object"
+    },
+    "processingState": {
+      "type": "string"
+    },
+    "buildAudienceType": {
+      "type": "string"
+    },
+    "usesNonExemptEncryption": {
+      "type": "['boolean', 'null']"
+    }
+  }
+}

@@ -24,31 +24,31 @@ externalDocs:
   url: https://developer.apple.com/documentation/appstoreconnectapi
 
 servers:
-  - url: https://api.appstoreconnect.apple.com
-    description: App Store Connect API Production Server
+- url: https://api.appstoreconnect.apple.com
+  description: App Store Connect API Production Server
 
 security:
-  - BearerAuth: []
+- BearerAuth: []
 
 tags:
-  - name: Apps
-    description: >-
-      Manage your apps in App Store Connect, including app metadata, pricing,
-      availability, and app information.
-    externalDocs:
-      url: https://developer.apple.com/documentation/appstoreconnectapi/apps
-  - name: Builds
-    description: >-
-      Manage builds uploaded to App Store Connect, including build metadata,
-      processing state, and build relationships.
-    externalDocs:
-      url: https://developer.apple.com/documentation/appstoreconnectapi/builds
-  - name: Beta Testers
-    description: >-
-      Manage TestFlight beta testers, including inviting testers, managing
-      tester groups, and controlling access to beta builds.
-    externalDocs:
-      url: https://developer.apple.com/documentation/appstoreconnectapi/beta-testers
+- name: Apps
+  description: >-
+    Manage your apps in App Store Connect, including app metadata, pricing,
+    availability, and app information.
+  externalDocs:
+    url: https://developer.apple.com/documentation/appstoreconnectapi/apps
+- name: Builds
+  description: >-
+    Manage builds uploaded to App Store Connect, including build metadata,
+    processing state, and build relationships.
+  externalDocs:
+    url: https://developer.apple.com/documentation/appstoreconnectapi/builds
+- name: Beta Testers
+  description: >-
+    Manage TestFlight beta testers, including inviting testers, managing
+    tester groups, and controlling access to beta builds.
+  externalDocs:
+    url: https://developer.apple.com/documentation/appstoreconnectapi/beta-testers
 
 paths:
   /v1/apps:
@@ -59,159 +59,167 @@ paths:
         Find and list apps in App Store Connect. Returns a paginated list of
         apps associated with your Apple Developer account.
       tags:
-        - Apps
+      - Apps
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/list-apps
       parameters:
-        - name: filter[bundleId]
-          in: query
-          description: Filter by bundle identifier
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[id]
-          in: query
-          description: Filter by app resource ID
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[name]
-          in: query
-          description: Filter by app name
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[sku]
-          in: query
-          description: Filter by SKU
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[appStoreVersions.platform]
-          in: query
-          description: Filter by platform
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - IOS
-                - MAC_OS
-                - TV_OS
-                - VISION_OS
-          style: form
-          explode: false
-        - name: filter[appStoreVersions.appStoreState]
-          in: query
-          description: Filter by App Store version state
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - ACCEPTED
-                - DEVELOPER_REJECTED
-                - DEVELOPER_REMOVED_FROM_SALE
-                - IN_REVIEW
-                - INVALID_BINARY
-                - METADATA_REJECTED
-                - PENDING_APPLE_RELEASE
-                - PENDING_DEVELOPER_RELEASE
-                - PREPARE_FOR_SUBMISSION
-                - PREORDER_READY_FOR_SALE
-                - PROCESSING_FOR_APP_STORE
-                - READY_FOR_REVIEW
-                - READY_FOR_SALE
-                - REJECTED
-                - REMOVED_FROM_SALE
-                - REPLACED_WITH_NEW_VERSION
-                - WAITING_FOR_EXPORT_COMPLIANCE
-                - WAITING_FOR_REVIEW
-          style: form
-          explode: false
-        - name: sort
-          in: query
-          description: Sort order for the results
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - bundleId
-                - -bundleId
-                - name
-                - -name
-                - sku
-                - -sku
-          style: form
-          explode: false
-        - name: fields[apps]
-          in: query
-          description: Fields to return for app resources
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - alternativeDistributionKey
-                - analyticsReportRequests
-                - appAvailability
-                - appClips
-                - appCustomProductPages
-                - appEncryptionDeclarations
-                - appEvents
-                - appInfos
-                - appPricePoints
-                - appPriceSchedule
-                - appStoreVersionExperimentsV2
-                - appStoreVersions
-                - betaAppLocalizations
-                - betaAppReviewDetail
-                - betaGroups
-                - betaLicenseAgreement
-                - betaTesters
-                - builds
-                - bundleId
-                - ciProduct
-                - contentRightsDeclaration
-                - customerReviews
-                - endUserLicenseAgreement
-                - gameCenterDetail
-                - gameCenterEnabledVersions
-                - inAppPurchases
-                - inAppPurchasesV2
-                - isOrEverWasMadeForKids
-                - marketplaceSearchDetail
-                - name
-                - perfPowerMetrics
-                - preOrder
-                - preReleaseVersions
-                - primaryLocale
-                - promotedPurchases
-                - reviewSubmissions
-                - sku
-                - streamlinedPurchasingEnabled
-                - subscriptionGracePeriod
-                - subscriptionGroups
-                - subscriptionStatusUrl
-                - subscriptionStatusUrlForSandbox
-                - subscriptionStatusUrlVersion
-                - subscriptionStatusUrlVersionForSandbox
-          style: form
-          explode: false
-        - $ref: '#/components/parameters/LimitParam'
+      - name: filter[bundleId]
+        in: query
+        description: Filter by bundle identifier
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[id]
+        in: query
+        description: Filter by app resource ID
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[name]
+        in: query
+        description: Filter by app name
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[sku]
+        in: query
+        description: Filter by SKU
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[appStoreVersions.platform]
+        in: query
+        description: Filter by platform
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - IOS
+            - MAC_OS
+            - TV_OS
+            - VISION_OS
+        style: form
+        explode: false
+        example: []
+      - name: filter[appStoreVersions.appStoreState]
+        in: query
+        description: Filter by App Store version state
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - ACCEPTED
+            - DEVELOPER_REJECTED
+            - DEVELOPER_REMOVED_FROM_SALE
+            - IN_REVIEW
+            - INVALID_BINARY
+            - METADATA_REJECTED
+            - PENDING_APPLE_RELEASE
+            - PENDING_DEVELOPER_RELEASE
+            - PREPARE_FOR_SUBMISSION
+            - PREORDER_READY_FOR_SALE
+            - PROCESSING_FOR_APP_STORE
+            - READY_FOR_REVIEW
+            - READY_FOR_SALE
+            - REJECTED
+            - REMOVED_FROM_SALE
+            - REPLACED_WITH_NEW_VERSION
+            - WAITING_FOR_EXPORT_COMPLIANCE
+            - WAITING_FOR_REVIEW
+        style: form
+        explode: false
+        example: []
+      - name: sort
+        in: query
+        description: Sort order for the results
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - bundleId
+            - -bundleId
+            - name
+            - -name
+            - sku
+            - -sku
+        style: form
+        explode: false
+        example: []
+      - name: fields[apps]
+        in: query
+        description: Fields to return for app resources
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - alternativeDistributionKey
+            - analyticsReportRequests
+            - appAvailability
+            - appClips
+            - appCustomProductPages
+            - appEncryptionDeclarations
+            - appEvents
+            - appInfos
+            - appPricePoints
+            - appPriceSchedule
+            - appStoreVersionExperimentsV2
+            - appStoreVersions
+            - betaAppLocalizations
+            - betaAppReviewDetail
+            - betaGroups
+            - betaLicenseAgreement
+            - betaTesters
+            - builds
+            - bundleId
+            - ciProduct
+            - contentRightsDeclaration
+            - customerReviews
+            - endUserLicenseAgreement
+            - gameCenterDetail
+            - gameCenterEnabledVersions
+            - inAppPurchases
+            - inAppPurchasesV2
+            - isOrEverWasMadeForKids
+            - marketplaceSearchDetail
+            - name
+            - perfPowerMetrics
+            - preOrder
+            - preReleaseVersions
+            - primaryLocale
+            - promotedPurchases
+            - reviewSubmissions
+            - sku
+            - streamlinedPurchasingEnabled
+            - subscriptionGracePeriod
+            - subscriptionGroups
+            - subscriptionStatusUrl
+            - subscriptionStatusUrlForSandbox
+            - subscriptionStatusUrlVersion
+            - subscriptionStatusUrlVersionForSandbox
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
       responses:
         '200':
           description: List of apps
@@ -219,6 +227,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AppsResponse'
+              examples:
+                Listapps200Example:
+                  summary: Default listApps 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: apps
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -226,60 +251,65 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1/apps/{id}:
     get:
       operationId: readApp
       summary: Read App Information
       description: Get information about a specific app.
       tags:
-        - Apps
+      - Apps
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/read-app-information
       parameters:
-        - $ref: '#/components/parameters/AppIdParam'
-        - name: fields[apps]
-          in: query
-          description: Fields to return for app resources
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: include
-          in: query
-          description: Relationship data to include in the response
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - appClips
-                - appCustomProductPages
-                - appEncryptionDeclarations
-                - appEvents
-                - appInfos
-                - appStoreVersionExperimentsV2
-                - appStoreVersions
-                - betaAppLocalizations
-                - betaAppReviewDetail
-                - betaGroups
-                - betaLicenseAgreement
-                - builds
-                - ciProduct
-                - endUserLicenseAgreement
-                - gameCenterDetail
-                - gameCenterEnabledVersions
-                - inAppPurchases
-                - inAppPurchasesV2
-                - preOrder
-                - preReleaseVersions
-                - promotedPurchases
-                - reviewSubmissions
-                - subscriptionGracePeriod
-                - subscriptionGroups
-          style: form
-          explode: false
+      - $ref: '#/components/parameters/AppIdParam'
+      - name: fields[apps]
+        in: query
+        description: Fields to return for app resources
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: include
+        in: query
+        description: Relationship data to include in the response
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - appClips
+            - appCustomProductPages
+            - appEncryptionDeclarations
+            - appEvents
+            - appInfos
+            - appStoreVersionExperimentsV2
+            - appStoreVersions
+            - betaAppLocalizations
+            - betaAppReviewDetail
+            - betaGroups
+            - betaLicenseAgreement
+            - builds
+            - ciProduct
+            - endUserLicenseAgreement
+            - gameCenterDetail
+            - gameCenterEnabledVersions
+            - inAppPurchases
+            - inAppPurchasesV2
+            - preOrder
+            - preReleaseVersions
+            - promotedPurchases
+            - reviewSubmissions
+            - subscriptionGracePeriod
+            - subscriptionGroups
+        style: form
+        explode: false
+        example: []
       responses:
         '200':
           description: Single app response
@@ -287,6 +317,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AppResponse'
+              examples:
+                Readapp200Example:
+                  summary: Default readApp 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      type: apps
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -295,16 +336,19 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: modifyApp
       summary: Modify an App
       description: Update app information including app-level attributes.
       tags:
-        - Apps
+      - Apps
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/modify-an-app
       parameters:
-        - $ref: '#/components/parameters/AppIdParam'
+      - $ref: '#/components/parameters/AppIdParam'
       requestBody:
         description: App update request
         required: true
@@ -312,6 +356,20 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AppUpdateRequest'
+            examples:
+              ModifyappRequestExample:
+                summary: Default modifyApp request
+                x-microcks-default: true
+                value:
+                  data:
+                    type: apps
+                    id: abc123
+                    attributes:
+                      contentRightsDeclaration: DOES_NOT_USE_THIRD_PARTY_CONTENT
+                      subscriptionStatusUrl: https://www.example.com
+                      subscriptionStatusUrlForSandbox: https://www.example.com
+                      subscriptionStatusUrlVersion: V1
+                      subscriptionStatusUrlVersionForSandbox: V1
       responses:
         '200':
           description: Updated app
@@ -319,6 +377,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AppResponse'
+              examples:
+                Modifyapp200Example:
+                  summary: Default modifyApp 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      type: apps
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -330,28 +399,32 @@ paths:
         '409':
           $ref: '#/components/responses/Conflict'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1/apps/{id}/builds:
     get:
       operationId: listAppBuilds
       summary: List All Builds of an App
       description: Get a list of builds associated with a specific app.
       tags:
-        - Apps
-        - Builds
+      - Apps
+      - Builds
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/list-all-builds-of-an-app
       parameters:
-        - $ref: '#/components/parameters/AppIdParam'
-        - name: fields[builds]
-          in: query
-          description: Fields to return for build resources
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/AppIdParam'
+      - name: fields[builds]
+        in: query
+        description: Fields to return for build resources
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
       responses:
         '200':
           description: List of builds for the app
@@ -359,6 +432,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BuildsResponse'
+              examples:
+                Listappbuilds200Example:
+                  summary: Default listAppBuilds 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: builds
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -368,6 +458,9 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1/builds:
     get:
       operationId: listBuilds
@@ -376,179 +469,191 @@ paths:
         Find and list builds for all apps in App Store Connect. Returns a
         paginated list of builds.
       tags:
-        - Builds
+      - Builds
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/list-builds
       parameters:
-        - name: filter[app]
-          in: query
-          description: Filter by app resource ID
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[id]
-          in: query
-          description: Filter by build resource ID
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[version]
-          in: query
-          description: Filter by build version string
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[expired]
-          in: query
-          description: Filter by expiration status
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - 'true'
-                - 'false'
-          style: form
-          explode: false
-        - name: filter[processingState]
-          in: query
-          description: Filter by processing state
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - PROCESSING
-                - FAILED
-                - INVALID
-                - VALID
-          style: form
-          explode: false
-        - name: filter[preReleaseVersion.platform]
-          in: query
-          description: Filter by platform
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - IOS
-                - MAC_OS
-                - TV_OS
-                - VISION_OS
-          style: form
-          explode: false
-        - name: filter[preReleaseVersion.version]
-          in: query
-          description: Filter by pre-release version string
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[betaGroups]
-          in: query
-          description: Filter by beta group IDs
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[usesNonExemptEncryption]
-          in: query
-          description: Filter by encryption usage
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - 'true'
-                - 'false'
-          style: form
-          explode: false
-        - name: sort
-          in: query
-          description: Sort order for results
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - preReleaseVersion
-                - -preReleaseVersion
-                - uploadedDate
-                - -uploadedDate
-                - version
-                - -version
-          style: form
-          explode: false
-        - name: fields[builds]
-          in: query
-          description: Fields to return for build resources
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - app
-                - appEncryptionDeclaration
-                - appStoreVersion
-                - betaAppReviewSubmission
-                - betaBuildLocalizations
-                - betaGroups
-                - buildAudienceType
-                - buildBetaDetail
-                - buildBundles
-                - computedMinMacOsVersion
-                - diagnosticSignatures
-                - expirationDate
-                - expired
-                - iconAssetToken
-                - icons
-                - individualTesters
-                - lsMinimumSystemVersion
-                - minOsVersion
-                - perfPowerMetrics
-                - preReleaseVersion
-                - processingState
-                - uploadedDate
-                - usesNonExemptEncryption
-                - version
-          style: form
-          explode: false
-        - name: include
-          in: query
-          description: Relationship data to include in the response
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - app
-                - appEncryptionDeclaration
-                - appStoreVersion
-                - betaAppReviewSubmission
-                - betaBuildLocalizations
-                - betaGroups
-                - buildBetaDetail
-                - buildBundles
-                - icons
-                - individualTesters
-                - preReleaseVersion
-          style: form
-          explode: false
-        - $ref: '#/components/parameters/LimitParam'
+      - name: filter[app]
+        in: query
+        description: Filter by app resource ID
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[id]
+        in: query
+        description: Filter by build resource ID
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[version]
+        in: query
+        description: Filter by build version string
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[expired]
+        in: query
+        description: Filter by expiration status
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - 'true'
+            - 'false'
+        style: form
+        explode: false
+        example: []
+      - name: filter[processingState]
+        in: query
+        description: Filter by processing state
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - PROCESSING
+            - FAILED
+            - INVALID
+            - VALID
+        style: form
+        explode: false
+        example: []
+      - name: filter[preReleaseVersion.platform]
+        in: query
+        description: Filter by platform
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - IOS
+            - MAC_OS
+            - TV_OS
+            - VISION_OS
+        style: form
+        explode: false
+        example: []
+      - name: filter[preReleaseVersion.version]
+        in: query
+        description: Filter by pre-release version string
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[betaGroups]
+        in: query
+        description: Filter by beta group IDs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[usesNonExemptEncryption]
+        in: query
+        description: Filter by encryption usage
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - 'true'
+            - 'false'
+        style: form
+        explode: false
+        example: []
+      - name: sort
+        in: query
+        description: Sort order for results
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - preReleaseVersion
+            - -preReleaseVersion
+            - uploadedDate
+            - -uploadedDate
+            - version
+            - -version
+        style: form
+        explode: false
+        example: []
+      - name: fields[builds]
+        in: query
+        description: Fields to return for build resources
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - app
+            - appEncryptionDeclaration
+            - appStoreVersion
+            - betaAppReviewSubmission
+            - betaBuildLocalizations
+            - betaGroups
+            - buildAudienceType
+            - buildBetaDetail
+            - buildBundles
+            - computedMinMacOsVersion
+            - diagnosticSignatures
+            - expirationDate
+            - expired
+            - iconAssetToken
+            - icons
+            - individualTesters
+            - lsMinimumSystemVersion
+            - minOsVersion
+            - perfPowerMetrics
+            - preReleaseVersion
+            - processingState
+            - uploadedDate
+            - usesNonExemptEncryption
+            - version
+        style: form
+        explode: false
+        example: []
+      - name: include
+        in: query
+        description: Relationship data to include in the response
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - app
+            - appEncryptionDeclaration
+            - appStoreVersion
+            - betaAppReviewSubmission
+            - betaBuildLocalizations
+            - betaGroups
+            - buildBetaDetail
+            - buildBundles
+            - icons
+            - individualTesters
+            - preReleaseVersion
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
       responses:
         '200':
           description: List of builds
@@ -556,6 +661,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BuildsResponse'
+              examples:
+                Listbuilds200Example:
+                  summary: Default listBuilds 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: builds
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -563,47 +685,52 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1/builds/{id}:
     get:
       operationId: readBuild
       summary: Read Build Information
       description: Get information about a specific build.
       tags:
-        - Builds
+      - Builds
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/read-build-information
       parameters:
-        - $ref: '#/components/parameters/BuildIdParam'
-        - name: fields[builds]
-          in: query
-          description: Fields to return for build resources
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: include
-          in: query
-          description: Relationship data to include in the response
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - app
-                - appEncryptionDeclaration
-                - appStoreVersion
-                - betaAppReviewSubmission
-                - betaBuildLocalizations
-                - betaGroups
-                - buildBetaDetail
-                - buildBundles
-                - icons
-                - individualTesters
-                - preReleaseVersion
-          style: form
-          explode: false
+      - $ref: '#/components/parameters/BuildIdParam'
+      - name: fields[builds]
+        in: query
+        description: Fields to return for build resources
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: include
+        in: query
+        description: Relationship data to include in the response
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - app
+            - appEncryptionDeclaration
+            - appStoreVersion
+            - betaAppReviewSubmission
+            - betaBuildLocalizations
+            - betaGroups
+            - buildBetaDetail
+            - buildBundles
+            - icons
+            - individualTesters
+            - preReleaseVersion
+        style: form
+        explode: false
+        example: []
       responses:
         '200':
           description: Single build response
@@ -611,6 +738,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BuildResponse'
+              examples:
+                Readbuild200Example:
+                  summary: Default readBuild 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      type: builds
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -619,17 +757,20 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: modifyBuild
       summary: Modify a Build
       description: >-
         Expire a build or change its encryption exemption setting.
       tags:
-        - Builds
+      - Builds
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/modify-a-build
       parameters:
-        - $ref: '#/components/parameters/BuildIdParam'
+      - $ref: '#/components/parameters/BuildIdParam'
       requestBody:
         description: Build update request
         required: true
@@ -637,6 +778,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BuildUpdateRequest'
+            examples:
+              ModifybuildRequestExample:
+                summary: Default modifyBuild request
+                x-microcks-default: true
+                value:
+                  data:
+                    type: builds
+                    id: abc123
+                    attributes:
+                      expired: true
+                      usesNonExemptEncryption: true
       responses:
         '200':
           description: Updated build
@@ -644,6 +796,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BuildResponse'
+              examples:
+                Modifybuild200Example:
+                  summary: Default modifyBuild 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      type: builds
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -655,28 +818,32 @@ paths:
         '409':
           $ref: '#/components/responses/Conflict'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1/builds/{id}/individualTesters:
     get:
       operationId: listBuildIndividualTesters
       summary: List All Individual Testers for a Build
       description: Get a list of beta testers individually assigned to a build.
       tags:
-        - Builds
-        - Beta Testers
+      - Builds
+      - Beta Testers
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/list-all-individual-testers-for-a-build
       parameters:
-        - $ref: '#/components/parameters/BuildIdParam'
-        - name: fields[betaTesters]
-          in: query
-          description: Fields to return for beta tester resources
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/BuildIdParam'
+      - name: fields[betaTesters]
+        in: query
+        description: Fields to return for beta tester resources
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
       responses:
         '200':
           description: List of beta testers for the build
@@ -684,6 +851,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BetaTestersResponse'
+              examples:
+                Listbuildindividualtesters200Example:
+                  summary: Default listBuildIndividualTesters 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: betaTesters
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -693,6 +877,9 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1/betaTesters:
     get:
       operationId: listBetaTesters
@@ -700,137 +887,148 @@ paths:
       description: >-
         Find and list beta testers for all apps, builds, and beta groups.
       tags:
-        - Beta Testers
+      - Beta Testers
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/list-beta-testers
       parameters:
-        - name: filter[email]
-          in: query
-          description: Filter by email address
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[firstName]
-          in: query
-          description: Filter by first name
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[lastName]
-          in: query
-          description: Filter by last name
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[inviteType]
-          in: query
-          description: Filter by invitation type
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - EMAIL
-                - PUBLIC_LINK
-          style: form
-          explode: false
-        - name: filter[apps]
-          in: query
-          description: Filter by app resource IDs
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[betaGroups]
-          in: query
-          description: Filter by beta group resource IDs
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[builds]
-          in: query
-          description: Filter by build resource IDs
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[id]
-          in: query
-          description: Filter by beta tester resource ID
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: sort
-          in: query
-          description: Sort order for results
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - email
-                - -email
-                - firstName
-                - -firstName
-                - inviteType
-                - -inviteType
-                - lastName
-                - -lastName
-                - state
-                - -state
-          style: form
-          explode: false
-        - name: fields[betaTesters]
-          in: query
-          description: Fields to return for beta tester resources
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - apps
-                - betaGroups
-                - builds
-                - email
-                - firstName
-                - inviteType
-                - lastName
-                - state
-          style: form
-          explode: false
-        - name: include
-          in: query
-          description: Relationship data to include in the response
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - apps
-                - betaGroups
-                - builds
-          style: form
-          explode: false
-        - $ref: '#/components/parameters/LimitParam'
+      - name: filter[email]
+        in: query
+        description: Filter by email address
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: user@example.com
+      - name: filter[firstName]
+        in: query
+        description: Filter by first name
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[lastName]
+        in: query
+        description: Filter by last name
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[inviteType]
+        in: query
+        description: Filter by invitation type
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - EMAIL
+            - PUBLIC_LINK
+        style: form
+        explode: false
+        example: []
+      - name: filter[apps]
+        in: query
+        description: Filter by app resource IDs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[betaGroups]
+        in: query
+        description: Filter by beta group resource IDs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[builds]
+        in: query
+        description: Filter by build resource IDs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[id]
+        in: query
+        description: Filter by beta tester resource ID
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: sort
+        in: query
+        description: Sort order for results
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - email
+            - -email
+            - firstName
+            - -firstName
+            - inviteType
+            - -inviteType
+            - lastName
+            - -lastName
+            - state
+            - -state
+        style: form
+        explode: false
+        example: []
+      - name: fields[betaTesters]
+        in: query
+        description: Fields to return for beta tester resources
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - apps
+            - betaGroups
+            - builds
+            - email
+            - firstName
+            - inviteType
+            - lastName
+            - state
+        style: form
+        explode: false
+        example: []
+      - name: include
+        in: query
+        description: Relationship data to include in the response
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - apps
+            - betaGroups
+            - builds
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
       responses:
         '200':
           description: List of beta testers
@@ -838,19 +1036,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BetaTestersResponse'
+              examples:
+                Listbetatesters200Example:
+                  summary: Default listBetaTesters 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: betaTesters
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createBetaTester
       summary: Create a Beta Tester
       description: >-
         Create a beta tester assigned to a group, a build, or an app.
       tags:
-        - Beta Testers
+      - Beta Testers
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/create-a-beta-tester
       requestBody:
@@ -860,6 +1078,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BetaTesterCreateRequest'
+            examples:
+              CreatebetatesterRequestExample:
+                summary: Default createBetaTester request
+                x-microcks-default: true
+                value:
+                  data:
+                    type: betaTesters
+                    attributes:
+                      firstName: example_value
+                      lastName: example_value
+                      email: user@example.com
+                    relationships:
+                      betaGroups:
+                        data: {}
+                      builds:
+                        data: {}
       responses:
         '201':
           description: Created beta tester
@@ -867,6 +1101,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BetaTesterResponse'
+              examples:
+                Createbetatester201Example:
+                  summary: Default createBetaTester 201 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      type: betaTesters
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -876,48 +1121,53 @@ paths:
         '409':
           $ref: '#/components/responses/Conflict'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1/betaTesters/{id}:
     get:
       operationId: readBetaTester
       summary: Read Beta Tester Information
       description: Get information about a specific beta tester.
       tags:
-        - Beta Testers
+      - Beta Testers
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/read-beta-tester-information
       parameters:
-        - $ref: '#/components/parameters/BetaTesterIdParam'
-        - name: fields[betaTesters]
-          in: query
-          description: Fields to return for beta tester resources
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - apps
-                - betaGroups
-                - builds
-                - email
-                - firstName
-                - inviteType
-                - lastName
-                - state
-          style: form
-          explode: false
-        - name: include
-          in: query
-          description: Relationship data to include in the response
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - apps
-                - betaGroups
-                - builds
-          style: form
-          explode: false
+      - $ref: '#/components/parameters/BetaTesterIdParam'
+      - name: fields[betaTesters]
+        in: query
+        description: Fields to return for beta tester resources
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - apps
+            - betaGroups
+            - builds
+            - email
+            - firstName
+            - inviteType
+            - lastName
+            - state
+        style: form
+        explode: false
+        example: []
+      - name: include
+        in: query
+        description: Relationship data to include in the response
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - apps
+            - betaGroups
+            - builds
+        style: form
+        explode: false
+        example: []
       responses:
         '200':
           description: Single beta tester response
@@ -925,6 +1175,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BetaTesterResponse'
+              examples:
+                Readbetatester200Example:
+                  summary: Default readBetaTester 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      type: betaTesters
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -933,17 +1194,20 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteBetaTester
       summary: Delete a Beta Tester
       description: >-
         Remove a beta tester's ability to test all apps.
       tags:
-        - Beta Testers
+      - Beta Testers
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/delete-a-beta-tester
       parameters:
-        - $ref: '#/components/parameters/BetaTesterIdParam'
+      - $ref: '#/components/parameters/BetaTesterIdParam'
       responses:
         '204':
           description: Beta tester successfully deleted
@@ -956,28 +1220,32 @@ paths:
         '409':
           $ref: '#/components/responses/Conflict'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1/betaTesters/{id}/apps:
     get:
       operationId: listBetaTesterApps
       summary: List All Apps for a Beta Tester
       description: Get a list of apps that a beta tester can test.
       tags:
-        - Beta Testers
-        - Apps
+      - Beta Testers
+      - Apps
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/list-all-apps-for-a-beta-tester
       parameters:
-        - $ref: '#/components/parameters/BetaTesterIdParam'
-        - name: fields[apps]
-          in: query
-          description: Fields to return for app resources
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/BetaTesterIdParam'
+      - name: fields[apps]
+        in: query
+        description: Fields to return for app resources
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
       responses:
         '200':
           description: List of apps for the beta tester
@@ -985,6 +1253,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AppsResponse'
+              examples:
+                Listbetatesterapps200Example:
+                  summary: Default listBetaTesterApps 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: apps
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -994,28 +1279,32 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1/betaTesters/{id}/builds:
     get:
       operationId: listBetaTesterBuilds
       summary: List All Builds Individually Assigned to a Beta Tester
       description: Get a list of builds individually assigned to a specific beta tester.
       tags:
-        - Beta Testers
-        - Builds
+      - Beta Testers
+      - Builds
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/list-all-builds-individually-assigned-to-a-beta-tester
       parameters:
-        - $ref: '#/components/parameters/BetaTesterIdParam'
-        - name: fields[builds]
-          in: query
-          description: Fields to return for build resources
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/BetaTesterIdParam'
+      - name: fields[builds]
+        in: query
+        description: Fields to return for build resources
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
       responses:
         '200':
           description: List of builds for the beta tester
@@ -1023,6 +1312,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BuildsResponse'
+              examples:
+                Listbetatesterbuilds200Example:
+                  summary: Default listBetaTesterBuilds 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: builds
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1032,123 +1338,134 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1/betaGroups:
     get:
       operationId: listBetaGroups
       summary: List Beta Groups
       description: Find and list beta groups for all apps.
       tags:
-        - Beta Testers
+      - Beta Testers
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/list-beta-groups
       parameters:
-        - name: filter[app]
-          in: query
-          description: Filter by app resource ID
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[name]
-          in: query
-          description: Filter by group name
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: filter[isInternalGroup]
-          in: query
-          description: Filter by internal group status
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - 'true'
-                - 'false'
-          style: form
-          explode: false
-        - name: filter[publicLinkEnabled]
-          in: query
-          description: Filter by public link enabled status
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - 'true'
-                - 'false'
-          style: form
-          explode: false
-        - name: filter[id]
-          in: query
-          description: Filter by beta group resource ID
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: sort
-          in: query
-          description: Sort order for results
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - createdDate
-                - -createdDate
-                - name
-                - -name
-                - publicLinkEnabled
-                - -publicLinkEnabled
-                - publicLinkLimit
-                - -publicLinkLimit
-          style: form
-          explode: false
-        - name: fields[betaGroups]
-          in: query
-          description: Fields to return for beta group resources
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - app
-                - betaTesters
-                - builds
-                - createdDate
-                - feedbackEnabled
-                - hasAccessToAllBuilds
-                - iosBuildsAvailableForAppleSiliconMac
-                - isInternalGroup
-                - name
-                - publicLink
-                - publicLinkEnabled
-                - publicLinkId
-                - publicLinkLimit
-                - publicLinkLimitEnabled
-          style: form
-          explode: false
-        - name: include
-          in: query
-          description: Relationship data to include in the response
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - app
-                - betaTesters
-                - builds
-          style: form
-          explode: false
-        - $ref: '#/components/parameters/LimitParam'
+      - name: filter[app]
+        in: query
+        description: Filter by app resource ID
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[name]
+        in: query
+        description: Filter by group name
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[isInternalGroup]
+        in: query
+        description: Filter by internal group status
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - 'true'
+            - 'false'
+        style: form
+        explode: false
+        example: []
+      - name: filter[publicLinkEnabled]
+        in: query
+        description: Filter by public link enabled status
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - 'true'
+            - 'false'
+        style: form
+        explode: false
+        example: []
+      - name: filter[id]
+        in: query
+        description: Filter by beta group resource ID
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: sort
+        in: query
+        description: Sort order for results
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - createdDate
+            - -createdDate
+            - name
+            - -name
+            - publicLinkEnabled
+            - -publicLinkEnabled
+            - publicLinkLimit
+            - -publicLinkLimit
+        style: form
+        explode: false
+        example: []
+      - name: fields[betaGroups]
+        in: query
+        description: Fields to return for beta group resources
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - app
+            - betaTesters
+            - builds
+            - createdDate
+            - feedbackEnabled
+            - hasAccessToAllBuilds
+            - iosBuildsAvailableForAppleSiliconMac
+            - isInternalGroup
+            - name
+            - publicLink
+            - publicLinkEnabled
+            - publicLinkId
+            - publicLinkLimit
+            - publicLinkLimitEnabled
+        style: form
+        explode: false
+        example: []
+      - name: include
+        in: query
+        description: Relationship data to include in the response
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - app
+            - betaTesters
+            - builds
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
       responses:
         '200':
           description: List of beta groups
@@ -1156,18 +1473,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BetaGroupsResponse'
+              examples:
+                Listbetagroups200Example:
+                  summary: Default listBetaGroups 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: betaGroups
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createBetaGroup
       summary: Create a Beta Group
       description: Create a beta group associated with an app, optionally enabling TestFlight public links.
       tags:
-        - Beta Testers
+      - Beta Testers
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/create-a-beta-group
       requestBody:
@@ -1177,6 +1514,27 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BetaGroupCreateRequest'
+            examples:
+              CreatebetagroupRequestExample:
+                summary: Default createBetaGroup request
+                x-microcks-default: true
+                value:
+                  data:
+                    type: betaGroups
+                    attributes:
+                      name: Example Title
+                      hasAccessToAllBuilds: true
+                      publicLinkEnabled: true
+                      publicLinkLimit: 10
+                      publicLinkLimitEnabled: true
+                      feedbackEnabled: true
+                      iosBuildsAvailableForAppleSiliconMac: true
+                    relationships:
+                      app: {}
+                      betaTesters:
+                        data: {}
+                      builds:
+                        data: {}
       responses:
         '201':
           description: Created beta group
@@ -1184,6 +1542,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BetaGroupResponse'
+              examples:
+                Createbetagroup201Example:
+                  summary: Default createBetaGroup 201 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      type: betaGroups
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1193,39 +1562,44 @@ paths:
         '409':
           $ref: '#/components/responses/Conflict'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1/betaGroups/{id}:
     get:
       operationId: readBetaGroup
       summary: Read Beta Group Information
       description: Get information about a specific beta group.
       tags:
-        - Beta Testers
+      - Beta Testers
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/read-beta-group-information
       parameters:
-        - $ref: '#/components/parameters/BetaGroupIdParam'
-        - name: fields[betaGroups]
-          in: query
-          description: Fields to return for beta group resources
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - name: include
-          in: query
-          description: Relationship data to include in the response
-          schema:
-            type: array
-            items:
-              type: string
-              enum:
-                - app
-                - betaTesters
-                - builds
-          style: form
-          explode: false
+      - $ref: '#/components/parameters/BetaGroupIdParam'
+      - name: fields[betaGroups]
+        in: query
+        description: Fields to return for beta group resources
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: include
+        in: query
+        description: Relationship data to include in the response
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - app
+            - betaTesters
+            - builds
+        style: form
+        explode: false
+        example: []
       responses:
         '200':
           description: Single beta group response
@@ -1233,6 +1607,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BetaGroupResponse'
+              examples:
+                Readbetagroup200Example:
+                  summary: Default readBetaGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      type: betaGroups
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1241,16 +1626,19 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: modifyBetaGroup
       summary: Modify a Beta Group
       description: Modify a beta group's metadata, including name and public link status.
       tags:
-        - Beta Testers
+      - Beta Testers
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/modify-a-beta-group
       parameters:
-        - $ref: '#/components/parameters/BetaGroupIdParam'
+      - $ref: '#/components/parameters/BetaGroupIdParam'
       requestBody:
         description: Beta group update request
         required: true
@@ -1258,6 +1646,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BetaGroupUpdateRequest'
+            examples:
+              ModifybetagroupRequestExample:
+                summary: Default modifyBetaGroup request
+                x-microcks-default: true
+                value:
+                  data:
+                    type: betaGroups
+                    id: abc123
+                    attributes:
+                      name: Example Title
+                      hasAccessToAllBuilds: true
+                      publicLinkEnabled: true
+                      publicLinkLimit: 10
+                      publicLinkLimitEnabled: true
+                      feedbackEnabled: true
+                      iosBuildsAvailableForAppleSiliconMac: true
       responses:
         '200':
           description: Updated beta group
@@ -1265,6 +1669,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BetaGroupResponse'
+              examples:
+                Modifybetagroup200Example:
+                  summary: Default modifyBetaGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      type: betaGroups
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1275,16 +1690,19 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteBetaGroup
       summary: Delete a Beta Group
       description: Delete a beta group and remove beta tester access to associated builds.
       tags:
-        - Beta Testers
+      - Beta Testers
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/delete-a-beta-group
       parameters:
-        - $ref: '#/components/parameters/BetaGroupIdParam'
+      - $ref: '#/components/parameters/BetaGroupIdParam'
       responses:
         '204':
           description: Beta group successfully deleted
@@ -1297,27 +1715,31 @@ paths:
         '409':
           $ref: '#/components/responses/Conflict'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1/betaGroups/{id}/betaTesters:
     get:
       operationId: listBetaGroupBetaTesters
       summary: List All Beta Testers in a Beta Group
       description: Get a list of beta testers contained in a specific beta group.
       tags:
-        - Beta Testers
+      - Beta Testers
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/list-all-beta-testers-in-a-beta-group
       parameters:
-        - $ref: '#/components/parameters/BetaGroupIdParam'
-        - name: fields[betaTesters]
-          in: query
-          description: Fields to return for beta tester resources
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: false
-        - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/BetaGroupIdParam'
+      - name: fields[betaTesters]
+        in: query
+        description: Fields to return for beta tester resources
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
       responses:
         '200':
           description: List of beta testers in the group
@@ -1325,6 +1747,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BetaTestersResponse'
+              examples:
+                Listbetagroupbetatesters200Example:
+                  summary: Default listBetaGroupBetaTesters 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: betaTesters
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1334,17 +1773,20 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1/betaGroups/{id}/relationships/betaTesters:
     post:
       operationId: addBetaTestersToBetaGroup
       summary: Add Beta Testers to a Beta Group
       description: Add one or more beta testers to a specific beta group.
       tags:
-        - Beta Testers
+      - Beta Testers
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/add-beta-testers-to-a-beta-group
       parameters:
-        - $ref: '#/components/parameters/BetaGroupIdParam'
+      - $ref: '#/components/parameters/BetaGroupIdParam'
       requestBody:
         description: List of beta tester relationships to add
         required: true
@@ -1352,6 +1794,14 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BetaGroupBetaTestersLinkagesRequest'
+            examples:
+              AddbetatesterstobetagroupRequestExample:
+                summary: Default addBetaTestersToBetaGroup request
+                x-microcks-default: true
+                value:
+                  data:
+                  - type: betaTesters
+                    id: abc123
       responses:
         '204':
           description: Beta testers successfully added to group
@@ -1363,16 +1813,19 @@ paths:
           $ref: '#/components/responses/NotFound'
         '409':
           $ref: '#/components/responses/Conflict'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: removeBetaTestersFromBetaGroup
-      summary: Remove Beta Testers from a Beta Group
+      summary: Remove Beta Testers From a Beta Group
       description: Remove one or more beta testers from a specific beta group.
       tags:
-        - Beta Testers
+      - Beta Testers
       externalDocs:
         url: https://developer.apple.com/documentation/appstoreconnectapi/remove-beta-testers-from-a-beta-group
       parameters:
-        - $ref: '#/components/parameters/BetaGroupIdParam'
+      - $ref: '#/components/parameters/BetaGroupIdParam'
       requestBody:
         description: List of beta tester relationships to remove
         required: true
@@ -1380,6 +1833,14 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BetaGroupBetaTestersLinkagesRequest'
+            examples:
+              RemovebetatestersfrombetagroupRequestExample:
+                summary: Default removeBetaTestersFromBetaGroup request
+                x-microcks-default: true
+                value:
+                  data:
+                  - type: betaTesters
+                    id: abc123
       responses:
         '204':
           description: Beta testers successfully removed from group
@@ -1392,6 +1853,9 @@ paths:
         '409':
           $ref: '#/components/responses/Conflict'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     BearerAuth:
@@ -1453,44 +1917,49 @@ components:
           format: uri
           description: The URL for the resource
 
+          example: https://www.example.com
     PagedDocumentLinks:
       type: object
       required:
-        - self
+      - self
       properties:
         self:
           type: string
           format: uri
           description: The URL for the current page of results
+          example: https://www.example.com
         first:
           type: string
           format: uri
           description: The URL for the first page of results
+          example: https://www.example.com
         next:
           type: string
           format: uri
           description: The URL for the next page of results
 
+          example: https://www.example.com
     DocumentLinks:
       type: object
       required:
-        - self
+      - self
       properties:
         self:
           type: string
           format: uri
           description: The URL for the resource
 
+          example: https://www.example.com
     PagingInformation:
       type: object
       required:
-        - paging
+      - paging
       properties:
         paging:
           type: object
           required:
-            - total
-            - limit
+          - total
+          - limit
           properties:
             total:
               type: integer
@@ -1499,59 +1968,70 @@ components:
               type: integer
               description: Maximum number of resources returned per page
 
+          example: example_value
     RelationshipLinks:
       type: object
       properties:
         self:
           type: string
           format: uri
+          example: https://www.example.com
         related:
           type: string
           format: uri
 
+          example: https://www.example.com
     RelationshipData:
       type: object
       required:
-        - type
-        - id
+      - type
+      - id
       properties:
         type:
           type: string
+          example: example_value
         id:
           type: string
 
     # --- Error ---
+          example: abc123
     ErrorResponse:
       type: object
       required:
-        - errors
+      - errors
       properties:
         errors:
           type: array
           items:
             $ref: '#/components/schemas/ErrorDetail'
 
+          example: []
     ErrorDetail:
       type: object
       required:
-        - status
-        - title
+      - status
+      - title
       properties:
         id:
           type: string
           description: A unique identifier for this error occurrence
+          example: abc123
         status:
           type: string
           description: The HTTP status code for this error
+          example: example_value
         code:
           type: string
           description: A machine-readable error code
+          example: example_value
         title:
           type: string
           description: A short summary of the error
+          example: Example Title
         detail:
           type: string
           description: A detailed explanation of the error
+          example: example_value
         source:
           type: object
           properties:
@@ -1563,19 +2043,22 @@ components:
               description: The query parameter that caused the error
 
     # --- App Resource ---
+          example: example_value
     App:
       type: object
       required:
-        - type
-        - id
+      - type
+      - id
       properties:
         type:
           type: string
           enum:
-            - apps
+          - apps
+          example: apps
         id:
           type: string
           description: The opaque resource ID that uniquely identifies the app
+          example: abc123
         attributes:
           $ref: '#/components/schemas/AppAttributes'
         relationships:
@@ -1589,58 +2072,69 @@ components:
         name:
           type: string
           description: The name of the app
+          example: Example Title
         bundleId:
           type: string
           description: The bundle ID of the app
+          example: '500123'
         sku:
           type: string
           description: The SKU of the app
+          example: example_value
         primaryLocale:
           type: string
           description: The primary locale for the app (e.g., en-US)
+          example: example_value
         isOrEverWasMadeForKids:
           type: boolean
           description: Whether the app is or was made for kids
+          example: true
         contentRightsDeclaration:
           type: string
           enum:
-            - DOES_NOT_USE_THIRD_PARTY_CONTENT
-            - USES_THIRD_PARTY_CONTENT
+          - DOES_NOT_USE_THIRD_PARTY_CONTENT
+          - USES_THIRD_PARTY_CONTENT
           description: Declaration of whether the app uses third-party content
+          example: DOES_NOT_USE_THIRD_PARTY_CONTENT
         streamlinedPurchasingEnabled:
           type: boolean
           description: Whether streamlined purchasing is enabled
+          example: true
         subscriptionStatusUrl:
           type:
-            - string
-            - 'null'
+          - string
+          - 'null'
           format: uri
           description: URL for subscription status notifications
+          example: https://www.example.com
         subscriptionStatusUrlForSandbox:
           type:
-            - string
-            - 'null'
+          - string
+          - 'null'
           format: uri
           description: URL for sandbox subscription status notifications
+          example: https://www.example.com
         subscriptionStatusUrlVersion:
           type:
-            - string
-            - 'null'
+          - string
+          - 'null'
           enum:
-            - V1
-            - V2
-            - null
+          - V1
+          - V2
+          - 
           description: Version of the subscription status URL
+          example: V1
         subscriptionStatusUrlVersionForSandbox:
           type:
-            - string
-            - 'null'
+          - string
+          - 'null'
           enum:
-            - V1
-            - V2
-            - null
+          - V1
+          - V2
+          - 
           description: Version of the sandbox subscription status URL
 
+          example: V1
     AppRelationships:
       type: object
       properties:
@@ -1653,6 +2147,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         betaGroups:
           type: object
           properties:
@@ -1662,11 +2157,13 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         betaTesters:
           type: object
           properties:
             links:
               $ref: '#/components/schemas/RelationshipLinks'
+          example: example_value
         appStoreVersions:
           type: object
           properties:
@@ -1676,6 +2173,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         preReleaseVersions:
           type: object
           properties:
@@ -1685,6 +2183,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         appInfos:
           type: object
           properties:
@@ -1695,33 +2194,37 @@ components:
               items:
                 $ref: '#/components/schemas/RelationshipData'
 
+          example: example_value
     AppResponse:
       type: object
       required:
-        - data
-        - links
+      - data
+      - links
       properties:
         data:
           $ref: '#/components/schemas/App'
         included:
           type: array
           items: {}
+          example: []
         links:
           $ref: '#/components/schemas/DocumentLinks'
 
     AppsResponse:
       type: object
       required:
-        - data
-        - links
+      - data
+      - links
       properties:
         data:
           type: array
           items:
             $ref: '#/components/schemas/App'
+          example: []
         included:
           type: array
           items: {}
+          example: []
         links:
           $ref: '#/components/schemas/PagedDocumentLinks'
         meta:
@@ -1730,18 +2233,18 @@ components:
     AppUpdateRequest:
       type: object
       required:
-        - data
+      - data
       properties:
         data:
           type: object
           required:
-            - type
-            - id
+          - type
+          - id
           properties:
             type:
               type: string
               enum:
-                - apps
+              - apps
             id:
               type: string
             attributes:
@@ -1750,49 +2253,52 @@ components:
                 contentRightsDeclaration:
                   type: string
                   enum:
-                    - DOES_NOT_USE_THIRD_PARTY_CONTENT
-                    - USES_THIRD_PARTY_CONTENT
+                  - DOES_NOT_USE_THIRD_PARTY_CONTENT
+                  - USES_THIRD_PARTY_CONTENT
                 subscriptionStatusUrl:
                   type:
-                    - string
-                    - 'null'
+                  - string
+                  - 'null'
                   format: uri
                 subscriptionStatusUrlForSandbox:
                   type:
-                    - string
-                    - 'null'
+                  - string
+                  - 'null'
                   format: uri
                 subscriptionStatusUrlVersion:
                   type:
-                    - string
-                    - 'null'
+                  - string
+                  - 'null'
                   enum:
-                    - V1
-                    - V2
-                    - null
+                  - V1
+                  - V2
+                  - 
                 subscriptionStatusUrlVersionForSandbox:
                   type:
-                    - string
-                    - 'null'
+                  - string
+                  - 'null'
                   enum:
-                    - V1
-                    - V2
-                    - null
+                  - V1
+                  - V2
+                  - 
 
     # --- Build Resource ---
+          example: example_value
     Build:
       type: object
       required:
-        - type
-        - id
+      - type
+      - id
       properties:
         type:
           type: string
           enum:
-            - builds
+          - builds
+          example: builds
         id:
           type: string
           description: The opaque resource ID that uniquely identifies the build
+          example: abc123
         attributes:
           $ref: '#/components/schemas/BuildAttributes'
         relationships:
@@ -1806,26 +2312,33 @@ components:
         version:
           type: string
           description: The build version string (CFBundleVersion)
+          example: example_value
         uploadedDate:
           type: string
           format: date-time
           description: The date and time the build was uploaded
+          example: '2026-01-15T10:30:00Z'
         expirationDate:
           type: string
           format: date-time
           description: The date and time the build expires
+          example: '2026-01-15T10:30:00Z'
         expired:
           type: boolean
           description: Whether the build has expired
+          example: true
         minOsVersion:
           type: string
           description: The minimum OS version required
+          example: example_value
         lsMinimumSystemVersion:
           type: string
           description: The minimum macOS system version
+          example: example_value
         computedMinMacOsVersion:
           type: string
           description: The computed minimum macOS version
+          example: example_value
         iconAssetToken:
           type: object
           description: Token for the build's icon asset
@@ -1836,26 +2349,30 @@ components:
               type: integer
             height:
               type: integer
+          example: example_value
         processingState:
           type: string
           enum:
-            - PROCESSING
-            - FAILED
-            - INVALID
-            - VALID
+          - PROCESSING
+          - FAILED
+          - INVALID
+          - VALID
           description: The processing state of the build
+          example: PROCESSING
         buildAudienceType:
           type: string
           enum:
-            - INTERNAL_ONLY
-            - APP_STORE_ELIGIBLE
+          - INTERNAL_ONLY
+          - APP_STORE_ELIGIBLE
           description: The audience type for the build
+          example: INTERNAL_ONLY
         usesNonExemptEncryption:
           type:
-            - boolean
-            - 'null'
+          - boolean
+          - 'null'
           description: Whether the build uses non-exempt encryption
 
+          example: example_value
     BuildRelationships:
       type: object
       properties:
@@ -1866,6 +2383,7 @@ components:
               $ref: '#/components/schemas/RelationshipLinks'
             data:
               $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         preReleaseVersion:
           type: object
           properties:
@@ -1873,6 +2391,7 @@ components:
               $ref: '#/components/schemas/RelationshipLinks'
             data:
               $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         individualTesters:
           type: object
           properties:
@@ -1882,6 +2401,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         betaGroups:
           type: object
           properties:
@@ -1891,6 +2411,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         betaBuildLocalizations:
           type: object
           properties:
@@ -1900,6 +2421,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         appEncryptionDeclaration:
           type: object
           properties:
@@ -1907,6 +2429,7 @@ components:
               $ref: '#/components/schemas/RelationshipLinks'
             data:
               $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         betaAppReviewSubmission:
           type: object
           properties:
@@ -1914,6 +2437,7 @@ components:
               $ref: '#/components/schemas/RelationshipLinks'
             data:
               $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         buildBetaDetail:
           type: object
           properties:
@@ -1921,6 +2445,7 @@ components:
               $ref: '#/components/schemas/RelationshipLinks'
             data:
               $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         appStoreVersion:
           type: object
           properties:
@@ -1929,33 +2454,37 @@ components:
             data:
               $ref: '#/components/schemas/RelationshipData'
 
+          example: example_value
     BuildResponse:
       type: object
       required:
-        - data
-        - links
+      - data
+      - links
       properties:
         data:
           $ref: '#/components/schemas/Build'
         included:
           type: array
           items: {}
+          example: []
         links:
           $ref: '#/components/schemas/DocumentLinks'
 
     BuildsResponse:
       type: object
       required:
-        - data
-        - links
+      - data
+      - links
       properties:
         data:
           type: array
           items:
             $ref: '#/components/schemas/Build'
+          example: []
         included:
           type: array
           items: {}
+          example: []
         links:
           $ref: '#/components/schemas/PagedDocumentLinks'
         meta:
@@ -1964,18 +2493,18 @@ components:
     BuildUpdateRequest:
       type: object
       required:
-        - data
+      - data
       properties:
         data:
           type: object
           required:
-            - type
-            - id
+          - type
+          - id
           properties:
             type:
               type: string
               enum:
-                - builds
+              - builds
             id:
               type: string
             attributes:
@@ -1989,19 +2518,22 @@ components:
                   description: Whether the build uses non-exempt encryption
 
     # --- Beta Tester Resource ---
+          example: example_value
     BetaTester:
       type: object
       required:
-        - type
-        - id
+      - type
+      - id
       properties:
         type:
           type: string
           enum:
-            - betaTesters
+          - betaTesters
+          example: betaTesters
         id:
           type: string
           description: The opaque resource ID that uniquely identifies the beta tester
+          example: abc123
         attributes:
           $ref: '#/components/schemas/BetaTesterAttributes'
         relationships:
@@ -2014,36 +2546,41 @@ components:
       properties:
         firstName:
           type:
-            - string
-            - 'null'
+          - string
+          - 'null'
           description: The first name of the beta tester
+          example: example_value
         lastName:
           type:
-            - string
-            - 'null'
+          - string
+          - 'null'
           description: The last name of the beta tester
+          example: example_value
         email:
           type:
-            - string
-            - 'null'
+          - string
+          - 'null'
           format: email
           description: The email address of the beta tester
+          example: user@example.com
         inviteType:
           type: string
           enum:
-            - EMAIL
-            - PUBLIC_LINK
+          - EMAIL
+          - PUBLIC_LINK
           description: How the tester was invited
+          example: EMAIL
         state:
           type: string
           enum:
-            - NOT_INVITED
-            - INVITED
-            - ACCEPTED
-            - INSTALLED
-            - REVOKED
+          - NOT_INVITED
+          - INVITED
+          - ACCEPTED
+          - INSTALLED
+          - REVOKED
           description: The current state of the beta tester invitation
 
+          example: NOT_INVITED
     BetaTesterRelationships:
       type: object
       properties:
@@ -2056,6 +2593,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         betaGroups:
           type: object
           properties:
@@ -2065,6 +2603,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         builds:
           type: object
           properties:
@@ -2075,33 +2614,37 @@ components:
               items:
                 $ref: '#/components/schemas/RelationshipData'
 
+          example: example_value
     BetaTesterResponse:
       type: object
       required:
-        - data
-        - links
+      - data
+      - links
       properties:
         data:
           $ref: '#/components/schemas/BetaTester'
         included:
           type: array
           items: {}
+          example: []
         links:
           $ref: '#/components/schemas/DocumentLinks'
 
     BetaTestersResponse:
       type: object
       required:
-        - data
-        - links
+      - data
+      - links
       properties:
         data:
           type: array
           items:
             $ref: '#/components/schemas/BetaTester'
+          example: []
         included:
           type: array
           items: {}
+          example: []
         links:
           $ref: '#/components/schemas/PagedDocumentLinks'
         meta:
@@ -2110,22 +2653,22 @@ components:
     BetaTesterCreateRequest:
       type: object
       required:
-        - data
+      - data
       properties:
         data:
           type: object
           required:
-            - type
-            - attributes
+          - type
+          - attributes
           properties:
             type:
               type: string
               enum:
-                - betaTesters
+              - betaTesters
             attributes:
               type: object
               required:
-                - email
+              - email
               properties:
                 firstName:
                   type: string
@@ -2156,19 +2699,22 @@ components:
                         $ref: '#/components/schemas/RelationshipData'
 
     # --- Beta Group Resource ---
+          example: example_value
     BetaGroup:
       type: object
       required:
-        - type
-        - id
+      - type
+      - id
       properties:
         type:
           type: string
           enum:
-            - betaGroups
+          - betaGroups
+          example: betaGroups
         id:
           type: string
           description: The opaque resource ID that uniquely identifies the beta group
+          example: abc123
         attributes:
           $ref: '#/components/schemas/BetaGroupAttributes'
         relationships:
@@ -2182,45 +2728,56 @@ components:
         name:
           type: string
           description: The name of the beta group
+          example: Example Title
         createdDate:
           type: string
           format: date-time
           description: The date and time the beta group was created
+          example: '2026-01-15T10:30:00Z'
         isInternalGroup:
           type: boolean
           description: Whether the group is an internal group
+          example: true
         hasAccessToAllBuilds:
           type: boolean
           description: Whether the group has access to all builds
+          example: true
         publicLinkEnabled:
           type: boolean
           description: Whether the public link is enabled
+          example: true
         publicLinkId:
           type:
-            - string
-            - 'null'
+          - string
+          - 'null'
           description: The ID component of the public link
+          example: '500123'
         publicLink:
           type:
-            - string
-            - 'null'
+          - string
+          - 'null'
           format: uri
           description: The full public TestFlight link
+          example: https://www.example.com
         publicLinkLimitEnabled:
           type: boolean
           description: Whether the public link limit is enabled
+          example: true
         publicLinkLimit:
           type:
-            - integer
-            - 'null'
+          - integer
+          - 'null'
           description: Maximum number of testers via the public link
+          example: example_value
         feedbackEnabled:
           type: boolean
           description: Whether beta feedback is enabled for this group
+          example: true
         iosBuildsAvailableForAppleSiliconMac:
           type: boolean
           description: Whether iOS builds are available on Apple Silicon Macs
 
+          example: true
     BetaGroupRelationships:
       type: object
       properties:
@@ -2231,6 +2788,7 @@ components:
               $ref: '#/components/schemas/RelationshipLinks'
             data:
               $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         betaTesters:
           type: object
           properties:
@@ -2240,6 +2798,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/RelationshipData'
+          example: example_value
         builds:
           type: object
           properties:
@@ -2250,33 +2809,37 @@ components:
               items:
                 $ref: '#/components/schemas/RelationshipData'
 
+          example: example_value
     BetaGroupResponse:
       type: object
       required:
-        - data
-        - links
+      - data
+      - links
       properties:
         data:
           $ref: '#/components/schemas/BetaGroup'
         included:
           type: array
           items: {}
+          example: []
         links:
           $ref: '#/components/schemas/DocumentLinks'
 
     BetaGroupsResponse:
       type: object
       required:
-        - data
-        - links
+      - data
+      - links
       properties:
         data:
           type: array
           items:
             $ref: '#/components/schemas/BetaGroup'
+          example: []
         included:
           type: array
           items: {}
+          example: []
         links:
           $ref: '#/components/schemas/PagedDocumentLinks'
         meta:
@@ -2285,23 +2848,23 @@ components:
     BetaGroupCreateRequest:
       type: object
       required:
-        - data
+      - data
       properties:
         data:
           type: object
           required:
-            - type
-            - attributes
-            - relationships
+          - type
+          - attributes
+          - relationships
           properties:
             type:
               type: string
               enum:
-                - betaGroups
+              - betaGroups
             attributes:
               type: object
               required:
-                - name
+              - name
               properties:
                 name:
                   type: string
@@ -2327,12 +2890,12 @@ components:
             relationships:
               type: object
               required:
-                - app
+              - app
               properties:
                 app:
                   type: object
                   required:
-                    - data
+                  - data
                   properties:
                     data:
                       $ref: '#/components/schemas/RelationshipData'
@@ -2351,21 +2914,22 @@ components:
                       items:
                         $ref: '#/components/schemas/RelationshipData'
 
+          example: example_value
     BetaGroupUpdateRequest:
       type: object
       required:
-        - data
+      - data
       properties:
         data:
           type: object
           required:
-            - type
-            - id
+          - type
+          - id
           properties:
             type:
               type: string
               enum:
-                - betaGroups
+              - betaGroups
             id:
               type: string
             attributes:
@@ -2386,26 +2950,28 @@ components:
                 iosBuildsAvailableForAppleSiliconMac:
                   type: boolean
 
+          example: example_value
     BetaGroupBetaTestersLinkagesRequest:
       type: object
       required:
-        - data
+      - data
       properties:
         data:
           type: array
           items:
             type: object
             required:
-              - type
-              - id
+            - type
+            - id
             properties:
               type:
                 type: string
                 enum:
-                  - betaTesters
+                - betaTesters
               id:
                 type: string
 
+          example: []
   responses:
     BadRequest:
       description: Bad request - the request was invalid or malformed

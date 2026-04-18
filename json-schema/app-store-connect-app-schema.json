@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "App",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "description": "The opaque resource ID that uniquely identifies the app"
+    }
+  }
+}

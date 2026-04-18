@@ -1,0 +1,11 @@
+{
+  "app": "example_value",
+  "preReleaseVersion": "example_value",
+  "individualTesters": "example_value",
+  "betaGroups": "example_value",
+  "betaBuildLocalizations": "example_value",
+  "appEncryptionDeclaration": "example_value",
+  "betaAppReviewSubmission": "example_value",
+  "buildBetaDetail": "example_value",
+  "appStoreVersion": "example_value"
+}

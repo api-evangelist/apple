@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "AppAttributes",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "bundleId": {
+      "type": "string"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "primaryLocale": {
+      "type": "string"
+    },
+    "isOrEverWasMadeForKids": {
+      "type": "boolean"
+    },
+    "contentRightsDeclaration": {
+      "type": "string"
+    },
+    "streamlinedPurchasingEnabled": {
+      "type": "boolean"
+    },
+    "subscriptionStatusUrl": {
+      "type": "['string', 'null']"
+    },
+    "subscriptionStatusUrlForSandbox": {
+      "type": "['string', 'null']"
+    },
+    "subscriptionStatusUrlVersion": {
+      "type": "['string', 'null']"
+    },
+    "subscriptionStatusUrlVersionForSandbox": {
+      "type": "['string', 'null']"
+    }
+  }
+}

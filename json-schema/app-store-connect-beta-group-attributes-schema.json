@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BetaGroupAttributes",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the beta group"
+    },
+    "createdDate": {
+      "type": "string",
+      "description": "The date and time the beta group was created"
+    },
+    "isInternalGroup": {
+      "type": "boolean",
+      "description": "Whether the group is an internal group"
+    },
+    "hasAccessToAllBuilds": {
+      "type": "boolean",
+      "description": "Whether the group has access to all builds"
+    },
+    "publicLinkEnabled": {
+      "type": "boolean",
+      "description": "Whether the public link is enabled"
+    },
+    "publicLinkId": {
+      "type": "['string', 'null']",
+      "description": "The ID component of the public link"
+    },
+    "publicLink": {
+      "type": "['string', 'null']",
+      "description": "The full public TestFlight link"
+    },
+    "publicLinkLimitEnabled": {
+      "type": "boolean",
+      "description": "Whether the public link limit is enabled"
+    },
+    "publicLinkLimit": {
+      "type": "['integer', 'null']",
+      "description": "Maximum number of testers via the public link"
+    },
+    "feedbackEnabled": {
+      "type": "boolean",
+      "description": "Whether beta feedback is enabled for this group"
+    },
+    "iosBuildsAvailableForAppleSiliconMac": {
+      "type": "boolean",
+      "description": "Whether iOS builds are available on Apple Silicon Macs"
+    }
+  }
+}
