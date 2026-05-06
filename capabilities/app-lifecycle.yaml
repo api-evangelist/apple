@@ -1,238 +1,462 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Apple App Lifecycle"
-  description: "Unified workflow for managing the Apple app lifecycle including app metadata, builds, TestFlight beta testing, and beta group management. Used by app developers and release managers."
+  label: Apple App Lifecycle
+  description: Unified workflow for managing the Apple app lifecycle including app metadata, builds, TestFlight beta testing,
+    and beta group management. Used by app developers and release managers.
   tags:
-    - Apple
-    - App Store
-    - TestFlight
-    - App Management
-  created: "2026-04-18"
-  modified: "2026-04-18"
-
+  - Apple
+  - App Store
+  - TestFlight
+  - App Management
+  created: '2026-04-18'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      APPLE_ASC_TOKEN: APPLE_ASC_TOKEN
-
+- namespace: env
+  keys:
+    APPLE_ASC_TOKEN: APPLE_ASC_TOKEN
 capability:
   consumes:
-    - import: app-store-connect
-      location: ./shared/app-store-connect.yaml
-
+  - type: http
+    namespace: app-store-connect
+    baseUri: https://api.appstoreconnect.apple.com
+    description: Apple App Store Connect REST API for managing apps, builds, and beta testing.
+    authentication:
+      type: bearer
+      token: '{{APPLE_ASC_TOKEN}}'
+    resources:
+    - name: apps
+      path: /v1/apps
+      description: App management operations.
+      operations:
+      - name: list-apps
+        method: GET
+        description: List all apps in App Store Connect.
+        inputParameters:
+        - name: filter[bundleId]
+          in: query
+          type: string
+          required: false
+          description: Filter by bundle identifier.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: read-app
+        method: GET
+        description: Get details of a specific app.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The app resource ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: modify-app
+        method: PATCH
+        description: Update an app's metadata.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The app resource ID.
+        body:
+          type: json
+          data:
+            data: '{{tools.data}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: builds
+      path: /v1/builds
+      description: Build management operations.
+      operations:
+      - name: list-builds
+        method: GET
+        description: List all builds.
+        inputParameters:
+        - name: filter[app]
+          in: query
+          type: string
+          required: false
+          description: Filter by app resource ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: read-build
+        method: GET
+        description: Get details of a specific build.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The build resource ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: modify-build
+        method: PATCH
+        description: Update build information.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The build resource ID.
+        body:
+          type: json
+          data:
+            data: '{{tools.data}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: beta-testers
+      path: /v1/betaTesters
+      description: Beta tester management.
+      operations:
+      - name: list-beta-testers
+        method: GET
+        description: List all beta testers.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-beta-tester
+        method: POST
+        description: Create a new beta tester.
+        body:
+          type: json
+          data:
+            data: '{{tools.data}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: read-beta-tester
+        method: GET
+        description: Get details of a beta tester.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The beta tester resource ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-beta-tester
+        method: DELETE
+        description: Remove a beta tester.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The beta tester resource ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: beta-groups
+      path: /v1/betaGroups
+      description: Beta group management.
+      operations:
+      - name: list-beta-groups
+        method: GET
+        description: List all beta groups.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-beta-group
+        method: POST
+        description: Create a new beta group.
+        body:
+          type: json
+          data:
+            data: '{{tools.data}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: read-beta-group
+        method: GET
+        description: Get details of a beta group.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The beta group resource ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: modify-beta-group
+        method: PATCH
+        description: Update a beta group.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The beta group resource ID.
+        body:
+          type: json
+          data:
+            data: '{{tools.data}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-beta-group
+        method: DELETE
+        description: Delete a beta group.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: The beta group resource ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: apple-app-lifecycle-api
-      description: "Unified REST API for Apple app lifecycle management."
-      resources:
-        - path: /v1/apps
-          name: apps
-          description: "App management."
-          operations:
-            - method: GET
-              name: list-apps
-              description: "List all apps."
-              call: "app-store-connect.list-apps"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/builds
-          name: builds
-          description: "Build management."
-          operations:
-            - method: GET
-              name: list-builds
-              description: "List all builds."
-              call: "app-store-connect.list-builds"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/testers
-          name: testers
-          description: "Beta tester management."
-          operations:
-            - method: GET
-              name: list-testers
-              description: "List beta testers."
-              call: "app-store-connect.list-beta-testers"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-tester
-              description: "Add a beta tester."
-              call: "app-store-connect.create-beta-tester"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/groups
-          name: groups
-          description: "Beta group management."
-          operations:
-            - method: GET
-              name: list-groups
-              description: "List beta groups."
-              call: "app-store-connect.list-beta-groups"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-group
-              description: "Create a beta group."
-              call: "app-store-connect.create-beta-group"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: apple-app-lifecycle-mcp
-      transport: http
-      description: "MCP server for AI-assisted Apple app lifecycle management."
-      tools:
-        - name: list-apps
-          description: "List all apps in App Store Connect."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "app-store-connect.list-apps"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: read-app
-          description: "Get details of a specific app."
-          hints:
-            readOnly: true
-          call: "app-store-connect.read-app"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: modify-app
-          description: "Update app metadata."
-          hints:
-            readOnly: false
-            idempotent: true
-          call: "app-store-connect.modify-app"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-builds
-          description: "List all builds."
-          hints:
-            readOnly: true
-          call: "app-store-connect.list-builds"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: read-build
-          description: "Get build details."
-          hints:
-            readOnly: true
-          call: "app-store-connect.read-build"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: modify-build
-          description: "Update build information."
-          hints:
-            readOnly: false
-            idempotent: true
-          call: "app-store-connect.modify-build"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-beta-testers
-          description: "List all beta testers."
-          hints:
-            readOnly: true
-          call: "app-store-connect.list-beta-testers"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-beta-tester
-          description: "Add a new beta tester."
-          hints:
-            readOnly: false
-          call: "app-store-connect.create-beta-tester"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: read-beta-tester
-          description: "Get beta tester details."
-          hints:
-            readOnly: true
-          call: "app-store-connect.read-beta-tester"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-beta-tester
-          description: "Remove a beta tester."
-          hints:
-            destructive: true
-            idempotent: true
-          call: "app-store-connect.delete-beta-tester"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-beta-groups
-          description: "List all beta groups."
-          hints:
-            readOnly: true
-          call: "app-store-connect.list-beta-groups"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-beta-group
-          description: "Create a new beta group."
-          hints:
-            readOnly: false
-          call: "app-store-connect.create-beta-group"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: read-beta-group
-          description: "Get beta group details."
-          hints:
-            readOnly: true
-          call: "app-store-connect.read-beta-group"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: modify-beta-group
-          description: "Update a beta group."
-          hints:
-            readOnly: false
-            idempotent: true
-          call: "app-store-connect.modify-beta-group"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-beta-group
-          description: "Delete a beta group."
-          hints:
-            destructive: true
-            idempotent: true
-          call: "app-store-connect.delete-beta-group"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: apple-app-lifecycle-api
+    description: Unified REST API for Apple app lifecycle management.
+    resources:
+    - path: /v1/apps
+      name: apps
+      description: App management.
+      operations:
+      - method: GET
+        name: list-apps
+        description: List all apps.
+        call: app-store-connect.list-apps
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/builds
+      name: builds
+      description: Build management.
+      operations:
+      - method: GET
+        name: list-builds
+        description: List all builds.
+        call: app-store-connect.list-builds
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/testers
+      name: testers
+      description: Beta tester management.
+      operations:
+      - method: GET
+        name: list-testers
+        description: List beta testers.
+        call: app-store-connect.list-beta-testers
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-tester
+        description: Add a beta tester.
+        call: app-store-connect.create-beta-tester
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/groups
+      name: groups
+      description: Beta group management.
+      operations:
+      - method: GET
+        name: list-groups
+        description: List beta groups.
+        call: app-store-connect.list-beta-groups
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-group
+        description: Create a beta group.
+        call: app-store-connect.create-beta-group
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: apple-app-lifecycle-mcp
+    transport: http
+    description: MCP server for AI-assisted Apple app lifecycle management.
+    tools:
+    - name: list-apps
+      description: List all apps in App Store Connect.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: app-store-connect.list-apps
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-app
+      description: Get details of a specific app.
+      hints:
+        readOnly: true
+      call: app-store-connect.read-app
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: modify-app
+      description: Update app metadata.
+      hints:
+        readOnly: false
+        idempotent: true
+      call: app-store-connect.modify-app
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-builds
+      description: List all builds.
+      hints:
+        readOnly: true
+      call: app-store-connect.list-builds
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-build
+      description: Get build details.
+      hints:
+        readOnly: true
+      call: app-store-connect.read-build
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: modify-build
+      description: Update build information.
+      hints:
+        readOnly: false
+        idempotent: true
+      call: app-store-connect.modify-build
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-beta-testers
+      description: List all beta testers.
+      hints:
+        readOnly: true
+      call: app-store-connect.list-beta-testers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-beta-tester
+      description: Add a new beta tester.
+      hints:
+        readOnly: false
+      call: app-store-connect.create-beta-tester
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-beta-tester
+      description: Get beta tester details.
+      hints:
+        readOnly: true
+      call: app-store-connect.read-beta-tester
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-beta-tester
+      description: Remove a beta tester.
+      hints:
+        destructive: true
+        idempotent: true
+      call: app-store-connect.delete-beta-tester
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-beta-groups
+      description: List all beta groups.
+      hints:
+        readOnly: true
+      call: app-store-connect.list-beta-groups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-beta-group
+      description: Create a new beta group.
+      hints:
+        readOnly: false
+      call: app-store-connect.create-beta-group
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-beta-group
+      description: Get beta group details.
+      hints:
+        readOnly: true
+      call: app-store-connect.read-beta-group
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: modify-beta-group
+      description: Update a beta group.
+      hints:
+        readOnly: false
+        idempotent: true
+      call: app-store-connect.modify-beta-group
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-beta-group
+      description: Delete a beta group.
+      hints:
+        destructive: true
+        idempotent: true
+      call: app-store-connect.delete-beta-group
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
