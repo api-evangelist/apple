@@ -1,0 +1,712 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apple App Store Connect API — Beta Testers
+  description: 'Apple App Store Connect API — Beta Testers. 15 operations. Lead operation: List Beta Groups. Self-contained
+    Naftiko capability covering one Apple business surface.'
+  tags:
+  - Apple
+  - Beta Testers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPLE_API_KEY: APPLE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: app-store-connect-beta-testers
+    baseUri: https://api.appstoreconnect.apple.com
+    description: Apple App Store Connect API — Beta Testers business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-betaGroups
+      path: /v1/betaGroups
+      operations:
+      - name: listbetagroups
+        method: GET
+        description: List Beta Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter[app]
+          in: query
+          type: array
+          description: Filter by app resource ID
+        - name: filter[name]
+          in: query
+          type: array
+          description: Filter by group name
+        - name: filter[isInternalGroup]
+          in: query
+          type: array
+          description: Filter by internal group status
+        - name: filter[publicLinkEnabled]
+          in: query
+          type: array
+          description: Filter by public link enabled status
+        - name: filter[id]
+          in: query
+          type: array
+          description: Filter by beta group resource ID
+        - name: sort
+          in: query
+          type: array
+          description: Sort order for results
+        - name: fields[betaGroups]
+          in: query
+          type: array
+          description: Fields to return for beta group resources
+        - name: include
+          in: query
+          type: array
+          description: Relationship data to include in the response
+      - name: createbetagroup
+        method: POST
+        description: Create a Beta Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-betaGroups-id
+      path: /v1/betaGroups/{id}
+      operations:
+      - name: readbetagroup
+        method: GET
+        description: Read Beta Group Information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields[betaGroups]
+          in: query
+          type: array
+          description: Fields to return for beta group resources
+        - name: include
+          in: query
+          type: array
+          description: Relationship data to include in the response
+      - name: modifybetagroup
+        method: PATCH
+        description: Modify a Beta Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletebetagroup
+        method: DELETE
+        description: Delete a Beta Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-betaGroups-id-betaTesters
+      path: /v1/betaGroups/{id}/betaTesters
+      operations:
+      - name: listbetagroupbetatesters
+        method: GET
+        description: List All Beta Testers in a Beta Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields[betaTesters]
+          in: query
+          type: array
+          description: Fields to return for beta tester resources
+    - name: v1-betaGroups-id-relationships-betaTesters
+      path: /v1/betaGroups/{id}/relationships/betaTesters
+      operations:
+      - name: addbetatesterstobetagroup
+        method: POST
+        description: Add Beta Testers to a Beta Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: removebetatestersfrombetagroup
+        method: DELETE
+        description: Remove Beta Testers From a Beta Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-betaTesters
+      path: /v1/betaTesters
+      operations:
+      - name: listbetatesters
+        method: GET
+        description: List Beta Testers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter[email]
+          in: query
+          type: array
+          description: Filter by email address
+        - name: filter[firstName]
+          in: query
+          type: array
+          description: Filter by first name
+        - name: filter[lastName]
+          in: query
+          type: array
+          description: Filter by last name
+        - name: filter[inviteType]
+          in: query
+          type: array
+          description: Filter by invitation type
+        - name: filter[apps]
+          in: query
+          type: array
+          description: Filter by app resource IDs
+        - name: filter[betaGroups]
+          in: query
+          type: array
+          description: Filter by beta group resource IDs
+        - name: filter[builds]
+          in: query
+          type: array
+          description: Filter by build resource IDs
+        - name: filter[id]
+          in: query
+          type: array
+          description: Filter by beta tester resource ID
+        - name: sort
+          in: query
+          type: array
+          description: Sort order for results
+        - name: fields[betaTesters]
+          in: query
+          type: array
+          description: Fields to return for beta tester resources
+        - name: include
+          in: query
+          type: array
+          description: Relationship data to include in the response
+      - name: createbetatester
+        method: POST
+        description: Create a Beta Tester
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-betaTesters-id
+      path: /v1/betaTesters/{id}
+      operations:
+      - name: readbetatester
+        method: GET
+        description: Read Beta Tester Information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields[betaTesters]
+          in: query
+          type: array
+          description: Fields to return for beta tester resources
+        - name: include
+          in: query
+          type: array
+          description: Relationship data to include in the response
+      - name: deletebetatester
+        method: DELETE
+        description: Delete a Beta Tester
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-betaTesters-id-apps
+      path: /v1/betaTesters/{id}/apps
+      operations:
+      - name: listbetatesterapps
+        method: GET
+        description: List All Apps for a Beta Tester
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields[apps]
+          in: query
+          type: array
+          description: Fields to return for app resources
+    - name: v1-betaTesters-id-builds
+      path: /v1/betaTesters/{id}/builds
+      operations:
+      - name: listbetatesterbuilds
+        method: GET
+        description: List All Builds Individually Assigned to a Beta Tester
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields[builds]
+          in: query
+          type: array
+          description: Fields to return for build resources
+    - name: v1-builds-id-individualTesters
+      path: /v1/builds/{id}/individualTesters
+      operations:
+      - name: listbuildindividualtesters
+        method: GET
+        description: List All Individual Testers for a Build
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields[betaTesters]
+          in: query
+          type: array
+          description: Fields to return for beta tester resources
+    authentication:
+      type: bearer
+      token: '{{env.APPLE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: app-store-connect-beta-testers-rest
+    port: 8080
+    description: REST adapter for Apple App Store Connect API — Beta Testers. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/betagroups
+      name: v1-betagroups
+      description: REST surface for v1-betaGroups.
+      operations:
+      - method: GET
+        name: listbetagroups
+        description: List Beta Groups
+        call: app-store-connect-beta-testers.listbetagroups
+        with:
+          filter[app]: rest.filter[app]
+          filter[name]: rest.filter[name]
+          filter[isInternalGroup]: rest.filter[isInternalGroup]
+          filter[publicLinkEnabled]: rest.filter[publicLinkEnabled]
+          filter[id]: rest.filter[id]
+          sort: rest.sort
+          fields[betaGroups]: rest.fields[betaGroups]
+          include: rest.include
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createbetagroup
+        description: Create a Beta Group
+        call: app-store-connect-beta-testers.createbetagroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/betagroups/{id}
+      name: v1-betagroups-id
+      description: REST surface for v1-betaGroups-id.
+      operations:
+      - method: GET
+        name: readbetagroup
+        description: Read Beta Group Information
+        call: app-store-connect-beta-testers.readbetagroup
+        with:
+          fields[betaGroups]: rest.fields[betaGroups]
+          include: rest.include
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: modifybetagroup
+        description: Modify a Beta Group
+        call: app-store-connect-beta-testers.modifybetagroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletebetagroup
+        description: Delete a Beta Group
+        call: app-store-connect-beta-testers.deletebetagroup
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/betagroups/{id}/betatesters
+      name: v1-betagroups-id-betatesters
+      description: REST surface for v1-betaGroups-id-betaTesters.
+      operations:
+      - method: GET
+        name: listbetagroupbetatesters
+        description: List All Beta Testers in a Beta Group
+        call: app-store-connect-beta-testers.listbetagroupbetatesters
+        with:
+          fields[betaTesters]: rest.fields[betaTesters]
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/betagroups/{id}/relationships/betatesters
+      name: v1-betagroups-id-relationships-betatesters
+      description: REST surface for v1-betaGroups-id-relationships-betaTesters.
+      operations:
+      - method: POST
+        name: addbetatesterstobetagroup
+        description: Add Beta Testers to a Beta Group
+        call: app-store-connect-beta-testers.addbetatesterstobetagroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removebetatestersfrombetagroup
+        description: Remove Beta Testers From a Beta Group
+        call: app-store-connect-beta-testers.removebetatestersfrombetagroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/betatesters
+      name: v1-betatesters
+      description: REST surface for v1-betaTesters.
+      operations:
+      - method: GET
+        name: listbetatesters
+        description: List Beta Testers
+        call: app-store-connect-beta-testers.listbetatesters
+        with:
+          filter[email]: rest.filter[email]
+          filter[firstName]: rest.filter[firstName]
+          filter[lastName]: rest.filter[lastName]
+          filter[inviteType]: rest.filter[inviteType]
+          filter[apps]: rest.filter[apps]
+          filter[betaGroups]: rest.filter[betaGroups]
+          filter[builds]: rest.filter[builds]
+          filter[id]: rest.filter[id]
+          sort: rest.sort
+          fields[betaTesters]: rest.fields[betaTesters]
+          include: rest.include
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createbetatester
+        description: Create a Beta Tester
+        call: app-store-connect-beta-testers.createbetatester
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/betatesters/{id}
+      name: v1-betatesters-id
+      description: REST surface for v1-betaTesters-id.
+      operations:
+      - method: GET
+        name: readbetatester
+        description: Read Beta Tester Information
+        call: app-store-connect-beta-testers.readbetatester
+        with:
+          fields[betaTesters]: rest.fields[betaTesters]
+          include: rest.include
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletebetatester
+        description: Delete a Beta Tester
+        call: app-store-connect-beta-testers.deletebetatester
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/betatesters/{id}/apps
+      name: v1-betatesters-id-apps
+      description: REST surface for v1-betaTesters-id-apps.
+      operations:
+      - method: GET
+        name: listbetatesterapps
+        description: List All Apps for a Beta Tester
+        call: app-store-connect-beta-testers.listbetatesterapps
+        with:
+          fields[apps]: rest.fields[apps]
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/betatesters/{id}/builds
+      name: v1-betatesters-id-builds
+      description: REST surface for v1-betaTesters-id-builds.
+      operations:
+      - method: GET
+        name: listbetatesterbuilds
+        description: List All Builds Individually Assigned to a Beta Tester
+        call: app-store-connect-beta-testers.listbetatesterbuilds
+        with:
+          fields[builds]: rest.fields[builds]
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/builds/{id}/individualtesters
+      name: v1-builds-id-individualtesters
+      description: REST surface for v1-builds-id-individualTesters.
+      operations:
+      - method: GET
+        name: listbuildindividualtesters
+        description: List All Individual Testers for a Build
+        call: app-store-connect-beta-testers.listbuildindividualtesters
+        with:
+          fields[betaTesters]: rest.fields[betaTesters]
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: app-store-connect-beta-testers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apple App Store Connect API — Beta Testers. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-beta-groups
+      description: List Beta Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-store-connect-beta-testers.listbetagroups
+      with:
+        filter[app]: tools.filter[app]
+        filter[name]: tools.filter[name]
+        filter[isInternalGroup]: tools.filter[isInternalGroup]
+        filter[publicLinkEnabled]: tools.filter[publicLinkEnabled]
+        filter[id]: tools.filter[id]
+        sort: tools.sort
+        fields[betaGroups]: tools.fields[betaGroups]
+        include: tools.include
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-beta-group
+      description: Create a Beta Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: app-store-connect-beta-testers.createbetagroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-beta-group-information
+      description: Read Beta Group Information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-store-connect-beta-testers.readbetagroup
+      with:
+        fields[betaGroups]: tools.fields[betaGroups]
+        include: tools.include
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: modify-beta-group
+      description: Modify a Beta Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: app-store-connect-beta-testers.modifybetagroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-beta-group
+      description: Delete a Beta Group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: app-store-connect-beta-testers.deletebetagroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-beta-testers-beta
+      description: List All Beta Testers in a Beta Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-store-connect-beta-testers.listbetagroupbetatesters
+      with:
+        fields[betaTesters]: tools.fields[betaTesters]
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-beta-testers-beta-group
+      description: Add Beta Testers to a Beta Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: app-store-connect-beta-testers.addbetatesterstobetagroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-beta-testers-beta-group
+      description: Remove Beta Testers From a Beta Group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: app-store-connect-beta-testers.removebetatestersfrombetagroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-beta-testers
+      description: List Beta Testers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-store-connect-beta-testers.listbetatesters
+      with:
+        filter[email]: tools.filter[email]
+        filter[firstName]: tools.filter[firstName]
+        filter[lastName]: tools.filter[lastName]
+        filter[inviteType]: tools.filter[inviteType]
+        filter[apps]: tools.filter[apps]
+        filter[betaGroups]: tools.filter[betaGroups]
+        filter[builds]: tools.filter[builds]
+        filter[id]: tools.filter[id]
+        sort: tools.sort
+        fields[betaTesters]: tools.fields[betaTesters]
+        include: tools.include
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-beta-tester
+      description: Create a Beta Tester
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: app-store-connect-beta-testers.createbetatester
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-beta-tester-information
+      description: Read Beta Tester Information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-store-connect-beta-testers.readbetatester
+      with:
+        fields[betaTesters]: tools.fields[betaTesters]
+        include: tools.include
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-beta-tester
+      description: Delete a Beta Tester
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: app-store-connect-beta-testers.deletebetatester
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-apps-beta-tester
+      description: List All Apps for a Beta Tester
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-store-connect-beta-testers.listbetatesterapps
+      with:
+        fields[apps]: tools.fields[apps]
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-builds-individually-assigned
+      description: List All Builds Individually Assigned to a Beta Tester
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-store-connect-beta-testers.listbetatesterbuilds
+      with:
+        fields[builds]: tools.fields[builds]
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-individual-testers-build
+      description: List All Individual Testers for a Build
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-store-connect-beta-testers.listbuildindividualtesters
+      with:
+        fields[betaTesters]: tools.fields[betaTesters]
+      outputParameters:
+      - type: object
+        mapping: $.

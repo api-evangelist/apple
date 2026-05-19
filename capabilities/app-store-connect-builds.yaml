@@ -1,0 +1,350 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apple App Store Connect API — Builds
+  description: 'Apple App Store Connect API — Builds. 6 operations. Lead operation: List All Builds of an App. Self-contained
+    Naftiko capability covering one Apple business surface.'
+  tags:
+  - Apple
+  - Builds
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APPLE_API_KEY: APPLE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: app-store-connect-builds
+    baseUri: https://api.appstoreconnect.apple.com
+    description: Apple App Store Connect API — Builds business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-apps-id-builds
+      path: /v1/apps/{id}/builds
+      operations:
+      - name: listappbuilds
+        method: GET
+        description: List All Builds of an App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields[builds]
+          in: query
+          type: array
+          description: Fields to return for build resources
+    - name: v1-betaTesters-id-builds
+      path: /v1/betaTesters/{id}/builds
+      operations:
+      - name: listbetatesterbuilds
+        method: GET
+        description: List All Builds Individually Assigned to a Beta Tester
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields[builds]
+          in: query
+          type: array
+          description: Fields to return for build resources
+    - name: v1-builds
+      path: /v1/builds
+      operations:
+      - name: listbuilds
+        method: GET
+        description: List Builds
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter[app]
+          in: query
+          type: array
+          description: Filter by app resource ID
+        - name: filter[id]
+          in: query
+          type: array
+          description: Filter by build resource ID
+        - name: filter[version]
+          in: query
+          type: array
+          description: Filter by build version string
+        - name: filter[expired]
+          in: query
+          type: array
+          description: Filter by expiration status
+        - name: filter[processingState]
+          in: query
+          type: array
+          description: Filter by processing state
+        - name: filter[preReleaseVersion.platform]
+          in: query
+          type: array
+          description: Filter by platform
+        - name: filter[preReleaseVersion.version]
+          in: query
+          type: array
+          description: Filter by pre-release version string
+        - name: filter[betaGroups]
+          in: query
+          type: array
+          description: Filter by beta group IDs
+        - name: filter[usesNonExemptEncryption]
+          in: query
+          type: array
+          description: Filter by encryption usage
+        - name: sort
+          in: query
+          type: array
+          description: Sort order for results
+        - name: fields[builds]
+          in: query
+          type: array
+          description: Fields to return for build resources
+        - name: include
+          in: query
+          type: array
+          description: Relationship data to include in the response
+    - name: v1-builds-id
+      path: /v1/builds/{id}
+      operations:
+      - name: readbuild
+        method: GET
+        description: Read Build Information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields[builds]
+          in: query
+          type: array
+          description: Fields to return for build resources
+        - name: include
+          in: query
+          type: array
+          description: Relationship data to include in the response
+      - name: modifybuild
+        method: PATCH
+        description: Modify a Build
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-builds-id-individualTesters
+      path: /v1/builds/{id}/individualTesters
+      operations:
+      - name: listbuildindividualtesters
+        method: GET
+        description: List All Individual Testers for a Build
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields[betaTesters]
+          in: query
+          type: array
+          description: Fields to return for beta tester resources
+    authentication:
+      type: bearer
+      token: '{{env.APPLE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: app-store-connect-builds-rest
+    port: 8080
+    description: REST adapter for Apple App Store Connect API — Builds. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/apps/{id}/builds
+      name: v1-apps-id-builds
+      description: REST surface for v1-apps-id-builds.
+      operations:
+      - method: GET
+        name: listappbuilds
+        description: List All Builds of an App
+        call: app-store-connect-builds.listappbuilds
+        with:
+          fields[builds]: rest.fields[builds]
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/betatesters/{id}/builds
+      name: v1-betatesters-id-builds
+      description: REST surface for v1-betaTesters-id-builds.
+      operations:
+      - method: GET
+        name: listbetatesterbuilds
+        description: List All Builds Individually Assigned to a Beta Tester
+        call: app-store-connect-builds.listbetatesterbuilds
+        with:
+          fields[builds]: rest.fields[builds]
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/builds
+      name: v1-builds
+      description: REST surface for v1-builds.
+      operations:
+      - method: GET
+        name: listbuilds
+        description: List Builds
+        call: app-store-connect-builds.listbuilds
+        with:
+          filter[app]: rest.filter[app]
+          filter[id]: rest.filter[id]
+          filter[version]: rest.filter[version]
+          filter[expired]: rest.filter[expired]
+          filter[processingState]: rest.filter[processingState]
+          filter[preReleaseVersion.platform]: rest.filter[preReleaseVersion.platform]
+          filter[preReleaseVersion.version]: rest.filter[preReleaseVersion.version]
+          filter[betaGroups]: rest.filter[betaGroups]
+          filter[usesNonExemptEncryption]: rest.filter[usesNonExemptEncryption]
+          sort: rest.sort
+          fields[builds]: rest.fields[builds]
+          include: rest.include
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/builds/{id}
+      name: v1-builds-id
+      description: REST surface for v1-builds-id.
+      operations:
+      - method: GET
+        name: readbuild
+        description: Read Build Information
+        call: app-store-connect-builds.readbuild
+        with:
+          fields[builds]: rest.fields[builds]
+          include: rest.include
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: modifybuild
+        description: Modify a Build
+        call: app-store-connect-builds.modifybuild
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/builds/{id}/individualtesters
+      name: v1-builds-id-individualtesters
+      description: REST surface for v1-builds-id-individualTesters.
+      operations:
+      - method: GET
+        name: listbuildindividualtesters
+        description: List All Individual Testers for a Build
+        call: app-store-connect-builds.listbuildindividualtesters
+        with:
+          fields[betaTesters]: rest.fields[betaTesters]
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: app-store-connect-builds-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apple App Store Connect API — Builds. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-all-builds-app
+      description: List All Builds of an App
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-store-connect-builds.listappbuilds
+      with:
+        fields[builds]: tools.fields[builds]
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-builds-individually-assigned
+      description: List All Builds Individually Assigned to a Beta Tester
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-store-connect-builds.listbetatesterbuilds
+      with:
+        fields[builds]: tools.fields[builds]
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-builds
+      description: List Builds
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-store-connect-builds.listbuilds
+      with:
+        filter[app]: tools.filter[app]
+        filter[id]: tools.filter[id]
+        filter[version]: tools.filter[version]
+        filter[expired]: tools.filter[expired]
+        filter[processingState]: tools.filter[processingState]
+        filter[preReleaseVersion.platform]: tools.filter[preReleaseVersion.platform]
+        filter[preReleaseVersion.version]: tools.filter[preReleaseVersion.version]
+        filter[betaGroups]: tools.filter[betaGroups]
+        filter[usesNonExemptEncryption]: tools.filter[usesNonExemptEncryption]
+        sort: tools.sort
+        fields[builds]: tools.fields[builds]
+        include: tools.include
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-build-information
+      description: Read Build Information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-store-connect-builds.readbuild
+      with:
+        fields[builds]: tools.fields[builds]
+        include: tools.include
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: modify-build
+      description: Modify a Build
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: app-store-connect-builds.modifybuild
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-individual-testers-build
+      description: List All Individual Testers for a Build
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: app-store-connect-builds.listbuildindividualtesters
+      with:
+        fields[betaTesters]: tools.fields[betaTesters]
+      outputParameters:
+      - type: object
+        mapping: $.
