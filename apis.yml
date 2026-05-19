@@ -2,7 +2,7 @@ name: Apple
 description: Collection of Apple's public APIs and developer resources.
 image: https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png
 created: '2024-01-15'
-modified: '2026-05-04'
+modified: '2026-05-19'
 url: https://developer.apple.com
 specificationVersion: '0.19'
 type: Index
@@ -187,8 +187,7 @@ apis:
       - type: Authentication
         url: https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_token-based_connection_to_apns
   - name: App Store Server API
-    description: Manage customer App Store transactions from your server, including in-app purchases and
-      subscriptions.
+    description: Manage customer App Store transactions from your server, including in-app purchases and subscriptions.
     humanURL: https://developer.apple.com/documentation/appstoreserverapi
     baseURL: https://api.storekit.itunes.apple.com
     tags:
@@ -203,8 +202,7 @@ apis:
       - type: ChangeLog
         url: https://developer.apple.com/documentation/appstoreserverapi/app-store-server-api-changelog
   - name: App Store Server Notifications V2
-    description: Receive real-time notifications about in-app purchase events and subscription lifecycle
-      changes.
+    description: Receive real-time notifications about in-app purchase events and subscription lifecycle changes.
     humanURL: https://developer.apple.com/documentation/appstoreservernotifications
     tags:
       - In-App Purchases
@@ -216,8 +214,7 @@ apis:
       - type: GettingStarted
         url: https://developer.apple.com/documentation/appstoreservernotifications/enabling-app-store-server-notifications
   - name: Apple Maps Server API
-    description: Server-side geocoding, reverse geocoding, search, and estimated time of arrival using
-      Apple Maps.
+    description: Server-side geocoding, reverse geocoding, search, and estimated time of arrival using Apple Maps.
     humanURL: https://developer.apple.com/documentation/applemapsserverapi/
     baseURL: https://maps-api.apple.com
     tags:
@@ -289,8 +286,7 @@ apis:
       - type: GettingStarted
         url: https://developer.apple.com/documentation/walletpasses/adding-a-web-service-to-update-passes
   - name: Enterprise Program API
-    description: Automate management of users, roles, provisioning profiles, and bundle identifiers for
-      enterprise apps.
+    description: Automate management of users, roles, provisioning profiles, and bundle identifiers for enterprise apps.
     humanURL: https://developer.apple.com/documentation/enterpriseprogramapi
     tags:
       - Certificates
@@ -306,8 +302,7 @@ apis:
       - type: RateLimits
         url: https://developer.apple.com/documentation/enterpriseprogramapi/identifying-rate-limits
   - name: Apple School and Business Manager API
-    description: Automate device management actions and access data about devices enrolled via Automated
-      Device Enrollment.
+    description: Automate device management actions and access data about devices enrolled via Automated Device Enrollment.
     humanURL: https://developer.apple.com/documentation/apple-school-and-business-manager-api
     tags:
       - Device Management
@@ -407,8 +402,7 @@ common:
     url: capabilities/app-lifecycle.yaml
   - type: Features
     data:
-      - 'Apple (App Store + iCloud + Apple Music + Maps): hundreds of services across Consumer Cloud +
-        Developer'
+      - 'Apple (App Store + iCloud + Apple Music + Maps): hundreds of services across Consumer Cloud + Developer'
       - 'Detailed pricing: see https://developer.apple.com/programs/'
       - 'Service: App Store Connect API'
       - 'Service: Apple Music API'
@@ -427,8 +421,7 @@ common:
   - type: UseCases
     data:
       - name: App Distribution
-        description: Automate app submissions, manage TestFlight beta testing, and handle app metadata
-          at scale.
+        description: Automate app submissions, manage TestFlight beta testing, and handle app metadata at scale.
       - name: In-App Purchases
         description: Manage subscriptions, consumables, and transaction history with server-side verification.
       - name: Enterprise Device Management
@@ -442,12 +435,14 @@ common:
       - name: Xcode
         description: Full IDE integration for building, testing, and deploying apps across all Apple platforms.
       - name: TestFlight
-        description: Beta testing platform for distributing pre-release builds to internal and external
-          testers.
+        description: Beta testing platform for distributing pre-release builds to internal and external testers.
       - name: App Analytics
         description: View app performance metrics, downloads, and user engagement data.
       - name: CloudKit
         description: Store and sync app data across devices using Apple's cloud infrastructure.
+  - name: MCP Server
+    url: https://github.com/apple/ml-mcp-repo-level-coding
+    type: MCPServer
 maintainers:
   - name: Apple Developer Relations
     email: developer@apple.com
