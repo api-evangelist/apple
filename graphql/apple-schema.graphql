@@ -1,0 +1,1737 @@
+"""
+Apple App Store Connect GraphQL Schema
+Conceptual schema derived from:
+  https://developer.apple.com/documentation/appstoreconnectapi
+  https://developer.apple.com/documentation/appstoreserverapi
+  https://developer.apple.com/documentation/applemusicapi
+  https://developer.apple.com/documentation/mapkitjs
+  https://developer.apple.com/documentation/sign_in_with_apple
+"""
+
+# ---------------------------------------------------------------------------
+# Scalars
+# ---------------------------------------------------------------------------
+
+scalar DateTime
+scalar Date
+scalar URL
+scalar JSON
+
+# ---------------------------------------------------------------------------
+# Enums
+# ---------------------------------------------------------------------------
+
+enum Platform {
+  IOS
+  MAC_OS
+  TV_OS
+  VISION_OS
+}
+
+enum AppStoreState {
+  ACCEPTED
+  DEVELOPER_REMOVED_FROM_SALE
+  DEVELOPER_REJECTED
+  IN_REVIEW
+  INVALID_BINARY
+  METADATA_REJECTED
+  PENDING_APPLE_RELEASE
+  PENDING_CONTRACT
+  PENDING_DEVELOPER_RELEASE
+  PREPARE_FOR_SUBMISSION
+  PREORDER_READY_FOR_SALE
+  PROCESSING_FOR_APP_STORE
+  READY_FOR_REVIEW
+  READY_FOR_SALE
+  REJECTED
+  REMOVED_FROM_SALE
+  WAITING_FOR_EXPORT_COMPLIANCE
+  WAITING_FOR_REVIEW
+}
+
+enum AgeRating {
+  FOUR_PLUS
+  NINE_PLUS
+  TWELVE_PLUS
+  SEVENTEEN_PLUS
+}
+
+enum DeviceType {
+  IPHONE
+  IPAD
+  MAC
+  APPLE_TV
+  APPLE_WATCH
+  APPLE_VISION_PRO
+}
+
+enum CertificateType {
+  DEVELOPER_ID_APPLICATION
+  DEVELOPER_ID_KEXT
+  DEVELOPMENT
+  DISTRIBUTION
+  IOS_DEVELOPMENT
+  IOS_DISTRIBUTION
+  MAC_APP_DEVELOPMENT
+  MAC_APP_DISTRIBUTION
+  MAC_INSTALLER_DISTRIBUTION
+  PASS_TYPE_ID
+  PUSH_SSL
+}
+
+enum ProfileType {
+  IOS_APP_ADHOC
+  IOS_APP_DEVELOPMENT
+  IOS_APP_INHOUSE
+  IOS_APP_STORE
+  MAC_APP_DEVELOPMENT
+  MAC_APP_DIRECT
+  MAC_APP_STORE
+  TVOS_APP_ADHOC
+  TVOS_APP_DEVELOPMENT
+  TVOS_APP_INHOUSE
+  TVOS_APP_STORE
+}
+
+enum ProfileState {
+  ACTIVE
+  INVALID
+}
+
+enum BuildProcessingState {
+  FAILED
+  INVALID
+  PROCESSING
+  VALID
+}
+
+enum BetaReviewState {
+  APPROVED
+  IN_REVIEW
+  REJECTED
+  WAITING_FOR_REVIEW
+}
+
+enum InAppPurchaseType {
+  CONSUMABLE
+  FREE_SUBSCRIPTION
+  NON_CONSUMABLE
+  NON_RENEWING_SUBSCRIPTION
+}
+
+enum InAppPurchaseState {
+  APPROVED
+  DEVELOPER_ACTION_NEEDED
+  DEVELOPER_REMOVED_FROM_SALE
+  MISSING_METADATA
+  PROCESSING_FOR_APP_STORE
+  READY_FOR_REVIEW
+  READY_FOR_SALE
+  REJECTED
+  REMOVED_FROM_SALE
+  WAITING_FOR_REVIEW
+}
+
+enum SubscriptionPeriod {
+  ONE_WEEK
+  ONE_MONTH
+  TWO_MONTHS
+  THREE_MONTHS
+  SIX_MONTHS
+  ONE_YEAR
+}
+
+enum ReviewSubmissionState {
+  CANCELING
+  COMPLETE
+  COMPLETE_WITH_ISSUES
+  IN_REVIEW
+  READY_FOR_REVIEW
+  UNRESOLVED_ISSUES
+  WAITING_FOR_REVIEW
+}
+
+enum UserRole {
+  ACCESS_TO_REPORTS
+  ACCOUNT_HOLDER
+  ADMIN
+  APP_MANAGER
+  CREATE_APPS
+  CUSTOMER_SUPPORT
+  DEVELOPER
+  FINANCE
+  MARKETING
+  READONLY
+  SALES
+  TECHNICAL
+}
+
+enum ScreenshotDisplayType {
+  APP_IPHONE_55
+  APP_IPHONE_61
+  APP_IPHONE_65
+  APP_IPHONE_67
+  APP_IPAD_PRO_129
+  APP_IPAD_PRO_3GEN_129
+  APP_MAC
+  APP_APPLE_TV
+  APP_APPLE_WATCH
+}
+
+enum WalletPassType {
+  BOARDING_PASS
+  COUPON
+  EVENT_TICKET
+  GENERIC
+  STORE_CARD
+}
+
+enum SubscriptionOfferType {
+  INTRODUCTORY_OFFER
+  PROMOTIONAL_OFFER
+  WIN_BACK_OFFER
+}
+
+enum SubscriptionOfferMode {
+  FREE_TRIAL
+  PAY_AS_YOU_GO
+  PAY_UP_FRONT
+}
+
+# ---------------------------------------------------------------------------
+# Interfaces
+# ---------------------------------------------------------------------------
+
+interface Node {
+  id: ID!
+}
+
+interface Localizable {
+  locale: String!
+}
+
+# ---------------------------------------------------------------------------
+# App Management Types
+# ---------------------------------------------------------------------------
+
+type App implements Node {
+  id: ID!
+  name: String!
+  bundleId: String!
+  sku: String
+  primaryLocale: String
+  isOrEverWasMadeForKids: Boolean
+  subscriptionStatusUrl: URL
+  subscriptionStatusUrlVersion: String
+  contentRightsDeclaration: String
+  reviewSubmissionsUrl: URL
+  ageRating: AgeRating
+  availableInNewTerritories: Boolean
+  versions(state: AppStoreState): [AppVersion!]
+  latestVersion: AppVersion
+  builds(processingState: BuildProcessingState): [Build!]
+  betaGroups: [BetaGroup!]
+  betaTesters: [BetaTester!]
+  inAppPurchases(type: InAppPurchaseType): [InAppPurchase!]
+  subscriptionGroups: [SubscriptionGroup!]
+  categories: AppCategoryAssignment
+  availability: AppAvailability
+  prices: [AppPrice!]
+  reviewSubmissions: [ReviewSubmission!]
+  appClips: [AppClip!]
+  gameCenter: GameCenter
+  analyticsReports: [AnalyticsReport!]
+  relationships: AppRelationship
+}
+
+type AppVersion implements Node {
+  id: ID!
+  versionString: String!
+  platform: Platform!
+  appStoreState: AppStoreState
+  releaseType: String
+  earliestReleaseDate: DateTime
+  usesIdfa: Boolean
+  downloadable: Boolean
+  createdDate: DateTime
+  app: App
+  localizations: [AppVersionLocalization!]
+  build: Build
+  ageRatingDeclaration: AgeRatingDeclaration
+  routingAppCoverage: RoutingAppCoverage
+  reviewSubmission: ReviewSubmission
+  appVersionExperiments: [AppVersionExperiment!]
+}
+
+type AppVersionLocalization implements Node & Localizable {
+  id: ID!
+  locale: String!
+  description: String
+  keywords: String
+  marketingUrl: URL
+  promotionalText: String
+  supportUrl: URL
+  whatsNew: String
+  screenshots(displayType: ScreenshotDisplayType): [AppScreenshot!]
+  previews: [AppPreview!]
+}
+
+type AppCategoryAssignment {
+  primary: AppCategory
+  secondary: AppCategory
+}
+
+type AppCategory implements Node {
+  id: ID!
+  name: String!
+  platforms: [Platform!]
+  subcategories: [AppCategory!]
+  parent: AppCategory
+}
+
+type AppRelationship {
+  app: App!
+  versions: [AppVersion!]
+  builds: [Build!]
+  betaGroups: [BetaGroup!]
+  subscriptionGroups: [SubscriptionGroup!]
+  inAppPurchases: [InAppPurchase!]
+  appClips: [AppClip!]
+}
+
+type AppAvailability {
+  availableInNewTerritories: Boolean!
+  territories: [Territory!]
+  availabilityByTerritory: [TerritoryAvailability!]
+}
+
+type TerritoryAvailability {
+  territory: Territory!
+  releaseDate: Date
+  preOrderEnabled: Boolean
+}
+
+type AgeRatingDeclaration implements Node {
+  id: ID!
+  alcoholTobaccoOrDrugUseOrReferences: String
+  contests: String
+  gambling: Boolean
+  gamblingSimulated: String
+  kidsAgeBand: String
+  matureOrSuggestiveThemes: String
+  medicalOrTreatmentInformation: String
+  profanityOrCrudeHumor: String
+  sexualContentGraphicAndNudity: String
+  sexualContentOrNudity: String
+  unrestrictedWebAccess: Boolean
+  violenceCartoonOrFantasy: String
+  violenceRealisticProlongedGraphicOrSadistic: String
+  violenceRealistic: String
+}
+
+type RoutingAppCoverage implements Node {
+  id: ID!
+  fileName: String
+  fileSize: Int
+  checksum: String
+  uploadOperations: [UploadOperation!]
+  assetDeliveryState: AssetDeliveryState
+}
+
+type AppVersionExperiment implements Node {
+  id: ID!
+  name: String!
+  trafficProportion: Float
+  state: String
+  reviewRequired: Boolean
+  startDate: DateTime
+  endDate: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# Pricing Types
+# ---------------------------------------------------------------------------
+
+type AppPrice implements Node {
+  id: ID!
+  startDate: Date
+  endDate: Date
+  territory: Territory
+  priceTier: AppPriceTier
+  pricePoint: AppPricePoint
+  manual: Boolean
+}
+
+type AppPricePoint implements Node {
+  id: ID!
+  customerPrice: String
+  proceeds: String
+  territory: Territory
+  priceTier: AppPriceTier
+  equalizations: [AppPricePoint!]
+}
+
+type AppPriceTier implements Node {
+  id: ID!
+  name: String
+  pricePoints: [AppPricePoint!]
+}
+
+# ---------------------------------------------------------------------------
+# Bundle Types
+# ---------------------------------------------------------------------------
+
+type Bundle implements Node {
+  id: ID!
+  name: String!
+  platform: Platform
+  bundleIds: [BundleId!]
+  apps: [App!]
+}
+
+type BundleId implements Node {
+  id: ID!
+  identifier: String!
+  name: String!
+  platform: Platform!
+  seedId: String
+  profiles: [Profile!]
+  bundleIdCapabilities: [BundleIdCapability!]
+}
+
+type BundleIdCapability implements Node {
+  id: ID!
+  capabilityType: String!
+  settings: JSON
+}
+
+# ---------------------------------------------------------------------------
+# Certificates and Profiles Types
+# ---------------------------------------------------------------------------
+
+type Certificate implements Node {
+  id: ID!
+  name: String
+  certificateType: CertificateType!
+  displayName: String
+  serialNumber: String
+  platform: Platform
+  expirationDate: DateTime
+  certificateContent: String
+}
+
+type Device implements Node {
+  id: ID!
+  name: String!
+  deviceClass: DeviceType
+  model: String
+  udid: String!
+  platform: Platform
+  status: String
+  addedDate: DateTime
+}
+
+type Profile implements Node {
+  id: ID!
+  name: String!
+  profileType: ProfileType!
+  profileState: ProfileState
+  uuid: String
+  createdDate: DateTime
+  expirationDate: DateTime
+  profileContent: String
+  bundleId: BundleId
+  certificates: [Certificate!]
+  devices: [Device!]
+}
+
+type ProvisioningProfile implements Node {
+  id: ID!
+  name: String!
+  profileType: ProfileType!
+  expirationDate: DateTime
+  uuid: String
+  platform: Platform
+  isXcodeManaged: Boolean
+  createdDate: DateTime
+  profileContent: String
+  bundleId: BundleId
+  certificates: [Certificate!]
+  devices: [Device!]
+}
+
+# ---------------------------------------------------------------------------
+# Build and Beta Testing Types
+# ---------------------------------------------------------------------------
+
+type Build implements Node {
+  id: ID!
+  version: String!
+  uploadedDate: DateTime
+  expirationDate: DateTime
+  expired: Boolean
+  minOsVersion: String
+  lsMinimumSystemVersion: String
+  computedMinMacOsVersion: String
+  iconAssetToken: ImageAsset
+  processingState: BuildProcessingState
+  buildAudienceType: String
+  usesNonExemptEncryption: Boolean
+  app: App
+  appVersion: AppVersion
+  betaAppVersion: AppVersion
+  betaGroups: [BetaGroup!]
+  betaTesters: [BetaTester!]
+  buildBetaDetail: BuildBeta
+  bundleIdentifier: String
+  buildBundles: [BuildBundle!]
+  preReleaseVersion: PreReleaseVersion
+}
+
+type BuildBundle implements Node {
+  id: ID!
+  bundleId: String
+  bundleType: String
+  sdkBuild: String
+  platformBuild: String
+  fileName: String
+  hasSirikit: Boolean
+  hasOnDemandResources: Boolean
+  hasPrerenderedIcon: Boolean
+  usesLocationServices: Boolean
+  isIosBuildMacCompatible: Boolean
+  includesSymbols: Boolean
+  dSYMUrl: URL
+  supportedArchitectures: [String!]
+  requiredCapabilities: [String!]
+}
+
+type BuildBeta implements Node {
+  id: ID!
+  autoNotifyEnabled: Boolean
+  didNotify: Boolean
+  externalBuildState: String
+  internalBuildState: String
+  build: Build
+}
+
+type BetaGroup implements Node {
+  id: ID!
+  name: String!
+  createdDate: DateTime
+  isInternalGroup: Boolean
+  hasAccessToAllBuilds: Boolean
+  publicLinkEnabled: Boolean
+  publicLinkId: String
+  publicLinkLimitEnabled: Boolean
+  publicLinkLimit: Int
+  publicLink: URL
+  feedbackEnabled: Boolean
+  iosBuildsAvailableForAppleSiliconMac: Boolean
+  app: App
+  builds: [Build!]
+  betaTesters: [BetaTester!]
+}
+
+type BetaTester implements Node {
+  id: ID!
+  firstName: String
+  lastName: String
+  email: String!
+  inviteType: String
+  state: String
+  apps: [App!]
+  betaGroups: [BetaGroup!]
+  builds: [Build!]
+}
+
+type BetaLicense implements Node {
+  id: ID!
+  agreementText: String
+  app: App
+}
+
+type TestFlight {
+  app: App!
+  feedbackEmail: String
+  betaFeedbackEnabled: Boolean
+  betaTesters: [BetaTester!]
+  betaGroups: [BetaGroup!]
+}
+
+type PreReleaseVersion implements Node {
+  id: ID!
+  version: String!
+  platform: Platform!
+  app: App
+  builds: [Build!]
+}
+
+type InternalTester implements Node {
+  id: ID!
+  email: String!
+  firstName: String
+  lastName: String
+  roles: [UserRole!]
+}
+
+# ---------------------------------------------------------------------------
+# App Review Types
+# ---------------------------------------------------------------------------
+
+type ReviewSubmission implements Node {
+  id: ID!
+  platform: Platform
+  submittedDate: DateTime
+  state: ReviewSubmissionState
+  app: App
+  appVersion: AppVersion
+  reviewSubmissionItems: [ReviewSubmissionItem!]
+}
+
+type ReviewSubmissionItem implements Node {
+  id: ID!
+  state: String
+  reviewSubmission: ReviewSubmission
+  appVersion: AppVersion
+  appStoreVersionExperiment: AppVersionExperiment
+}
+
+type AppReview implements Node {
+  id: ID!
+  rating: Int
+  title: String
+  body: String
+  reviewerNickname: String
+  createdDate: DateTime
+  territory: Territory
+  response: AppReviewResponse
+}
+
+type AppReviewResponse implements Node {
+  id: ID!
+  responseBody: String!
+  lastModifiedDate: DateTime
+  state: String
+  review: AppReview
+}
+
+type AppReviewAttachment implements Node {
+  id: ID!
+  fileName: String
+  fileSize: Int
+  sourceFileChecksum: String
+  uploadOperations: [UploadOperation!]
+  assetDeliveryState: AssetDeliveryState
+  reviewSubmission: ReviewSubmission
+}
+
+type AppScreenshot implements Node {
+  id: ID!
+  fileSize: Int
+  fileName: String
+  sourceFileChecksum: String
+  imageAsset: ImageAsset
+  assetToken: String
+  assetType: String
+  uploadOperations: [UploadOperation!]
+  assetDeliveryState: AssetDeliveryState
+  screenshotDisplayType: ScreenshotDisplayType
+  appVersionLocalization: AppVersionLocalization
+}
+
+type AppPreview implements Node {
+  id: ID!
+  fileSize: Int
+  fileName: String
+  sourceFileChecksum: String
+  previewFrameTimeCode: String
+  mimeType: String
+  videoUrl: URL
+  previewImage: ImageAsset
+  uploadOperations: [UploadOperation!]
+  assetDeliveryState: AssetDeliveryState
+  appVersionLocalization: AppVersionLocalization
+}
+
+type AppTrailer implements Node {
+  id: ID!
+  fileName: String
+  fileSize: Int
+  videoUrl: URL
+  previewFrameTimeCode: String
+  mimeType: String
+  previewImage: ImageAsset
+  uploadOperations: [UploadOperation!]
+  assetDeliveryState: AssetDeliveryState
+}
+
+# ---------------------------------------------------------------------------
+# In-App Purchases and Subscriptions
+# ---------------------------------------------------------------------------
+
+type InAppPurchase implements Node {
+  id: ID!
+  name: String!
+  productId: String!
+  inAppPurchaseType: InAppPurchaseType!
+  state: InAppPurchaseState
+  reviewNote: String
+  familySharable: Boolean
+  availableInAllTerritories: Boolean
+  iapPriceSchedule: IAPPriceSchedule
+  inAppPurchaseLocalizations: [InAppPurchaseLocalization!]
+  promotedPurchase: PromotedPurchase
+  content: InAppPurchaseContent
+}
+
+type InAppPurchaseLocalization implements Node & Localizable {
+  id: ID!
+  locale: String!
+  name: String!
+  description: String
+  state: String
+  inAppPurchaseV2: InAppPurchase
+}
+
+type IAPPriceSchedule {
+  baseTerritory: Territory
+  automaticPrices: [InAppPurchasePrice!]
+  manualPrices: [InAppPurchasePrice!]
+}
+
+type InAppPurchasePrice implements Node {
+  id: ID!
+  startDate: Date
+  endDate: Date
+  territory: Territory
+  inAppPurchasePricePoint: InAppPurchasePricePoint
+}
+
+type InAppPurchasePricePoint implements Node {
+  id: ID!
+  customerPrice: String
+  proceeds: String
+  priceTier: String
+  territory: Territory
+}
+
+type InAppPurchaseContent implements Node {
+  id: ID!
+  fileName: String
+  fileSize: Int
+  url: URL
+  modifiedDate: DateTime
+}
+
+type PromotedPurchase implements Node {
+  id: ID!
+  visibilityDetail: String
+  enabled: Boolean
+  state: String
+  app: App
+  inAppPurchaseV2: InAppPurchase
+  subscription: Subscription
+  promotionImages: [PromotedPurchaseImage!]
+}
+
+type PromotedPurchaseImage implements Node {
+  id: ID!
+  fileSize: Int
+  fileName: String
+  sourceFileChecksum: String
+  imageAsset: ImageAsset
+  assetToken: String
+  uploadOperations: [UploadOperation!]
+  assetDeliveryState: AssetDeliveryState
+}
+
+type Subscription implements Node {
+  id: ID!
+  name: String!
+  productId: String!
+  familySharable: Boolean
+  state: String
+  subscriptionPeriod: SubscriptionPeriod
+  reviewNote: String
+  groupLevel: Int
+  availableInAllTerritories: Boolean
+  subscriptionLocalizations: [SubscriptionLocalization!]
+  appStoreReviewScreenshot: AppStoreReviewScreenshot
+  group: SubscriptionGroup
+  introductoryOffers: [SubscriptionIntroductoryOffer!]
+  promotionalOffers: [SubscriptionPromotionalOffer!]
+  prices: [SubscriptionPrice!]
+}
+
+type SubscriptionLocalization implements Node & Localizable {
+  id: ID!
+  locale: String!
+  name: String!
+  description: String
+  state: String
+  subscription: Subscription
+}
+
+type SubscriptionGroup implements Node {
+  id: ID!
+  referenceName: String!
+  subscriptions: [Subscription!]
+  subscriptionGroupLocalizations: [SubscriptionGroupLocalization!]
+  app: App
+}
+
+type SubscriptionGroupLocalization implements Node & Localizable {
+  id: ID!
+  locale: String!
+  name: String!
+  customAppName: String
+  state: String
+  subscriptionGroup: SubscriptionGroup
+}
+
+type SubscriptionOffer implements Node {
+  id: ID!
+  offerCode: String
+  offerType: SubscriptionOfferType!
+  startDate: Date
+  endDate: Date
+  duration: SubscriptionPeriod
+  offerMode: SubscriptionOfferMode
+  numberOfPeriods: Int
+  totalNumberOfPeriods: Int
+  prices: [SubscriptionOfferPrice!]
+  subscription: Subscription
+}
+
+type SubscriptionOfferPrice implements Node {
+  id: ID!
+  territory: Territory
+  subscriptionPricePoint: SubscriptionPricePoint
+}
+
+type SubscriptionIntroductoryOffer implements Node {
+  id: ID!
+  startDate: Date
+  endDate: Date
+  duration: SubscriptionPeriod
+  offerMode: SubscriptionOfferMode
+  numberOfPeriods: Int
+  territory: Territory
+  subscriptionPricePoint: SubscriptionPricePoint
+  subscription: Subscription
+}
+
+type SubscriptionPromotionalOffer implements Node {
+  id: ID!
+  offerCode: String!
+  name: String!
+  offerCodeType: String
+  duration: SubscriptionPeriod
+  offerMode: SubscriptionOfferMode
+  numberOfPeriods: Int
+  prices: [SubscriptionPromotionalOfferPrice!]
+  subscription: Subscription
+}
+
+type SubscriptionPromotionalOfferPrice implements Node {
+  id: ID!
+  territory: Territory
+  subscriptionPricePoint: SubscriptionPricePoint
+}
+
+type SubscriptionPrice implements Node {
+  id: ID!
+  startDate: Date
+  endDate: Date
+  territory: Territory
+  subscriptionPricePoint: SubscriptionPricePoint
+  preserved: Boolean
+  subscription: Subscription
+}
+
+type SubscriptionPricePoint implements Node {
+  id: ID!
+  customerPrice: String
+  proceeds: String
+  proceedsYear2: String
+  equalizations: [SubscriptionPricePoint!]
+  territory: Territory
+}
+
+type AppStoreReviewScreenshot implements Node {
+  id: ID!
+  fileSize: Int
+  fileName: String
+  sourceFileChecksum: String
+  imageAsset: ImageAsset
+  assetToken: String
+  uploadOperations: [UploadOperation!]
+  assetDeliveryState: AssetDeliveryState
+}
+
+# ---------------------------------------------------------------------------
+# Analytics and Reports
+# ---------------------------------------------------------------------------
+
+type AnalyticsReportRequest implements Node {
+  id: ID!
+  accessType: String
+  stoppedDueToInactivity: Boolean
+  reports: [AnalyticsReport!]
+  app: App
+}
+
+type AnalyticsReport implements Node {
+  id: ID!
+  name: String
+  category: String
+  instances: [AnalyticsReportInstance!]
+}
+
+type AnalyticsReportInstance implements Node {
+  id: ID!
+  processingDate: Date
+  granularity: String
+  segments: [AnalyticsReportSegment!]
+}
+
+type AnalyticsReportSegment implements Node {
+  id: ID!
+  checksum: String
+  sizeInBytes: Int
+  url: URL
+}
+
+type FinanceReport {
+  reportDate: Date!
+  reportType: String
+  frequency: String
+  regionCode: String
+  currency: String
+  content: String
+}
+
+type SalesReport {
+  reportDate: Date!
+  reportType: String
+  reportSubType: String
+  frequency: String
+  vendorNumber: String
+  version: String
+  content: String
+}
+
+# ---------------------------------------------------------------------------
+# Users and Roles
+# ---------------------------------------------------------------------------
+
+type User implements Node {
+  id: ID!
+  username: String!
+  firstName: String
+  lastName: String
+  email: String
+  preferredCurrencyTerritory: Territory
+  agreedToTerms: Boolean
+  roles: [UserRole!]
+  allAppsVisible: Boolean
+  provisioningAllowed: Boolean
+  visibleApps: [App!]
+}
+
+type UserInvitation implements Node {
+  id: ID!
+  email: String!
+  firstName: String
+  lastName: String
+  expirationDate: DateTime
+  isActive: Boolean
+  roles: [UserRole!]
+  allAppsVisible: Boolean
+  provisioningAllowed: Boolean
+  visibleApps: [App!]
+}
+
+# ---------------------------------------------------------------------------
+# Territories and Locales
+# ---------------------------------------------------------------------------
+
+type Territory implements Node {
+  id: ID!
+  currency: String
+  name: String
+  region: String
+}
+
+type Locale {
+  code: String!
+  name: String!
+}
+
+# ---------------------------------------------------------------------------
+# Ratings and Reviews
+# ---------------------------------------------------------------------------
+
+type Rating {
+  value: Int!
+  reviewer: String
+  createdDate: DateTime
+  territory: Territory
+  app: App
+}
+
+type Review implements Node {
+  id: ID!
+  rating: Int!
+  title: String
+  body: String
+  reviewerNickname: String
+  createdDate: DateTime
+  territory: Territory
+  response: AppReviewResponse
+  app: App
+}
+
+type RatingSummary {
+  app: App!
+  ratingCount: Int!
+  ratingAverage: Float!
+  oneStar: Int
+  twoStar: Int
+  threeStar: Int
+  fourStar: Int
+  fiveStar: Int
+  territory: Territory
+}
+
+# ---------------------------------------------------------------------------
+# App Clip Types
+# ---------------------------------------------------------------------------
+
+type AppClip implements Node {
+  id: ID!
+  bundleId: String!
+  app: App
+  appClipDefaultExperiences: [AppClipDefaultExperience!]
+  appClipAdvancedExperiences: [AppClipAdvancedExperience!]
+}
+
+type AppClipDefaultExperience implements Node {
+  id: ID!
+  action: String
+  appClip: AppClip
+  releaseWithAppStoreVersion: AppVersion
+  localizations: [AppClipDefaultExperienceLocalization!]
+  headerImage: AppClipHeaderImage
+}
+
+type AppClipDefaultExperienceLocalization implements Node & Localizable {
+  id: ID!
+  locale: String!
+  subtitle: String
+  appClipDefaultExperience: AppClipDefaultExperience
+}
+
+type AppClipAdvancedExperience implements Node {
+  id: ID!
+  link: URL
+  businessCategory: String
+  defaultLanguage: String
+  isPoweredBy: Boolean
+  place: AppClipPlace
+  appClip: AppClip
+  localizations: [AppClipAdvancedExperienceLocalization!]
+  headerImage: AppClipHeaderImage
+}
+
+type AppClipAdvancedExperienceLocalization implements Node & Localizable {
+  id: ID!
+  locale: String!
+  subtitle: String
+  appClipAdvancedExperience: AppClipAdvancedExperience
+}
+
+type AppClipHeaderImage implements Node {
+  id: ID!
+  fileSize: Int
+  fileName: String
+  sourceFileChecksum: String
+  imageAsset: ImageAsset
+  uploadOperations: [UploadOperation!]
+  assetDeliveryState: AssetDeliveryState
+}
+
+type AppClipPlace {
+  placeId: String
+  names: [String!]
+  businessCategory: String
+  phoneNumber: String
+  homePage: URL
+  displayPoint: Coordinate
+  mainAddress: AppClipPlaceAddress
+}
+
+type AppClipPlaceAddress {
+  fullAddress: String
+  addressLine1: String
+  addressLine2: String
+  city: String
+  state: String
+  country: String
+  postalCode: String
+}
+
+# ---------------------------------------------------------------------------
+# Game Center Types
+# ---------------------------------------------------------------------------
+
+type GameCenter implements Node {
+  id: ID!
+  app: App
+  gameCenterDetail: GameCenterDetail
+  gameCenterGroup: GameCenterGroup
+}
+
+type GameCenterDetail implements Node {
+  id: ID!
+  arcadeEnabled: Boolean
+  challengeEnabled: Boolean
+  app: App
+  gameCenterGroup: GameCenterGroup
+  gameCenterAchievements: [Achievement!]
+  gameCenterLeaderboards: [Leaderboard!]
+  gameCenterLeaderboardSets: [LeaderboardSet!]
+}
+
+type GameCenterGroup implements Node {
+  id: ID!
+  referenceName: String!
+  gameCenterApps: [App!]
+  gameCenterLeaderboards: [Leaderboard!]
+  gameCenterLeaderboardSets: [LeaderboardSet!]
+  gameCenterAchievements: [Achievement!]
+}
+
+type Achievement implements Node {
+  id: ID!
+  referenceName: String!
+  vendorIdentifier: String
+  points: Int
+  showBeforeEarned: Boolean
+  repeatable: Boolean
+  archived: Boolean
+  groupAchievement: Achievement
+  localizations: [AchievementLocalization!]
+  releases: [GameCenterAchievementRelease!]
+  image: GameCenterAchievementImage
+}
+
+type AchievementLocalization implements Node & Localizable {
+  id: ID!
+  locale: String!
+  name: String!
+  beforeEarnedDescription: String
+  afterEarnedDescription: String
+  achievementType: String
+  image: GameCenterAchievementImage
+  gameCenterAchievement: Achievement
+}
+
+type GameCenterAchievementImage implements Node {
+  id: ID!
+  fileSize: Int
+  fileName: String
+  imageAsset: ImageAsset
+  uploadOperations: [UploadOperation!]
+  assetDeliveryState: AssetDeliveryState
+}
+
+type GameCenterAchievementRelease implements Node {
+  id: ID!
+  live: Boolean
+  gameCenterDetail: GameCenterDetail
+  gameCenterAchievement: Achievement
+}
+
+type Leaderboard implements Node {
+  id: ID!
+  referenceName: String!
+  vendorIdentifier: String
+  defaultFormatter: String
+  submissionType: String
+  scoreSortType: String
+  recurrenceRule: String
+  recurrenceStartDate: DateTime
+  archived: Boolean
+  groupLeaderboard: Leaderboard
+  localizations: [LeaderboardLocalization!]
+  releases: [GameCenterLeaderboardRelease!]
+  image: GameCenterLeaderboardImage
+}
+
+type LeaderboardLocalization implements Node & Localizable {
+  id: ID!
+  locale: String!
+  name: String!
+  formatterOverride: String
+  formatterSuffix: String
+  formatterSuffixSingular: String
+  image: GameCenterLeaderboardImage
+  gameCenterLeaderboard: Leaderboard
+}
+
+type GameCenterLeaderboardImage implements Node {
+  id: ID!
+  fileSize: Int
+  fileName: String
+  imageAsset: ImageAsset
+  uploadOperations: [UploadOperation!]
+  assetDeliveryState: AssetDeliveryState
+}
+
+type GameCenterLeaderboardRelease implements Node {
+  id: ID!
+  live: Boolean
+  gameCenterDetail: GameCenterDetail
+  gameCenterLeaderboard: Leaderboard
+}
+
+type LeaderboardSet implements Node {
+  id: ID!
+  referenceName: String!
+  vendorIdentifier: String
+  groupLeaderboardSet: LeaderboardSet
+  localizations: [LeaderboardSetLocalization!]
+  gameCenterLeaderboards: [Leaderboard!]
+  releases: [GameCenterLeaderboardSetRelease!]
+}
+
+type LeaderboardSetLocalization implements Node & Localizable {
+  id: ID!
+  locale: String!
+  name: String!
+  image: GameCenterLeaderboardImage
+  gameCenterLeaderboardSet: LeaderboardSet
+}
+
+type GameCenterLeaderboardSetRelease implements Node {
+  id: ID!
+  live: Boolean
+  gameCenterDetail: GameCenterDetail
+  gameCenterLeaderboardSet: LeaderboardSet
+}
+
+# ---------------------------------------------------------------------------
+# Maps Types
+# ---------------------------------------------------------------------------
+
+type MapKitToken {
+  token: String!
+  expiresAt: DateTime!
+  origin: String
+  maps: [String!]
+}
+
+type GeocodedPlace {
+  placeId: String
+  name: String
+  formattedAddressLines: [String!]
+  coordinate: Coordinate!
+  country: String
+  countryCode: String
+  administrativeArea: String
+  administrativeAreaCode: String
+  locality: String
+  postCode: String
+  subLocality: String
+  thoroughfare: String
+  subThoroughfare: String
+  resultType: String
+  displayMapRegion: MapRegion
+}
+
+type SearchResult {
+  placeId: String
+  name: String
+  formattedAddressLines: [String!]
+  coordinate: Coordinate
+  url: URL
+  resultType: String
+  poiCategory: String
+  phoneNumber: String
+  displayMapRegion: MapRegion
+  countryCode: String
+}
+
+type EtaResult {
+  destination: Coordinate!
+  distanceMeters: Float
+  expectedTravelTimeSeconds: Int
+  staticTravelTimeSeconds: Int
+  transportType: String
+}
+
+type Coordinate {
+  latitude: Float!
+  longitude: Float!
+}
+
+type MapRegion {
+  northLatitude: Float!
+  eastLongitude: Float!
+  southLatitude: Float!
+  westLongitude: Float!
+}
+
+# ---------------------------------------------------------------------------
+# CloudKit Types
+# ---------------------------------------------------------------------------
+
+type CloudKitRecord {
+  recordName: String!
+  recordType: String!
+  fields: [CloudKitRecordField!]
+  created: CloudKitTimestamp
+  modified: CloudKitTimestamp
+  deleted: Boolean
+  zoneID: CloudKitZone
+}
+
+type CloudKitRecordField {
+  name: String!
+  value: CloudKitFieldValue!
+  type: String!
+}
+
+type CloudKitFieldValue {
+  stringValue: String
+  intValue: Int
+  floatValue: Float
+  boolValue: Boolean
+  dateValue: DateTime
+  bytes: String
+  asset: CloudKitAsset
+  location: Coordinate
+  listValue: [CloudKitFieldValue!]
+  referenceValue: CloudKitReference
+}
+
+type CloudKitAsset {
+  fileChecksum: String
+  size: Int
+  wrappingKey: String
+  referenceChecksum: String
+  downloadURL: URL
+  uploadURL: URL
+}
+
+type CloudKitReference {
+  recordName: String!
+  zoneID: CloudKitZone
+  action: String
+}
+
+type CloudKitTimestamp {
+  timestamp: DateTime!
+  userRecordName: String
+  deviceID: String
+}
+
+type CloudKitZone {
+  zoneName: String!
+  ownerRecordName: String
+  zoneType: String
+}
+
+# ---------------------------------------------------------------------------
+# Sign in with Apple Types
+# ---------------------------------------------------------------------------
+
+type AppleIdentityToken {
+  iss: String!
+  sub: String!
+  aud: String!
+  exp: Int!
+  iat: Int!
+  nonce: String
+  nonceSupported: Boolean
+  email: String
+  emailVerified: Boolean
+  isPrivateEmail: Boolean
+  realUserStatus: Int
+  transferSub: String
+}
+
+type AppleAuthorizationCode {
+  code: String!
+  state: String
+  user: String
+  expiresIn: Int
+}
+
+type AppleRefreshToken {
+  accessToken: String!
+  tokenType: String!
+  expiresIn: Int!
+  refreshToken: String
+  idToken: String
+}
+
+# ---------------------------------------------------------------------------
+# Push Notification Types
+# ---------------------------------------------------------------------------
+
+type PushNotification {
+  deviceToken: String!
+  payload: PushNotificationPayload!
+  apnsId: String
+  status: String
+  reason: String
+}
+
+type PushNotificationPayload {
+  aps: PushNotificationAPS!
+  customData: JSON
+}
+
+type PushNotificationAPS {
+  alert: PushNotificationAlert
+  badge: Int
+  sound: String
+  contentAvailable: Int
+  mutableContent: Int
+  category: String
+  threadId: String
+  targetContentId: String
+  interruptionLevel: String
+  relevanceScore: Float
+}
+
+type PushNotificationAlert {
+  title: String
+  subtitle: String
+  body: String
+  titleLocKey: String
+  titleLocArgs: [String!]
+  subtitleLocKey: String
+  subtitleLocArgs: [String!]
+  locKey: String
+  locArgs: [String!]
+  launchImage: String
+}
+
+type DevicePushToken {
+  token: String!
+  platform: Platform!
+  bundleId: String
+  environment: String
+}
+
+# ---------------------------------------------------------------------------
+# Wallet Types
+# ---------------------------------------------------------------------------
+
+type WalletPass implements Node {
+  id: ID!
+  passType: WalletPassType!
+  serialNumber: String!
+  description: String!
+  organizationName: String!
+  logoText: String
+  foregroundColor: String
+  backgroundColor: String
+  labelColor: String
+  barcode: WalletBarcode
+  locations: [WalletLocation!]
+  primaryFields: [WalletField!]
+  secondaryFields: [WalletField!]
+  auxiliaryFields: [WalletField!]
+  backFields: [WalletField!]
+  app: App
+}
+
+type WalletBarcode {
+  format: String!
+  message: String!
+  messageEncoding: String
+  altText: String
+}
+
+type WalletLocation {
+  latitude: Float!
+  longitude: Float!
+  altitude: Float
+  relevantText: String
+}
+
+type WalletField {
+  key: String!
+  label: String
+  value: String!
+  changeMessage: String
+  textAlignment: String
+  dataDetectorTypes: [String!]
+  dateStyle: String
+  timeStyle: String
+  numberStyle: String
+}
+
+type WalletOrder implements Node {
+  id: ID!
+  orderIdentifier: String!
+  orderTypeIdentifier: String!
+  orderStatus: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  merchant: WalletMerchant
+  lineItems: [WalletOrderLineItem!]
+  payment: WalletPayment
+  shipments: [WalletShipment!]
+}
+
+type WalletMerchant {
+  merchantIdentifier: String!
+  displayName: String!
+  url: URL
+  logo: URL
+}
+
+type WalletOrderLineItem {
+  label: String!
+  quantity: Int
+  price: String
+  currencyCode: String
+}
+
+type WalletPayment {
+  status: String
+  summaryItems: [WalletPaymentSummaryItem!]
+  billingContact: WalletContact
+}
+
+type WalletPaymentSummaryItem {
+  label: String!
+  amount: String!
+}
+
+type WalletContact {
+  name: String
+  emailAddress: String
+  phoneNumber: String
+}
+
+type WalletShipment {
+  trackingNumber: String
+  carrier: String
+  status: String
+  deliveryDate: DateTime
+  recipient: WalletContact
+  shippingAddress: WalletShippingAddress
+}
+
+type WalletShippingAddress {
+  street: String
+  city: String
+  state: String
+  country: String
+  postalCode: String
+}
+
+# ---------------------------------------------------------------------------
+# DeviceCheck Types
+# ---------------------------------------------------------------------------
+
+type DeviceCheckToken {
+  token: String!
+  platform: Platform!
+}
+
+type DeviceCheckBits {
+  bit0: Boolean
+  bit1: Boolean
+  lastUpdatedTime: String
+}
+
+# ---------------------------------------------------------------------------
+# Shared Supporting Types
+# ---------------------------------------------------------------------------
+
+type ImageAsset {
+  templateUrl: String!
+  width: Int
+  height: Int
+}
+
+type UploadOperation {
+  url: URL
+  method: String
+  length: Int
+  offset: Int
+  requestHeaders: [HttpHeader!]
+}
+
+type HttpHeader {
+  name: String!
+  value: String!
+}
+
+type AssetDeliveryState {
+  errors: [AppMediaStateError!]
+  warnings: [AppMediaStateError!]
+  state: String
+}
+
+type AppMediaStateError {
+  code: String
+  description: String
+}
+
+# ---------------------------------------------------------------------------
+# Query Root
+# ---------------------------------------------------------------------------
+
+type Query {
+  # App Management
+  app(id: ID!): App
+  apps(bundleId: String, sku: String, name: String): [App!]
+  appVersion(id: ID!): AppVersion
+  appCategory(id: ID!): AppCategory
+  appCategories(platforms: [Platform!]): [AppCategory!]
+
+  # Pricing
+  appPriceTier(id: ID!): AppPriceTier
+  appPriceTiers: [AppPriceTier!]
+  appPricePoint(id: ID!): AppPricePoint
+
+  # Bundles
+  bundle(id: ID!): Bundle
+  bundleId(id: ID!): BundleId
+  bundleIds(identifier: String, platform: Platform): [BundleId!]
+
+  # Certificates and Profiles
+  certificate(id: ID!): Certificate
+  certificates(type: CertificateType, displayName: String): [Certificate!]
+  device(id: ID!): Device
+  devices(name: String, platform: Platform, udid: String): [Device!]
+  profile(id: ID!): Profile
+  profiles(name: String, profileType: ProfileType, profileState: ProfileState): [Profile!]
+
+  # Builds and Beta Testing
+  build(id: ID!): Build
+  builds(app: ID, processingState: BuildProcessingState, version: String): [Build!]
+  betaGroup(id: ID!): BetaGroup
+  betaGroups(app: ID, name: String, isInternalGroup: Boolean): [BetaGroup!]
+  betaTester(id: ID!): BetaTester
+  betaTesters(email: String, firstName: String, lastName: String): [BetaTester!]
+  preReleaseVersion(id: ID!): PreReleaseVersion
+
+  # App Review
+  reviewSubmission(id: ID!): ReviewSubmission
+  appReview(id: ID!): AppReview
+  reviews(app: ID!, territory: String): [Review!]
+  ratingSummary(app: ID!, territory: String): RatingSummary
+
+  # In-App Purchases and Subscriptions
+  inAppPurchase(id: ID!): InAppPurchase
+  subscription(id: ID!): Subscription
+  subscriptionGroup(id: ID!): SubscriptionGroup
+
+  # Analytics and Reports
+  analyticsReportRequest(id: ID!): AnalyticsReportRequest
+  analyticsReport(id: ID!): AnalyticsReport
+  financeReports(vendorNumber: String!, reportDate: String!, frequency: String): [FinanceReport!]
+  salesReports(vendorNumber: String!, reportDate: String!, frequency: String, reportType: String): [SalesReport!]
+
+  # Users and Roles
+  users: [User!]
+  user(id: ID!): User
+  userInvitations: [UserInvitation!]
+  userInvitation(id: ID!): UserInvitation
+
+  # Territories
+  territories: [Territory!]
+  territory(id: ID!): Territory
+
+  # Game Center
+  gameCenterDetail(id: ID!): GameCenterDetail
+  gameCenterGroup(id: ID!): GameCenterGroup
+  achievement(id: ID!): Achievement
+  leaderboard(id: ID!): Leaderboard
+  leaderboardSet(id: ID!): LeaderboardSet
+
+  # Maps
+  geocode(q: String!, lang: String, limitToCountries: String): [GeocodedPlace!]
+  reverseGeocode(loc: String!, lang: String): [GeocodedPlace!]
+  search(q: String!, lang: String, userLocation: String, limitToCountries: String): [SearchResult!]
+  eta(origin: String!, destinations: [String!]!, transportType: String): [EtaResult!]
+
+  # App Clips
+  appClip(id: ID!): AppClip
+  appClipDefaultExperience(id: ID!): AppClipDefaultExperience
+
+  # Sign in with Apple
+  validateAppleToken(idToken: String!): AppleIdentityToken
+
+  # DeviceCheck
+  deviceCheckBits(deviceToken: String!, timestamp: Int!): DeviceCheckBits
+}
+
+# ---------------------------------------------------------------------------
+# Mutation Root
+# ---------------------------------------------------------------------------
+
+type Mutation {
+  # App Management
+  updateApp(id: ID!, name: String, primaryLocale: String, subscriptionStatusUrl: URL): App
+  createAppVersion(appId: ID!, versionString: String!, platform: Platform!): AppVersion
+  updateAppVersion(id: ID!, versionString: String, earliestReleaseDate: DateTime): AppVersion
+  createAppVersionLocalization(appVersionId: ID!, locale: String!, description: String, keywords: String): AppVersionLocalization
+  updateAppVersionLocalization(id: ID!, description: String, keywords: String, whatsNew: String): AppVersionLocalization
+
+  # Beta Testing
+  createBetaGroup(appId: ID!, name: String!, isInternalGroup: Boolean, feedbackEnabled: Boolean): BetaGroup
+  updateBetaGroup(id: ID!, name: String, publicLinkEnabled: Boolean, publicLinkLimit: Int): BetaGroup
+  deleteBetaGroup(id: ID!): Boolean
+  addBetaTesters(betaGroupId: ID!, emails: [String!]!): BetaGroup
+  removeBetaTesters(betaGroupId: ID!, emails: [String!]!): BetaGroup
+  addBuilds(betaGroupId: ID!, buildIds: [ID!]!): BetaGroup
+
+  # Review Submission
+  createReviewSubmission(appId: ID!, platform: Platform!): ReviewSubmission
+  cancelReviewSubmission(id: ID!): ReviewSubmission
+  createAppReviewResponse(reviewId: ID!, responseBody: String!): AppReviewResponse
+  deleteAppReviewResponse(id: ID!): Boolean
+
+  # Certificates and Profiles
+  createCertificate(type: CertificateType!, csrContent: String!): Certificate
+  revokeCertificate(id: ID!): Boolean
+  registerDevice(name: String!, platform: Platform!, udid: String!): Device
+  enableDevice(id: ID!): Device
+  createProfile(name: String!, profileType: ProfileType!, bundleIdId: ID!, certificateIds: [ID!]!, deviceIds: [ID!]): Profile
+  deleteProfile(id: ID!): Boolean
+  registerBundleId(identifier: String!, name: String!, platform: Platform!): BundleId
+  deleteBundleId(id: ID!): Boolean
+
+  # In-App Purchases
+  createInAppPurchase(appId: ID!, name: String!, productId: String!, inAppPurchaseType: InAppPurchaseType!): InAppPurchase
+  updateInAppPurchase(id: ID!, name: String, reviewNote: String): InAppPurchase
+  deleteInAppPurchase(id: ID!): Boolean
+  createSubscription(groupId: ID!, name: String!, productId: String!, subscriptionPeriod: SubscriptionPeriod!): Subscription
+  createSubscriptionGroup(appId: ID!, referenceName: String!): SubscriptionGroup
+
+  # Users
+  inviteUser(email: String!, firstName: String, lastName: String, roles: [UserRole!]!, allAppsVisible: Boolean, provisioningAllowed: Boolean, visibleAppIds: [ID!]): UserInvitation
+  updateUser(id: ID!, roles: [UserRole!], allAppsVisible: Boolean, provisioningAllowed: Boolean, visibleAppIds: [ID!]): User
+  removeUser(id: ID!): Boolean
+  cancelUserInvitation(id: ID!): Boolean
+
+  # Game Center
+  createAchievement(gameCenterDetailId: ID!, referenceName: String!, vendorIdentifier: String!, points: Int!): Achievement
+  updateAchievement(id: ID!, points: Int, showBeforeEarned: Boolean, repeatable: Boolean): Achievement
+  createLeaderboard(gameCenterDetailId: ID!, referenceName: String!, vendorIdentifier: String!, scoreSortType: String!): Leaderboard
+  updateLeaderboard(id: ID!, referenceName: String, scoreSortType: String): Leaderboard
+
+  # DeviceCheck
+  setDeviceCheckBits(deviceToken: String!, timestamp: Int!, bit0: Boolean, bit1: Boolean): Boolean
+}
