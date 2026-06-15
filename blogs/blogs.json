@@ -2,6 +2,13 @@
   "repo": "apple",
   "feeds": [
     {
+      "source": "https://developer.apple.com/news/rss/news.rss",
+      "feed_url": "https://developer.apple.com/news/rss/news.rss",
+      "title": "",
+      "saved": 5,
+      "method": "feed"
+    },
+    {
       "source": "https://developer.apple.com/support/",
       "feed_url": "https://developer.apple.com/support/",
       "title": "",
@@ -9,6 +16,6 @@
       "method": "none"
     }
   ],
-  "fetched": "2026-06-01T23:35:02Z",
-  "post_count": 0
+  "post_count": 8,
+  "fetched": "2026-06-14T20:42:17Z"
 }
