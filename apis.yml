@@ -389,7 +389,7 @@ common:
   url: https://developer.apple.com/news/
 - type: StatusPage
   url: https://developer.apple.com/system-status/
-- type: SignUp
+- type: Signup
   url: https://developer.apple.com/programs/enroll/
 - type: Pricing
   url: https://developer.apple.com/support/compare-memberships/
@@ -405,7 +405,7 @@ common:
   url: https://developer.apple.com/tutorials/
 - type: CodeExamples
   url: https://developer.apple.com/sample-code/
-- type: SDK
+- type: SDKs
   url: https://developer.apple.com/download/
 - type: Contact
   url: https://developer.apple.com/contact/

@@ -5,7 +5,7 @@
       "source": "https://developer.apple.com/news/rss/news.rss",
       "feed_url": "https://developer.apple.com/news/rss/news.rss",
       "title": "",
-      "saved": 5,
+      "saved": 1,
       "method": "feed"
     },
     {
@@ -16,6 +16,6 @@
       "method": "none"
     }
   ],
-  "post_count": 8,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 12,
+  "fetched": "2026-06-27T12:03:07Z"
 }
