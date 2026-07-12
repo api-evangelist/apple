@@ -375,6 +375,12 @@ apis:
   - type: Documentation
     url: https://developer.apple.com/documentation/applemusicfeed
 common:
+- type: VulnerabilityDisclosure
+  url: security/apple-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/apple-domain-security.yml
+- type: Authentication
+  url: authentication/apple-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/apple
 - type: DeveloperPortal

@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/app-store-connect-api.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: App Store Connect API uses JSON Web Tokens (JWT) for authentication. Generate
+    a token using your API key from App Store Connect. The token must include the issuer ID,
+    key ID, and be signed with the ES256 algorithm using your private key. Tokens expire after
+    20 minutes.
+  sources:
+  - openapi/app-store-connect-api.yml
