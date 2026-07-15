@@ -375,6 +375,8 @@ apis:
   - type: Documentation
     url: https://developer.apple.com/documentation/applemusicfeed
 common:
+- type: AgenticAccess
+  url: agentic-access/apple-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/apple-vulnerability-disclosure.yml
 - type: DomainSecurity
