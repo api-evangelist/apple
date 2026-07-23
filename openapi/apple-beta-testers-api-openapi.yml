@@ -1,0 +1,2036 @@
+openapi: 3.1.0
+info:
+  title: Apple App Store Connect Apps Beta Testers API
+  description: Automate the tasks you perform on the Apple Developer website and in App Store Connect. The App Store Connect API is a REST API that enables the automation of actions you take in App Store Connect, including managing apps, builds, beta testers, provisioning, and more. This specification covers the Apps, Builds, and Beta Testers resource groups.
+  version: 3.6.0
+  contact:
+    name: Apple Developer Relations
+    url: https://developer.apple.com/contact/
+    email: developer@apple.com
+  license:
+    name: Apple Developer Program License Agreement
+    url: https://developer.apple.com/support/terms/apple-developer-program-license-agreement/
+  termsOfService: https://developer.apple.com/terms/
+  x-providerName: Apple
+  x-serviceName: App Store Connect
+servers:
+- url: https://api.appstoreconnect.apple.com
+  description: App Store Connect API Production Server
+security:
+- BearerAuth: []
+tags:
+- name: Beta Testers
+  description: Manage TestFlight beta testers, including inviting testers, managing tester groups, and controlling access to beta builds.
+  externalDocs:
+    url: https://developer.apple.com/documentation/appstoreconnectapi/beta-testers
+paths:
+  /v1/builds/{id}/individualTesters:
+    get:
+      operationId: listBuildIndividualTesters
+      summary: List All Individual Testers for a Build
+      description: Get a list of beta testers individually assigned to a build.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/list-all-individual-testers-for-a-build
+      parameters:
+      - $ref: '#/components/parameters/BuildIdParam'
+      - name: fields[betaTesters]
+        in: query
+        description: Fields to return for beta tester resources
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
+      responses:
+        '200':
+          description: List of beta testers for the build
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BetaTestersResponse'
+              examples:
+                Listbuildindividualtesters200Example:
+                  summary: Default listBuildIndividualTesters 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: betaTesters
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/betaTesters:
+    get:
+      operationId: listBetaTesters
+      summary: List Beta Testers
+      description: Find and list beta testers for all apps, builds, and beta groups.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/list-beta-testers
+      parameters:
+      - name: filter[email]
+        in: query
+        description: Filter by email address
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: user@example.com
+      - name: filter[firstName]
+        in: query
+        description: Filter by first name
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[lastName]
+        in: query
+        description: Filter by last name
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[inviteType]
+        in: query
+        description: Filter by invitation type
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - EMAIL
+            - PUBLIC_LINK
+        style: form
+        explode: false
+        example: []
+      - name: filter[apps]
+        in: query
+        description: Filter by app resource IDs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[betaGroups]
+        in: query
+        description: Filter by beta group resource IDs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[builds]
+        in: query
+        description: Filter by build resource IDs
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[id]
+        in: query
+        description: Filter by beta tester resource ID
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: sort
+        in: query
+        description: Sort order for results
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - email
+            - -email
+            - firstName
+            - -firstName
+            - inviteType
+            - -inviteType
+            - lastName
+            - -lastName
+            - state
+            - -state
+        style: form
+        explode: false
+        example: []
+      - name: fields[betaTesters]
+        in: query
+        description: Fields to return for beta tester resources
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - apps
+            - betaGroups
+            - builds
+            - email
+            - firstName
+            - inviteType
+            - lastName
+            - state
+        style: form
+        explode: false
+        example: []
+      - name: include
+        in: query
+        description: Relationship data to include in the response
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - apps
+            - betaGroups
+            - builds
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
+      responses:
+        '200':
+          description: List of beta testers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BetaTestersResponse'
+              examples:
+                Listbetatesters200Example:
+                  summary: Default listBetaTesters 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: betaTesters
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createBetaTester
+      summary: Create a Beta Tester
+      description: Create a beta tester assigned to a group, a build, or an app.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/create-a-beta-tester
+      requestBody:
+        description: Beta tester creation request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BetaTesterCreateRequest'
+            examples:
+              CreatebetatesterRequestExample:
+                summary: Default createBetaTester request
+                x-microcks-default: true
+                value:
+                  data:
+                    type: betaTesters
+                    attributes:
+                      firstName: example_value
+                      lastName: example_value
+                      email: user@example.com
+                    relationships:
+                      betaGroups:
+                        data: {}
+                      builds:
+                        data: {}
+      responses:
+        '201':
+          description: Created beta tester
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BetaTesterResponse'
+              examples:
+                Createbetatester201Example:
+                  summary: Default createBetaTester 201 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      type: betaTesters
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/betaTesters/{id}:
+    get:
+      operationId: readBetaTester
+      summary: Read Beta Tester Information
+      description: Get information about a specific beta tester.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/read-beta-tester-information
+      parameters:
+      - $ref: '#/components/parameters/BetaTesterIdParam'
+      - name: fields[betaTesters]
+        in: query
+        description: Fields to return for beta tester resources
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - apps
+            - betaGroups
+            - builds
+            - email
+            - firstName
+            - inviteType
+            - lastName
+            - state
+        style: form
+        explode: false
+        example: []
+      - name: include
+        in: query
+        description: Relationship data to include in the response
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - apps
+            - betaGroups
+            - builds
+        style: form
+        explode: false
+        example: []
+      responses:
+        '200':
+          description: Single beta tester response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BetaTesterResponse'
+              examples:
+                Readbetatester200Example:
+                  summary: Default readBetaTester 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      type: betaTesters
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteBetaTester
+      summary: Delete a Beta Tester
+      description: Remove a beta tester's ability to test all apps.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/delete-a-beta-tester
+      parameters:
+      - $ref: '#/components/parameters/BetaTesterIdParam'
+      responses:
+        '204':
+          description: Beta tester successfully deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/betaTesters/{id}/apps:
+    get:
+      operationId: listBetaTesterApps
+      summary: List All Apps for a Beta Tester
+      description: Get a list of apps that a beta tester can test.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/list-all-apps-for-a-beta-tester
+      parameters:
+      - $ref: '#/components/parameters/BetaTesterIdParam'
+      - name: fields[apps]
+        in: query
+        description: Fields to return for app resources
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
+      responses:
+        '200':
+          description: List of apps for the beta tester
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppsResponse'
+              examples:
+                Listbetatesterapps200Example:
+                  summary: Default listBetaTesterApps 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: apps
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/betaTesters/{id}/builds:
+    get:
+      operationId: listBetaTesterBuilds
+      summary: List All Builds Individually Assigned to a Beta Tester
+      description: Get a list of builds individually assigned to a specific beta tester.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/list-all-builds-individually-assigned-to-a-beta-tester
+      parameters:
+      - $ref: '#/components/parameters/BetaTesterIdParam'
+      - name: fields[builds]
+        in: query
+        description: Fields to return for build resources
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
+      responses:
+        '200':
+          description: List of builds for the beta tester
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuildsResponse'
+              examples:
+                Listbetatesterbuilds200Example:
+                  summary: Default listBetaTesterBuilds 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: builds
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/betaGroups:
+    get:
+      operationId: listBetaGroups
+      summary: List Beta Groups
+      description: Find and list beta groups for all apps.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/list-beta-groups
+      parameters:
+      - name: filter[app]
+        in: query
+        description: Filter by app resource ID
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[name]
+        in: query
+        description: Filter by group name
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: filter[isInternalGroup]
+        in: query
+        description: Filter by internal group status
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - 'true'
+            - 'false'
+        style: form
+        explode: false
+        example: []
+      - name: filter[publicLinkEnabled]
+        in: query
+        description: Filter by public link enabled status
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - 'true'
+            - 'false'
+        style: form
+        explode: false
+        example: []
+      - name: filter[id]
+        in: query
+        description: Filter by beta group resource ID
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: sort
+        in: query
+        description: Sort order for results
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - createdDate
+            - -createdDate
+            - name
+            - -name
+            - publicLinkEnabled
+            - -publicLinkEnabled
+            - publicLinkLimit
+            - -publicLinkLimit
+        style: form
+        explode: false
+        example: []
+      - name: fields[betaGroups]
+        in: query
+        description: Fields to return for beta group resources
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - app
+            - betaTesters
+            - builds
+            - createdDate
+            - feedbackEnabled
+            - hasAccessToAllBuilds
+            - iosBuildsAvailableForAppleSiliconMac
+            - isInternalGroup
+            - name
+            - publicLink
+            - publicLinkEnabled
+            - publicLinkId
+            - publicLinkLimit
+            - publicLinkLimitEnabled
+        style: form
+        explode: false
+        example: []
+      - name: include
+        in: query
+        description: Relationship data to include in the response
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - app
+            - betaTesters
+            - builds
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
+      responses:
+        '200':
+          description: List of beta groups
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BetaGroupsResponse'
+              examples:
+                Listbetagroups200Example:
+                  summary: Default listBetaGroups 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: betaGroups
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createBetaGroup
+      summary: Create a Beta Group
+      description: Create a beta group associated with an app, optionally enabling TestFlight public links.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/create-a-beta-group
+      requestBody:
+        description: Beta group creation request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BetaGroupCreateRequest'
+            examples:
+              CreatebetagroupRequestExample:
+                summary: Default createBetaGroup request
+                x-microcks-default: true
+                value:
+                  data:
+                    type: betaGroups
+                    attributes:
+                      name: Example Title
+                      hasAccessToAllBuilds: true
+                      publicLinkEnabled: true
+                      publicLinkLimit: 10
+                      publicLinkLimitEnabled: true
+                      feedbackEnabled: true
+                      iosBuildsAvailableForAppleSiliconMac: true
+                    relationships:
+                      app: {}
+                      betaTesters:
+                        data: {}
+                      builds:
+                        data: {}
+      responses:
+        '201':
+          description: Created beta group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BetaGroupResponse'
+              examples:
+                Createbetagroup201Example:
+                  summary: Default createBetaGroup 201 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      type: betaGroups
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/betaGroups/{id}:
+    get:
+      operationId: readBetaGroup
+      summary: Read Beta Group Information
+      description: Get information about a specific beta group.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/read-beta-group-information
+      parameters:
+      - $ref: '#/components/parameters/BetaGroupIdParam'
+      - name: fields[betaGroups]
+        in: query
+        description: Fields to return for beta group resources
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - name: include
+        in: query
+        description: Relationship data to include in the response
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - app
+            - betaTesters
+            - builds
+        style: form
+        explode: false
+        example: []
+      responses:
+        '200':
+          description: Single beta group response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BetaGroupResponse'
+              examples:
+                Readbetagroup200Example:
+                  summary: Default readBetaGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      type: betaGroups
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: modifyBetaGroup
+      summary: Modify a Beta Group
+      description: Modify a beta group's metadata, including name and public link status.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/modify-a-beta-group
+      parameters:
+      - $ref: '#/components/parameters/BetaGroupIdParam'
+      requestBody:
+        description: Beta group update request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BetaGroupUpdateRequest'
+            examples:
+              ModifybetagroupRequestExample:
+                summary: Default modifyBetaGroup request
+                x-microcks-default: true
+                value:
+                  data:
+                    type: betaGroups
+                    id: abc123
+                    attributes:
+                      name: Example Title
+                      hasAccessToAllBuilds: true
+                      publicLinkEnabled: true
+                      publicLinkLimit: 10
+                      publicLinkLimitEnabled: true
+                      feedbackEnabled: true
+                      iosBuildsAvailableForAppleSiliconMac: true
+      responses:
+        '200':
+          description: Updated beta group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BetaGroupResponse'
+              examples:
+                Modifybetagroup200Example:
+                  summary: Default modifyBetaGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                      type: betaGroups
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteBetaGroup
+      summary: Delete a Beta Group
+      description: Delete a beta group and remove beta tester access to associated builds.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/delete-a-beta-group
+      parameters:
+      - $ref: '#/components/parameters/BetaGroupIdParam'
+      responses:
+        '204':
+          description: Beta group successfully deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/betaGroups/{id}/betaTesters:
+    get:
+      operationId: listBetaGroupBetaTesters
+      summary: List All Beta Testers in a Beta Group
+      description: Get a list of beta testers contained in a specific beta group.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/list-all-beta-testers-in-a-beta-group
+      parameters:
+      - $ref: '#/components/parameters/BetaGroupIdParam'
+      - name: fields[betaTesters]
+        in: query
+        description: Fields to return for beta tester resources
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+        explode: false
+        example: []
+      - $ref: '#/components/parameters/LimitParam'
+      responses:
+        '200':
+          description: List of beta testers in the group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BetaTestersResponse'
+              examples:
+                Listbetagroupbetatesters200Example:
+                  summary: Default listBetaGroupBetaTesters 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - type: betaTesters
+                      id: abc123
+                    included: []
+                    links:
+                      self: https://www.example.com
+                      first: https://www.example.com
+                      next: https://www.example.com
+                    meta:
+                      paging:
+                        total: 10
+                        limit: 10
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v1/betaGroups/{id}/relationships/betaTesters:
+    post:
+      operationId: addBetaTestersToBetaGroup
+      summary: Add Beta Testers to a Beta Group
+      description: Add one or more beta testers to a specific beta group.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/add-beta-testers-to-a-beta-group
+      parameters:
+      - $ref: '#/components/parameters/BetaGroupIdParam'
+      requestBody:
+        description: List of beta tester relationships to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BetaGroupBetaTestersLinkagesRequest'
+            examples:
+              AddbetatesterstobetagroupRequestExample:
+                summary: Default addBetaTestersToBetaGroup request
+                x-microcks-default: true
+                value:
+                  data:
+                  - type: betaTesters
+                    id: abc123
+      responses:
+        '204':
+          description: Beta testers successfully added to group
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: removeBetaTestersFromBetaGroup
+      summary: Remove Beta Testers From a Beta Group
+      description: Remove one or more beta testers from a specific beta group.
+      tags:
+      - Beta Testers
+      externalDocs:
+        url: https://developer.apple.com/documentation/appstoreconnectapi/remove-beta-testers-from-a-beta-group
+      parameters:
+      - $ref: '#/components/parameters/BetaGroupIdParam'
+      requestBody:
+        description: List of beta tester relationships to remove
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BetaGroupBetaTestersLinkagesRequest'
+            examples:
+              RemovebetatestersfrombetagroupRequestExample:
+                summary: Default removeBetaTestersFromBetaGroup request
+                x-microcks-default: true
+                value:
+                  data:
+                  - type: betaTesters
+                    id: abc123
+      responses:
+        '204':
+          description: Beta testers successfully removed from group
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorDetail:
+      type: object
+      required:
+      - status
+      - title
+      properties:
+        id:
+          type: string
+          description: A unique identifier for this error occurrence
+          example: abc123
+        status:
+          type: string
+          description: The HTTP status code for this error
+          example: example_value
+        code:
+          type: string
+          description: A machine-readable error code
+          example: example_value
+        title:
+          type: string
+          description: A short summary of the error
+          example: Example Title
+        detail:
+          type: string
+          description: A detailed explanation of the error
+          example: example_value
+        source:
+          type: object
+          properties:
+            pointer:
+              type: string
+              description: JSON pointer to the associated entity in the request body
+            parameter:
+              type: string
+              description: The query parameter that caused the error
+          example: example_value
+    BetaGroupBetaTestersLinkagesRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            required:
+            - type
+            - id
+            properties:
+              type:
+                type: string
+                enum:
+                - betaTesters
+              id:
+                type: string
+          example: []
+    ErrorResponse:
+      type: object
+      required:
+      - errors
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          example: []
+    BetaGroup:
+      type: object
+      required:
+      - type
+      - id
+      properties:
+        type:
+          type: string
+          enum:
+          - betaGroups
+          example: betaGroups
+        id:
+          type: string
+          description: The opaque resource ID that uniquely identifies the beta group
+          example: abc123
+        attributes:
+          $ref: '#/components/schemas/BetaGroupAttributes'
+        relationships:
+          $ref: '#/components/schemas/BetaGroupRelationships'
+        links:
+          $ref: '#/components/schemas/ResourceLink'
+    RelationshipLinks:
+      type: object
+      properties:
+        self:
+          type: string
+          format: uri
+          example: https://www.example.com
+        related:
+          type: string
+          format: uri
+          example: https://www.example.com
+    BetaGroupResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          $ref: '#/components/schemas/BetaGroup'
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/DocumentLinks'
+    PagedDocumentLinks:
+      type: object
+      required:
+      - self
+      properties:
+        self:
+          type: string
+          format: uri
+          description: The URL for the current page of results
+          example: https://www.example.com
+        first:
+          type: string
+          format: uri
+          description: The URL for the first page of results
+          example: https://www.example.com
+        next:
+          type: string
+          format: uri
+          description: The URL for the next page of results
+          example: https://www.example.com
+    PagingInformation:
+      type: object
+      required:
+      - paging
+      properties:
+        paging:
+          type: object
+          required:
+          - total
+          - limit
+          properties:
+            total:
+              type: integer
+              description: Total number of resources matching the request
+            limit:
+              type: integer
+              description: Maximum number of resources returned per page
+          example: example_value
+    AppsResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/App'
+          example: []
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/PagedDocumentLinks'
+        meta:
+          $ref: '#/components/schemas/PagingInformation'
+    RelationshipData:
+      type: object
+      required:
+      - type
+      - id
+      properties:
+        type:
+          type: string
+          example: example_value
+        id:
+          type: string
+          example: abc123
+    BetaTestersResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BetaTester'
+          example: []
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/PagedDocumentLinks'
+        meta:
+          $ref: '#/components/schemas/PagingInformation'
+    BetaGroupCreateRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - type
+          - attributes
+          - relationships
+          properties:
+            type:
+              type: string
+              enum:
+              - betaGroups
+            attributes:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the beta group
+                hasAccessToAllBuilds:
+                  type: boolean
+                  description: Whether the group has access to all builds
+                publicLinkEnabled:
+                  type: boolean
+                  description: Whether the public link is enabled
+                publicLinkLimit:
+                  type: integer
+                  description: Maximum number of testers via the public link
+                publicLinkLimitEnabled:
+                  type: boolean
+                  description: Whether the public link limit is enabled
+                feedbackEnabled:
+                  type: boolean
+                  description: Whether feedback is enabled
+                iosBuildsAvailableForAppleSiliconMac:
+                  type: boolean
+                  description: Whether iOS builds are available on Apple Silicon Macs
+            relationships:
+              type: object
+              required:
+              - app
+              properties:
+                app:
+                  type: object
+                  required:
+                  - data
+                  properties:
+                    data:
+                      $ref: '#/components/schemas/RelationshipData'
+                betaTesters:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/RelationshipData'
+                builds:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+    App:
+      type: object
+      required:
+      - type
+      - id
+      properties:
+        type:
+          type: string
+          enum:
+          - apps
+          example: apps
+        id:
+          type: string
+          description: The opaque resource ID that uniquely identifies the app
+          example: abc123
+        attributes:
+          $ref: '#/components/schemas/AppAttributes'
+        relationships:
+          $ref: '#/components/schemas/AppRelationships'
+        links:
+          $ref: '#/components/schemas/ResourceLink'
+    BetaTesterCreateRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - type
+          - attributes
+          properties:
+            type:
+              type: string
+              enum:
+              - betaTesters
+            attributes:
+              type: object
+              required:
+              - email
+              properties:
+                firstName:
+                  type: string
+                  description: The first name of the beta tester
+                lastName:
+                  type: string
+                  description: The last name of the beta tester
+                email:
+                  type: string
+                  format: email
+                  description: The email address of the beta tester
+            relationships:
+              type: object
+              properties:
+                betaGroups:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/RelationshipData'
+                builds:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+    BetaTesterResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          $ref: '#/components/schemas/BetaTester'
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/DocumentLinks'
+    BetaGroupsResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BetaGroup'
+          example: []
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/PagedDocumentLinks'
+        meta:
+          $ref: '#/components/schemas/PagingInformation'
+    AppRelationships:
+      type: object
+      properties:
+        builds:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        betaGroups:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        betaTesters:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+          example: example_value
+        appStoreVersions:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        preReleaseVersions:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        appInfos:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+    BetaGroupRelationships:
+      type: object
+      properties:
+        app:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        betaTesters:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        builds:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+    BetaTesterAttributes:
+      type: object
+      properties:
+        firstName:
+          type:
+          - string
+          - 'null'
+          description: The first name of the beta tester
+          example: example_value
+        lastName:
+          type:
+          - string
+          - 'null'
+          description: The last name of the beta tester
+          example: example_value
+        email:
+          type:
+          - string
+          - 'null'
+          format: email
+          description: The email address of the beta tester
+          example: user@example.com
+        inviteType:
+          type: string
+          enum:
+          - EMAIL
+          - PUBLIC_LINK
+          description: How the tester was invited
+          example: EMAIL
+        state:
+          type: string
+          enum:
+          - NOT_INVITED
+          - INVITED
+          - ACCEPTED
+          - INSTALLED
+          - REVOKED
+          description: The current state of the beta tester invitation
+          example: NOT_INVITED
+    AppAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the app
+          example: Example Title
+        bundleId:
+          type: string
+          description: The bundle ID of the app
+          example: '500123'
+        sku:
+          type: string
+          description: The SKU of the app
+          example: example_value
+        primaryLocale:
+          type: string
+          description: The primary locale for the app (e.g., en-US)
+          example: example_value
+        isOrEverWasMadeForKids:
+          type: boolean
+          description: Whether the app is or was made for kids
+          example: true
+        contentRightsDeclaration:
+          type: string
+          enum:
+          - DOES_NOT_USE_THIRD_PARTY_CONTENT
+          - USES_THIRD_PARTY_CONTENT
+          description: Declaration of whether the app uses third-party content
+          example: DOES_NOT_USE_THIRD_PARTY_CONTENT
+        streamlinedPurchasingEnabled:
+          type: boolean
+          description: Whether streamlined purchasing is enabled
+          example: true
+        subscriptionStatusUrl:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL for subscription status notifications
+          example: https://www.example.com
+        subscriptionStatusUrlForSandbox:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL for sandbox subscription status notifications
+          example: https://www.example.com
+        subscriptionStatusUrlVersion:
+          type:
+          - string
+          - 'null'
+          enum:
+          - V1
+          - V2
+          - null
+          description: Version of the subscription status URL
+          example: V1
+        subscriptionStatusUrlVersionForSandbox:
+          type:
+          - string
+          - 'null'
+          enum:
+          - V1
+          - V2
+          - null
+          description: Version of the sandbox subscription status URL
+          example: V1
+    BuildAttributes:
+      type: object
+      properties:
+        version:
+          type: string
+          description: The build version string (CFBundleVersion)
+          example: example_value
+        uploadedDate:
+          type: string
+          format: date-time
+          description: The date and time the build was uploaded
+          example: '2026-01-15T10:30:00Z'
+        expirationDate:
+          type: string
+          format: date-time
+          description: The date and time the build expires
+          example: '2026-01-15T10:30:00Z'
+        expired:
+          type: boolean
+          description: Whether the build has expired
+          example: true
+        minOsVersion:
+          type: string
+          description: The minimum OS version required
+          example: example_value
+        lsMinimumSystemVersion:
+          type: string
+          description: The minimum macOS system version
+          example: example_value
+        computedMinMacOsVersion:
+          type: string
+          description: The computed minimum macOS version
+          example: example_value
+        iconAssetToken:
+          type: object
+          description: Token for the build's icon asset
+          properties:
+            templateUrl:
+              type: string
+            width:
+              type: integer
+            height:
+              type: integer
+          example: example_value
+        processingState:
+          type: string
+          enum:
+          - PROCESSING
+          - FAILED
+          - INVALID
+          - VALID
+          description: The processing state of the build
+          example: PROCESSING
+        buildAudienceType:
+          type: string
+          enum:
+          - INTERNAL_ONLY
+          - APP_STORE_ELIGIBLE
+          description: The audience type for the build
+          example: INTERNAL_ONLY
+        usesNonExemptEncryption:
+          type:
+          - boolean
+          - 'null'
+          description: Whether the build uses non-exempt encryption
+          example: example_value
+    ResourceLink:
+      type: object
+      properties:
+        self:
+          type: string
+          format: uri
+          description: The URL for the resource
+          example: https://www.example.com
+    BetaGroupUpdateRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - type
+          - id
+          properties:
+            type:
+              type: string
+              enum:
+              - betaGroups
+            id:
+              type: string
+            attributes:
+              type: object
+              properties:
+                name:
+                  type: string
+                hasAccessToAllBuilds:
+                  type: boolean
+                publicLinkEnabled:
+                  type: boolean
+                publicLinkLimit:
+                  type: integer
+                publicLinkLimitEnabled:
+                  type: boolean
+                feedbackEnabled:
+                  type: boolean
+                iosBuildsAvailableForAppleSiliconMac:
+                  type: boolean
+          example: example_value
+    BuildRelationships:
+      type: object
+      properties:
+        app:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        preReleaseVersion:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        individualTesters:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        betaGroups:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        betaBuildLocalizations:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        appEncryptionDeclaration:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        betaAppReviewSubmission:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        buildBetaDetail:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        appStoreVersion:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+    BetaGroupAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the beta group
+          example: Example Title
+        createdDate:
+          type: string
+          format: date-time
+          description: The date and time the beta group was created
+          example: '2026-01-15T10:30:00Z'
+        isInternalGroup:
+          type: boolean
+          description: Whether the group is an internal group
+          example: true
+        hasAccessToAllBuilds:
+          type: boolean
+          description: Whether the group has access to all builds
+          example: true
+        publicLinkEnabled:
+          type: boolean
+          description: Whether the public link is enabled
+          example: true
+        publicLinkId:
+          type:
+          - string
+          - 'null'
+          description: The ID component of the public link
+          example: '500123'
+        publicLink:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: The full public TestFlight link
+          example: https://www.example.com
+        publicLinkLimitEnabled:
+          type: boolean
+          description: Whether the public link limit is enabled
+          example: true
+        publicLinkLimit:
+          type:
+          - integer
+          - 'null'
+          description: Maximum number of testers via the public link
+          example: example_value
+        feedbackEnabled:
+          type: boolean
+          description: Whether beta feedback is enabled for this group
+          example: true
+        iosBuildsAvailableForAppleSiliconMac:
+          type: boolean
+          description: Whether iOS builds are available on Apple Silicon Macs
+          example: true
+    BetaTester:
+      type: object
+      required:
+      - type
+      - id
+      properties:
+        type:
+          type: string
+          enum:
+          - betaTesters
+          example: betaTesters
+        id:
+          type: string
+          description: The opaque resource ID that uniquely identifies the beta tester
+          example: abc123
+        attributes:
+          $ref: '#/components/schemas/BetaTesterAttributes'
+        relationships:
+          $ref: '#/components/schemas/BetaTesterRelationships'
+        links:
+          $ref: '#/components/schemas/ResourceLink'
+    Build:
+      type: object
+      required:
+      - type
+      - id
+      properties:
+        type:
+          type: string
+          enum:
+          - builds
+          example: builds
+        id:
+          type: string
+          description: The opaque resource ID that uniquely identifies the build
+          example: abc123
+        attributes:
+          $ref: '#/components/schemas/BuildAttributes'
+        relationships:
+          $ref: '#/components/schemas/BuildRelationships'
+        links:
+          $ref: '#/components/schemas/ResourceLink'
+    DocumentLinks:
+      type: object
+      required:
+      - self
+      properties:
+        self:
+          type: string
+          format: uri
+          description: The URL for the resource
+          example: https://www.example.com
+    BuildsResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Build'
+          example: []
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/PagedDocumentLinks'
+        meta:
+          $ref: '#/components/schemas/PagingInformation'
+    BetaTesterRelationships:
+      type: object
+      properties:
+        apps:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        betaGroups:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        builds:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+  responses:
+    NotFound:
+      description: Not found - the requested resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Forbidden - the API key does not have permission for this request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Conflict:
+      description: Conflict - the request conflicts with the current state of the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request - the request was invalid or malformed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    BuildIdParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier for the build resource
+      schema:
+        type: string
+    BetaGroupIdParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier for the beta group resource
+      schema:
+        type: string
+    BetaTesterIdParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier for the beta tester resource
+      schema:
+        type: string
+    LimitParam:
+      name: limit
+      in: query
+      description: Maximum number of resources to return (maximum 200)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 50
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: App Store Connect API uses JSON Web Tokens (JWT) for authentication. Generate a token using your API key from App Store Connect. The token must include the issuer ID, key ID, and be signed with the ES256 algorithm using your private key. Tokens expire after 20 minutes.
+externalDocs:
+  description: Apple App Store Connect API Documentation
+  url: https://developer.apple.com/documentation/appstoreconnectapi
