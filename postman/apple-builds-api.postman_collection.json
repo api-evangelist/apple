@@ -1,0 +1,2542 @@
+{
+  "info": {
+    "_postman_id": "cdced7ee-a229-4abc-ab42-c238c3b6750e",
+    "name": "Apple App Store Connect Apps Builds API",
+    "description": "Automate the tasks you perform on the Apple Developer website and in App Store Connect. The App Store Connect API is a REST API that enables the automation of actions you take in App Store Connect, including managing apps, builds, beta testers, provisioning, and more. This specification covers the Apps, Builds, and Beta Testers resource groups.\n\nContact Support:\n Name: Apple Developer Relations\n Email: developer@apple.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:03:40.000Z",
+    "updatedAt": "2026-07-28T01:03:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cdced7ee-a229-4abc-ab42-c238c3b6750e"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "apps",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "builds",
+                  "item": [
+                    {
+                      "name": "List All Builds of an App",
+                      "id": "8763f5c5-a98c-4277-84f5-01d427f28f9f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/apps/:id/builds?fields[builds]=<string>,<string>&limit=50",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "apps",
+                            ":id",
+                            "builds"
+                          ],
+                          "query": [
+                            {
+                              "description": "Fields to return for build resources",
+                              "key": "fields[builds]",
+                              "value": "<string>,<string>"
+                            },
+                            {
+                              "description": "Maximum number of resources to return (maximum 200)",
+                              "key": "limit",
+                              "value": "50"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "60f9d966-3508-489e-b51b-4ffd6bda1df7",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier for the app resource"
+                            }
+                          ]
+                        },
+                        "description": "Get a list of builds associated with a specific app."
+                      },
+                      "response": [
+                        {
+                          "id": "1866cd48-4d82-4456-953d-74d0842588d5",
+                          "name": "List of builds for the app",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/apps/:id/builds?fields[builds]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "apps",
+                                ":id",
+                                "builds"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for build resources",
+                                  "key": "fields[builds]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"type\": \"builds\",\n      \"id\": \"<string>\",\n      \"attributes\": {\n        \"version\": \"<string>\",\n        \"uploadedDate\": \"<dateTime>\",\n        \"expirationDate\": \"<dateTime>\",\n        \"expired\": \"<boolean>\",\n        \"minOsVersion\": \"<string>\",\n        \"lsMinimumSystemVersion\": \"<string>\",\n        \"computedMinMacOsVersion\": \"<string>\",\n        \"iconAssetToken\": {\n          \"templateUrl\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\"\n        },\n        \"processingState\": \"FAILED\",\n        \"buildAudienceType\": \"INTERNAL_ONLY\",\n        \"usesNonExemptEncryption\": \"<boolean,null>\"\n      },\n      \"relationships\": {\n        \"app\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"preReleaseVersion\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"individualTesters\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"betaGroups\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"betaBuildLocalizations\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"appEncryptionDeclaration\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"betaAppReviewSubmission\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"buildBetaDetail\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"appStoreVersion\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        }\n      },\n      \"links\": {\n        \"self\": \"<uri>\"\n      }\n    },\n    {\n      \"type\": \"builds\",\n      \"id\": \"<string>\",\n      \"attributes\": {\n        \"version\": \"<string>\",\n        \"uploadedDate\": \"<dateTime>\",\n        \"expirationDate\": \"<dateTime>\",\n        \"expired\": \"<boolean>\",\n        \"minOsVersion\": \"<string>\",\n        \"lsMinimumSystemVersion\": \"<string>\",\n        \"computedMinMacOsVersion\": \"<string>\",\n        \"iconAssetToken\": {\n          \"templateUrl\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\"\n        },\n        \"processingState\": \"FAILED\",\n        \"buildAudienceType\": \"APP_STORE_ELIGIBLE\",\n        \"usesNonExemptEncryption\": \"<boolean,null>\"\n      },\n      \"relationships\": {\n        \"app\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"preReleaseVersion\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"individualTesters\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"betaGroups\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"betaBuildLocalizations\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"appEncryptionDeclaration\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"betaAppReviewSubmission\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"buildBetaDetail\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"appStoreVersion\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        }\n      },\n      \"links\": {\n        \"self\": \"<uri>\"\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"<uri>\",\n    \"first\": \"<uri>\",\n    \"next\": \"<uri>\"\n  },\n  \"meta\": {\n    \"paging\": {\n      \"total\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-1866cd48-4d82-4456-953d-74d0842588d5"
+                        },
+                        {
+                          "id": "15ff6740-39c4-478e-ade2-62a696908027",
+                          "name": "Bad request - the request was invalid or malformed",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/apps/:id/builds?fields[builds]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "apps",
+                                ":id",
+                                "builds"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for build resources",
+                                  "key": "fields[builds]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-15ff6740-39c4-478e-ade2-62a696908027"
+                        },
+                        {
+                          "id": "1bc8f806-42d7-4618-be52-3b530f58e573",
+                          "name": "Unauthorized - authentication credentials are missing or invalid",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/apps/:id/builds?fields[builds]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "apps",
+                                ":id",
+                                "builds"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for build resources",
+                                  "key": "fields[builds]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-1bc8f806-42d7-4618-be52-3b530f58e573"
+                        },
+                        {
+                          "id": "aa97816c-9726-4fc2-8767-de65ba706848",
+                          "name": "Forbidden - the API key does not have permission for this request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/apps/:id/builds?fields[builds]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "apps",
+                                ":id",
+                                "builds"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for build resources",
+                                  "key": "fields[builds]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-aa97816c-9726-4fc2-8767-de65ba706848"
+                        },
+                        {
+                          "id": "7e333a14-3050-47a4-b8e5-e1667ecc2519",
+                          "name": "Not found - the requested resource does not exist",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/apps/:id/builds?fields[builds]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "apps",
+                                ":id",
+                                "builds"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for build resources",
+                                  "key": "fields[builds]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-7e333a14-3050-47a4-b8e5-e1667ecc2519"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:03:41.000Z",
+                      "updatedAt": "2026-07-28T01:03:41.000Z",
+                      "uid": "35240-8763f5c5-a98c-4277-84f5-01d427f28f9f"
+                    }
+                  ],
+                  "id": "d1d15b67-8e0d-421a-8cdd-19038a5a3510",
+                  "createdAt": "2026-07-28T01:03:41.000Z",
+                  "updatedAt": "2026-07-28T01:03:41.000Z",
+                  "uid": "35240-d1d15b67-8e0d-421a-8cdd-19038a5a3510"
+                }
+              ],
+              "id": "97741092-bc19-4f24-81bc-0bae76dcfeb8",
+              "createdAt": "2026-07-28T01:03:41.000Z",
+              "updatedAt": "2026-07-28T01:03:41.000Z",
+              "uid": "35240-97741092-bc19-4f24-81bc-0bae76dcfeb8"
+            }
+          ],
+          "id": "a45e4517-8464-49ce-b05d-e9bebccc2e23",
+          "createdAt": "2026-07-28T01:03:41.000Z",
+          "updatedAt": "2026-07-28T01:03:41.000Z",
+          "uid": "35240-a45e4517-8464-49ce-b05d-e9bebccc2e23"
+        },
+        {
+          "name": "builds",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "individualTesters",
+                  "item": [
+                    {
+                      "name": "List All Individual Testers for a Build",
+                      "id": "7beef402-371f-4979-8edf-b30b1ff33a78",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/builds/:id/individualTesters?fields[betaTesters]=<string>,<string>&limit=50",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "builds",
+                            ":id",
+                            "individualTesters"
+                          ],
+                          "query": [
+                            {
+                              "description": "Fields to return for beta tester resources",
+                              "key": "fields[betaTesters]",
+                              "value": "<string>,<string>"
+                            },
+                            {
+                              "description": "Maximum number of resources to return (maximum 200)",
+                              "key": "limit",
+                              "value": "50"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "2b3c6aa0-c9a0-4639-8d97-1522da785c5c",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier for the build resource"
+                            }
+                          ]
+                        },
+                        "description": "Get a list of beta testers individually assigned to a build."
+                      },
+                      "response": [
+                        {
+                          "id": "96e2eb92-3f0d-4fb9-a723-957e1b71a57c",
+                          "name": "List of beta testers for the build",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/builds/:id/individualTesters?fields[betaTesters]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "builds",
+                                ":id",
+                                "individualTesters"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for beta tester resources",
+                                  "key": "fields[betaTesters]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"<string>\",\n      \"attributes\": {\n        \"firstName\": \"<string,null>\",\n        \"lastName\": \"<string,null>\",\n        \"email\": \"<string,null-email>\",\n        \"inviteType\": \"PUBLIC_LINK\",\n        \"state\": \"INVITED\"\n      },\n      \"relationships\": {\n        \"apps\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"betaGroups\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"builds\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        }\n      },\n      \"links\": {\n        \"self\": \"<uri>\"\n      }\n    },\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"<string>\",\n      \"attributes\": {\n        \"firstName\": \"<string,null>\",\n        \"lastName\": \"<string,null>\",\n        \"email\": \"<string,null-email>\",\n        \"inviteType\": \"EMAIL\",\n        \"state\": \"REVOKED\"\n      },\n      \"relationships\": {\n        \"apps\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"betaGroups\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"builds\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        }\n      },\n      \"links\": {\n        \"self\": \"<uri>\"\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"<uri>\",\n    \"first\": \"<uri>\",\n    \"next\": \"<uri>\"\n  },\n  \"meta\": {\n    \"paging\": {\n      \"total\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-96e2eb92-3f0d-4fb9-a723-957e1b71a57c"
+                        },
+                        {
+                          "id": "ec0af986-7836-4e15-b6fb-f4b6f1409e98",
+                          "name": "Bad request - the request was invalid or malformed",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/builds/:id/individualTesters?fields[betaTesters]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "builds",
+                                ":id",
+                                "individualTesters"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for beta tester resources",
+                                  "key": "fields[betaTesters]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-ec0af986-7836-4e15-b6fb-f4b6f1409e98"
+                        },
+                        {
+                          "id": "2a768a84-f3fe-444c-8dd1-b45e5346bd7f",
+                          "name": "Unauthorized - authentication credentials are missing or invalid",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/builds/:id/individualTesters?fields[betaTesters]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "builds",
+                                ":id",
+                                "individualTesters"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for beta tester resources",
+                                  "key": "fields[betaTesters]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-2a768a84-f3fe-444c-8dd1-b45e5346bd7f"
+                        },
+                        {
+                          "id": "102ee340-31a2-497b-bbcc-cb9d79544c24",
+                          "name": "Forbidden - the API key does not have permission for this request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/builds/:id/individualTesters?fields[betaTesters]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "builds",
+                                ":id",
+                                "individualTesters"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for beta tester resources",
+                                  "key": "fields[betaTesters]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-102ee340-31a2-497b-bbcc-cb9d79544c24"
+                        },
+                        {
+                          "id": "b725f5bc-e59c-483d-a757-62f099614f09",
+                          "name": "Not found - the requested resource does not exist",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/builds/:id/individualTesters?fields[betaTesters]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "builds",
+                                ":id",
+                                "individualTesters"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for beta tester resources",
+                                  "key": "fields[betaTesters]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-b725f5bc-e59c-483d-a757-62f099614f09"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:03:41.000Z",
+                      "updatedAt": "2026-07-28T01:03:41.000Z",
+                      "uid": "35240-7beef402-371f-4979-8edf-b30b1ff33a78"
+                    }
+                  ],
+                  "id": "a5d80a6b-da80-43c6-abaf-8e44db1394f0",
+                  "createdAt": "2026-07-28T01:03:41.000Z",
+                  "updatedAt": "2026-07-28T01:03:41.000Z",
+                  "uid": "35240-a5d80a6b-da80-43c6-abaf-8e44db1394f0"
+                },
+                {
+                  "name": "Read Build Information",
+                  "id": "a5084111-bf1c-43ff-968e-5f146ed517ae",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/builds/:id?fields[builds]=<string>,<string>&include=betaAppReviewSubmission,appEncryptionDeclaration",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "builds",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Fields to return for build resources",
+                          "key": "fields[builds]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Relationship data to include in the response",
+                          "key": "include",
+                          "value": "betaAppReviewSubmission,appEncryptionDeclaration"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "ca32077b-c73c-4c1b-9482-a5563eeeda12",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier for the build resource"
+                        }
+                      ]
+                    },
+                    "description": "Get information about a specific build."
+                  },
+                  "response": [
+                    {
+                      "id": "4c5d944a-d7b0-48c1-907d-131d1e676168",
+                      "name": "Single build response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/builds/:id?fields[builds]=<string>,<string>&include=betaAppReviewSubmission,appEncryptionDeclaration",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "builds",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Fields to return for build resources",
+                              "key": "fields[builds]",
+                              "value": "<string>,<string>"
+                            },
+                            {
+                              "description": "Relationship data to include in the response",
+                              "key": "include",
+                              "value": "betaAppReviewSubmission,appEncryptionDeclaration"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"type\": \"builds\",\n    \"id\": \"<string>\",\n    \"attributes\": {\n      \"version\": \"<string>\",\n      \"uploadedDate\": \"<dateTime>\",\n      \"expirationDate\": \"<dateTime>\",\n      \"expired\": \"<boolean>\",\n      \"minOsVersion\": \"<string>\",\n      \"lsMinimumSystemVersion\": \"<string>\",\n      \"computedMinMacOsVersion\": \"<string>\",\n      \"iconAssetToken\": {\n        \"templateUrl\": \"<string>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"processingState\": \"INVALID\",\n      \"buildAudienceType\": \"APP_STORE_ELIGIBLE\",\n      \"usesNonExemptEncryption\": \"<boolean,null>\"\n    },\n    \"relationships\": {\n      \"app\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      },\n      \"preReleaseVersion\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      },\n      \"individualTesters\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": [\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        ]\n      },\n      \"betaGroups\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": [\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        ]\n      },\n      \"betaBuildLocalizations\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": [\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        ]\n      },\n      \"appEncryptionDeclaration\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      },\n      \"betaAppReviewSubmission\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      },\n      \"buildBetaDetail\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      },\n      \"appStoreVersion\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      }\n    },\n    \"links\": {\n      \"self\": \"<uri>\"\n    }\n  },\n  \"links\": {\n    \"self\": \"<uri>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:03:41.000Z",
+                      "updatedAt": "2026-07-28T01:03:41.000Z",
+                      "uid": "35240-4c5d944a-d7b0-48c1-907d-131d1e676168"
+                    },
+                    {
+                      "id": "00f2b7ed-2039-49a2-96c3-b70120bb3011",
+                      "name": "Bad request - the request was invalid or malformed",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/builds/:id?fields[builds]=<string>,<string>&include=betaAppReviewSubmission,appEncryptionDeclaration",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "builds",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Fields to return for build resources",
+                              "key": "fields[builds]",
+                              "value": "<string>,<string>"
+                            },
+                            {
+                              "description": "Relationship data to include in the response",
+                              "key": "include",
+                              "value": "betaAppReviewSubmission,appEncryptionDeclaration"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:03:41.000Z",
+                      "updatedAt": "2026-07-28T01:03:41.000Z",
+                      "uid": "35240-00f2b7ed-2039-49a2-96c3-b70120bb3011"
+                    },
+                    {
+                      "id": "3e33f2e1-85d6-4947-92ac-c84ad9308f29",
+                      "name": "Unauthorized - authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/builds/:id?fields[builds]=<string>,<string>&include=betaAppReviewSubmission,appEncryptionDeclaration",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "builds",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Fields to return for build resources",
+                              "key": "fields[builds]",
+                              "value": "<string>,<string>"
+                            },
+                            {
+                              "description": "Relationship data to include in the response",
+                              "key": "include",
+                              "value": "betaAppReviewSubmission,appEncryptionDeclaration"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:03:41.000Z",
+                      "updatedAt": "2026-07-28T01:03:41.000Z",
+                      "uid": "35240-3e33f2e1-85d6-4947-92ac-c84ad9308f29"
+                    },
+                    {
+                      "id": "0c5de33f-51b2-435a-a0a0-04695b4cffb5",
+                      "name": "Forbidden - the API key does not have permission for this request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/builds/:id?fields[builds]=<string>,<string>&include=betaAppReviewSubmission,appEncryptionDeclaration",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "builds",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Fields to return for build resources",
+                              "key": "fields[builds]",
+                              "value": "<string>,<string>"
+                            },
+                            {
+                              "description": "Relationship data to include in the response",
+                              "key": "include",
+                              "value": "betaAppReviewSubmission,appEncryptionDeclaration"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:03:41.000Z",
+                      "updatedAt": "2026-07-28T01:03:41.000Z",
+                      "uid": "35240-0c5de33f-51b2-435a-a0a0-04695b4cffb5"
+                    },
+                    {
+                      "id": "40930eb3-177a-46f7-8345-093264bd738e",
+                      "name": "Not found - the requested resource does not exist",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/builds/:id?fields[builds]=<string>,<string>&include=betaAppReviewSubmission,appEncryptionDeclaration",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "builds",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Fields to return for build resources",
+                              "key": "fields[builds]",
+                              "value": "<string>,<string>"
+                            },
+                            {
+                              "description": "Relationship data to include in the response",
+                              "key": "include",
+                              "value": "betaAppReviewSubmission,appEncryptionDeclaration"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:03:41.000Z",
+                      "updatedAt": "2026-07-28T01:03:41.000Z",
+                      "uid": "35240-40930eb3-177a-46f7-8345-093264bd738e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:03:41.000Z",
+                  "updatedAt": "2026-07-28T01:03:41.000Z",
+                  "uid": "35240-a5084111-bf1c-43ff-968e-5f146ed517ae"
+                },
+                {
+                  "name": "Modify a Build",
+                  "id": "431abd68-3310-4b0a-bede-aa69b6378142",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"data\": {\n    \"type\": \"builds\",\n    \"id\": \"<string>\",\n    \"attributes\": {\n      \"expired\": \"<boolean>\",\n      \"usesNonExemptEncryption\": \"<boolean>\"\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/builds/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "builds",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f914ba97-65ec-409b-89eb-3513ea6dc7e3",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier for the build resource"
+                        }
+                      ]
+                    },
+                    "description": "Expire a build or change its encryption exemption setting."
+                  },
+                  "response": [
+                    {
+                      "id": "ffa8aa08-a15e-4f23-8bae-de71dc69f01b",
+                      "name": "Updated build",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"data\": {\n    \"type\": \"builds\",\n    \"id\": \"<string>\",\n    \"attributes\": {\n      \"expired\": \"<boolean>\",\n      \"usesNonExemptEncryption\": \"<boolean>\"\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/builds/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "builds",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"type\": \"builds\",\n    \"id\": \"<string>\",\n    \"attributes\": {\n      \"version\": \"<string>\",\n      \"uploadedDate\": \"<dateTime>\",\n      \"expirationDate\": \"<dateTime>\",\n      \"expired\": \"<boolean>\",\n      \"minOsVersion\": \"<string>\",\n      \"lsMinimumSystemVersion\": \"<string>\",\n      \"computedMinMacOsVersion\": \"<string>\",\n      \"iconAssetToken\": {\n        \"templateUrl\": \"<string>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"processingState\": \"INVALID\",\n      \"buildAudienceType\": \"APP_STORE_ELIGIBLE\",\n      \"usesNonExemptEncryption\": \"<boolean,null>\"\n    },\n    \"relationships\": {\n      \"app\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      },\n      \"preReleaseVersion\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      },\n      \"individualTesters\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": [\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        ]\n      },\n      \"betaGroups\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": [\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        ]\n      },\n      \"betaBuildLocalizations\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": [\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        ]\n      },\n      \"appEncryptionDeclaration\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      },\n      \"betaAppReviewSubmission\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      },\n      \"buildBetaDetail\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      },\n      \"appStoreVersion\": {\n        \"links\": {\n          \"self\": \"<uri>\",\n          \"related\": \"<uri>\"\n        },\n        \"data\": {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      }\n    },\n    \"links\": {\n      \"self\": \"<uri>\"\n    }\n  },\n  \"links\": {\n    \"self\": \"<uri>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:03:41.000Z",
+                      "updatedAt": "2026-07-28T01:03:41.000Z",
+                      "uid": "35240-ffa8aa08-a15e-4f23-8bae-de71dc69f01b"
+                    },
+                    {
+                      "id": "e466cbfb-9017-4c41-a451-4e3feadf0864",
+                      "name": "Bad request - the request was invalid or malformed",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"data\": {\n    \"type\": \"builds\",\n    \"id\": \"<string>\",\n    \"attributes\": {\n      \"expired\": \"<boolean>\",\n      \"usesNonExemptEncryption\": \"<boolean>\"\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/builds/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "builds",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:03:41.000Z",
+                      "updatedAt": "2026-07-28T01:03:41.000Z",
+                      "uid": "35240-e466cbfb-9017-4c41-a451-4e3feadf0864"
+                    },
+                    {
+                      "id": "0ca340b2-8272-4b63-9b03-e6bdf891c028",
+                      "name": "Unauthorized - authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"data\": {\n    \"type\": \"builds\",\n    \"id\": \"<string>\",\n    \"attributes\": {\n      \"expired\": \"<boolean>\",\n      \"usesNonExemptEncryption\": \"<boolean>\"\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/builds/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "builds",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:03:41.000Z",
+                      "updatedAt": "2026-07-28T01:03:41.000Z",
+                      "uid": "35240-0ca340b2-8272-4b63-9b03-e6bdf891c028"
+                    },
+                    {
+                      "id": "d38f6064-8ed8-49dc-a303-3b4490bc733a",
+                      "name": "Forbidden - the API key does not have permission for this request",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"data\": {\n    \"type\": \"builds\",\n    \"id\": \"<string>\",\n    \"attributes\": {\n      \"expired\": \"<boolean>\",\n      \"usesNonExemptEncryption\": \"<boolean>\"\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/builds/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "builds",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:03:41.000Z",
+                      "updatedAt": "2026-07-28T01:03:41.000Z",
+                      "uid": "35240-d38f6064-8ed8-49dc-a303-3b4490bc733a"
+                    },
+                    {
+                      "id": "8bcf1800-0017-4641-94a4-2534ac0567d8",
+                      "name": "Not found - the requested resource does not exist",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"data\": {\n    \"type\": \"builds\",\n    \"id\": \"<string>\",\n    \"attributes\": {\n      \"expired\": \"<boolean>\",\n      \"usesNonExemptEncryption\": \"<boolean>\"\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/builds/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "builds",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:03:41.000Z",
+                      "updatedAt": "2026-07-28T01:03:41.000Z",
+                      "uid": "35240-8bcf1800-0017-4641-94a4-2534ac0567d8"
+                    },
+                    {
+                      "id": "3a341e33-0551-4bd1-99a7-efe11eb668ff",
+                      "name": "Conflict - the request conflicts with the current state of the resource",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"data\": {\n    \"type\": \"builds\",\n    \"id\": \"<string>\",\n    \"attributes\": {\n      \"expired\": \"<boolean>\",\n      \"usesNonExemptEncryption\": \"<boolean>\"\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/builds/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "builds",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:03:41.000Z",
+                      "updatedAt": "2026-07-28T01:03:41.000Z",
+                      "uid": "35240-3a341e33-0551-4bd1-99a7-efe11eb668ff"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:03:41.000Z",
+                  "updatedAt": "2026-07-28T01:03:41.000Z",
+                  "uid": "35240-431abd68-3310-4b0a-bede-aa69b6378142"
+                }
+              ],
+              "id": "ec3d38f7-8840-4a26-8a0c-9683308f6348",
+              "createdAt": "2026-07-28T01:03:41.000Z",
+              "updatedAt": "2026-07-28T01:03:41.000Z",
+              "uid": "35240-ec3d38f7-8840-4a26-8a0c-9683308f6348"
+            },
+            {
+              "name": "List Builds",
+              "id": "4acb420b-6f81-4d1a-afb7-e1a5f98a5f00",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/builds?filter[app]=<string>,<string>&filter[id]=<string>,<string>&filter[version]=<string>,<string>&filter[expired]=false,false&filter[processingState]=FAILED,FAILED&filter[preReleaseVersion.platform]=TV_OS,IOS&filter[preReleaseVersion.version]=<string>,<string>&filter[betaGroups]=<string>,<string>&filter[usesNonExemptEncryption]=false,false&sort=-version,uploadedDate&fields[builds]=uploadedDate,expired&include=betaAppReviewSubmission,appEncryptionDeclaration&limit=50",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "builds"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by app resource ID",
+                      "key": "filter[app]",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "description": "Filter by build resource ID",
+                      "key": "filter[id]",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "description": "Filter by build version string",
+                      "key": "filter[version]",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "description": "Filter by expiration status",
+                      "key": "filter[expired]",
+                      "value": "false,false"
+                    },
+                    {
+                      "description": "Filter by processing state",
+                      "key": "filter[processingState]",
+                      "value": "FAILED,FAILED"
+                    },
+                    {
+                      "description": "Filter by platform",
+                      "key": "filter[preReleaseVersion.platform]",
+                      "value": "TV_OS,IOS"
+                    },
+                    {
+                      "description": "Filter by pre-release version string",
+                      "key": "filter[preReleaseVersion.version]",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "description": "Filter by beta group IDs",
+                      "key": "filter[betaGroups]",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "description": "Filter by encryption usage",
+                      "key": "filter[usesNonExemptEncryption]",
+                      "value": "false,false"
+                    },
+                    {
+                      "description": "Sort order for results",
+                      "key": "sort",
+                      "value": "-version,uploadedDate"
+                    },
+                    {
+                      "description": "Fields to return for build resources",
+                      "key": "fields[builds]",
+                      "value": "uploadedDate,expired"
+                    },
+                    {
+                      "description": "Relationship data to include in the response",
+                      "key": "include",
+                      "value": "betaAppReviewSubmission,appEncryptionDeclaration"
+                    },
+                    {
+                      "description": "Maximum number of resources to return (maximum 200)",
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ]
+                },
+                "description": "Find and list builds for all apps in App Store Connect. Returns a paginated list of builds."
+              },
+              "response": [
+                {
+                  "id": "71d09b19-b978-413b-a0da-9394f07614fb",
+                  "name": "List of builds",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/builds?filter[app]=<string>,<string>&filter[id]=<string>,<string>&filter[version]=<string>,<string>&filter[expired]=false,false&filter[processingState]=FAILED,FAILED&filter[preReleaseVersion.platform]=TV_OS,IOS&filter[preReleaseVersion.version]=<string>,<string>&filter[betaGroups]=<string>,<string>&filter[usesNonExemptEncryption]=false,false&sort=-version,uploadedDate&fields[builds]=uploadedDate,expired&include=betaAppReviewSubmission,appEncryptionDeclaration&limit=50",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "builds"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by app resource ID",
+                          "key": "filter[app]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by build resource ID",
+                          "key": "filter[id]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by build version string",
+                          "key": "filter[version]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by expiration status",
+                          "key": "filter[expired]",
+                          "value": "false,false"
+                        },
+                        {
+                          "description": "Filter by processing state",
+                          "key": "filter[processingState]",
+                          "value": "FAILED,FAILED"
+                        },
+                        {
+                          "description": "Filter by platform",
+                          "key": "filter[preReleaseVersion.platform]",
+                          "value": "TV_OS,IOS"
+                        },
+                        {
+                          "description": "Filter by pre-release version string",
+                          "key": "filter[preReleaseVersion.version]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by beta group IDs",
+                          "key": "filter[betaGroups]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by encryption usage",
+                          "key": "filter[usesNonExemptEncryption]",
+                          "value": "false,false"
+                        },
+                        {
+                          "description": "Sort order for results",
+                          "key": "sort",
+                          "value": "-version,uploadedDate"
+                        },
+                        {
+                          "description": "Fields to return for build resources",
+                          "key": "fields[builds]",
+                          "value": "uploadedDate,expired"
+                        },
+                        {
+                          "description": "Relationship data to include in the response",
+                          "key": "include",
+                          "value": "betaAppReviewSubmission,appEncryptionDeclaration"
+                        },
+                        {
+                          "description": "Maximum number of resources to return (maximum 200)",
+                          "key": "limit",
+                          "value": "50"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"type\": \"builds\",\n      \"id\": \"<string>\",\n      \"attributes\": {\n        \"version\": \"<string>\",\n        \"uploadedDate\": \"<dateTime>\",\n        \"expirationDate\": \"<dateTime>\",\n        \"expired\": \"<boolean>\",\n        \"minOsVersion\": \"<string>\",\n        \"lsMinimumSystemVersion\": \"<string>\",\n        \"computedMinMacOsVersion\": \"<string>\",\n        \"iconAssetToken\": {\n          \"templateUrl\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\"\n        },\n        \"processingState\": \"FAILED\",\n        \"buildAudienceType\": \"INTERNAL_ONLY\",\n        \"usesNonExemptEncryption\": \"<boolean,null>\"\n      },\n      \"relationships\": {\n        \"app\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"preReleaseVersion\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"individualTesters\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"betaGroups\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"betaBuildLocalizations\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"appEncryptionDeclaration\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"betaAppReviewSubmission\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"buildBetaDetail\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"appStoreVersion\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        }\n      },\n      \"links\": {\n        \"self\": \"<uri>\"\n      }\n    },\n    {\n      \"type\": \"builds\",\n      \"id\": \"<string>\",\n      \"attributes\": {\n        \"version\": \"<string>\",\n        \"uploadedDate\": \"<dateTime>\",\n        \"expirationDate\": \"<dateTime>\",\n        \"expired\": \"<boolean>\",\n        \"minOsVersion\": \"<string>\",\n        \"lsMinimumSystemVersion\": \"<string>\",\n        \"computedMinMacOsVersion\": \"<string>\",\n        \"iconAssetToken\": {\n          \"templateUrl\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\"\n        },\n        \"processingState\": \"FAILED\",\n        \"buildAudienceType\": \"APP_STORE_ELIGIBLE\",\n        \"usesNonExemptEncryption\": \"<boolean,null>\"\n      },\n      \"relationships\": {\n        \"app\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"preReleaseVersion\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"individualTesters\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"betaGroups\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"betaBuildLocalizations\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"appEncryptionDeclaration\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"betaAppReviewSubmission\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"buildBetaDetail\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"appStoreVersion\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        }\n      },\n      \"links\": {\n        \"self\": \"<uri>\"\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"<uri>\",\n    \"first\": \"<uri>\",\n    \"next\": \"<uri>\"\n  },\n  \"meta\": {\n    \"paging\": {\n      \"total\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T01:03:41.000Z",
+                  "updatedAt": "2026-07-28T01:03:41.000Z",
+                  "uid": "35240-71d09b19-b978-413b-a0da-9394f07614fb"
+                },
+                {
+                  "id": "eef413af-dd69-40fe-af2f-cade380351fd",
+                  "name": "Bad request - the request was invalid or malformed",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/builds?filter[app]=<string>,<string>&filter[id]=<string>,<string>&filter[version]=<string>,<string>&filter[expired]=false,false&filter[processingState]=FAILED,FAILED&filter[preReleaseVersion.platform]=TV_OS,IOS&filter[preReleaseVersion.version]=<string>,<string>&filter[betaGroups]=<string>,<string>&filter[usesNonExemptEncryption]=false,false&sort=-version,uploadedDate&fields[builds]=uploadedDate,expired&include=betaAppReviewSubmission,appEncryptionDeclaration&limit=50",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "builds"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by app resource ID",
+                          "key": "filter[app]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by build resource ID",
+                          "key": "filter[id]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by build version string",
+                          "key": "filter[version]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by expiration status",
+                          "key": "filter[expired]",
+                          "value": "false,false"
+                        },
+                        {
+                          "description": "Filter by processing state",
+                          "key": "filter[processingState]",
+                          "value": "FAILED,FAILED"
+                        },
+                        {
+                          "description": "Filter by platform",
+                          "key": "filter[preReleaseVersion.platform]",
+                          "value": "TV_OS,IOS"
+                        },
+                        {
+                          "description": "Filter by pre-release version string",
+                          "key": "filter[preReleaseVersion.version]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by beta group IDs",
+                          "key": "filter[betaGroups]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by encryption usage",
+                          "key": "filter[usesNonExemptEncryption]",
+                          "value": "false,false"
+                        },
+                        {
+                          "description": "Sort order for results",
+                          "key": "sort",
+                          "value": "-version,uploadedDate"
+                        },
+                        {
+                          "description": "Fields to return for build resources",
+                          "key": "fields[builds]",
+                          "value": "uploadedDate,expired"
+                        },
+                        {
+                          "description": "Relationship data to include in the response",
+                          "key": "include",
+                          "value": "betaAppReviewSubmission,appEncryptionDeclaration"
+                        },
+                        {
+                          "description": "Maximum number of resources to return (maximum 200)",
+                          "key": "limit",
+                          "value": "50"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:03:41.000Z",
+                  "updatedAt": "2026-07-28T01:03:41.000Z",
+                  "uid": "35240-eef413af-dd69-40fe-af2f-cade380351fd"
+                },
+                {
+                  "id": "b9e500a9-7db9-4226-acae-3c890c7011d4",
+                  "name": "Unauthorized - authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/builds?filter[app]=<string>,<string>&filter[id]=<string>,<string>&filter[version]=<string>,<string>&filter[expired]=false,false&filter[processingState]=FAILED,FAILED&filter[preReleaseVersion.platform]=TV_OS,IOS&filter[preReleaseVersion.version]=<string>,<string>&filter[betaGroups]=<string>,<string>&filter[usesNonExemptEncryption]=false,false&sort=-version,uploadedDate&fields[builds]=uploadedDate,expired&include=betaAppReviewSubmission,appEncryptionDeclaration&limit=50",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "builds"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by app resource ID",
+                          "key": "filter[app]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by build resource ID",
+                          "key": "filter[id]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by build version string",
+                          "key": "filter[version]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by expiration status",
+                          "key": "filter[expired]",
+                          "value": "false,false"
+                        },
+                        {
+                          "description": "Filter by processing state",
+                          "key": "filter[processingState]",
+                          "value": "FAILED,FAILED"
+                        },
+                        {
+                          "description": "Filter by platform",
+                          "key": "filter[preReleaseVersion.platform]",
+                          "value": "TV_OS,IOS"
+                        },
+                        {
+                          "description": "Filter by pre-release version string",
+                          "key": "filter[preReleaseVersion.version]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by beta group IDs",
+                          "key": "filter[betaGroups]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by encryption usage",
+                          "key": "filter[usesNonExemptEncryption]",
+                          "value": "false,false"
+                        },
+                        {
+                          "description": "Sort order for results",
+                          "key": "sort",
+                          "value": "-version,uploadedDate"
+                        },
+                        {
+                          "description": "Fields to return for build resources",
+                          "key": "fields[builds]",
+                          "value": "uploadedDate,expired"
+                        },
+                        {
+                          "description": "Relationship data to include in the response",
+                          "key": "include",
+                          "value": "betaAppReviewSubmission,appEncryptionDeclaration"
+                        },
+                        {
+                          "description": "Maximum number of resources to return (maximum 200)",
+                          "key": "limit",
+                          "value": "50"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:03:41.000Z",
+                  "updatedAt": "2026-07-28T01:03:41.000Z",
+                  "uid": "35240-b9e500a9-7db9-4226-acae-3c890c7011d4"
+                },
+                {
+                  "id": "88a18f02-29c7-47d0-9dba-2c5b720dd91e",
+                  "name": "Forbidden - the API key does not have permission for this request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/builds?filter[app]=<string>,<string>&filter[id]=<string>,<string>&filter[version]=<string>,<string>&filter[expired]=false,false&filter[processingState]=FAILED,FAILED&filter[preReleaseVersion.platform]=TV_OS,IOS&filter[preReleaseVersion.version]=<string>,<string>&filter[betaGroups]=<string>,<string>&filter[usesNonExemptEncryption]=false,false&sort=-version,uploadedDate&fields[builds]=uploadedDate,expired&include=betaAppReviewSubmission,appEncryptionDeclaration&limit=50",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "builds"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by app resource ID",
+                          "key": "filter[app]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by build resource ID",
+                          "key": "filter[id]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by build version string",
+                          "key": "filter[version]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by expiration status",
+                          "key": "filter[expired]",
+                          "value": "false,false"
+                        },
+                        {
+                          "description": "Filter by processing state",
+                          "key": "filter[processingState]",
+                          "value": "FAILED,FAILED"
+                        },
+                        {
+                          "description": "Filter by platform",
+                          "key": "filter[preReleaseVersion.platform]",
+                          "value": "TV_OS,IOS"
+                        },
+                        {
+                          "description": "Filter by pre-release version string",
+                          "key": "filter[preReleaseVersion.version]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by beta group IDs",
+                          "key": "filter[betaGroups]",
+                          "value": "<string>,<string>"
+                        },
+                        {
+                          "description": "Filter by encryption usage",
+                          "key": "filter[usesNonExemptEncryption]",
+                          "value": "false,false"
+                        },
+                        {
+                          "description": "Sort order for results",
+                          "key": "sort",
+                          "value": "-version,uploadedDate"
+                        },
+                        {
+                          "description": "Fields to return for build resources",
+                          "key": "fields[builds]",
+                          "value": "uploadedDate,expired"
+                        },
+                        {
+                          "description": "Relationship data to include in the response",
+                          "key": "include",
+                          "value": "betaAppReviewSubmission,appEncryptionDeclaration"
+                        },
+                        {
+                          "description": "Maximum number of resources to return (maximum 200)",
+                          "key": "limit",
+                          "value": "50"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:03:41.000Z",
+                  "updatedAt": "2026-07-28T01:03:41.000Z",
+                  "uid": "35240-88a18f02-29c7-47d0-9dba-2c5b720dd91e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:03:41.000Z",
+              "updatedAt": "2026-07-28T01:03:41.000Z",
+              "uid": "35240-4acb420b-6f81-4d1a-afb7-e1a5f98a5f00"
+            }
+          ],
+          "id": "aa22ab78-bed3-4f58-8500-46ede668333d",
+          "createdAt": "2026-07-28T01:03:41.000Z",
+          "updatedAt": "2026-07-28T01:03:41.000Z",
+          "uid": "35240-aa22ab78-bed3-4f58-8500-46ede668333d"
+        },
+        {
+          "name": "betaTesters",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "builds",
+                  "item": [
+                    {
+                      "name": "List All Builds Individually Assigned to a Beta Tester",
+                      "id": "e1dfac95-6f12-4031-8ca9-cfa674cb22ed",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/betaTesters/:id/builds?fields[builds]=<string>,<string>&limit=50",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "betaTesters",
+                            ":id",
+                            "builds"
+                          ],
+                          "query": [
+                            {
+                              "description": "Fields to return for build resources",
+                              "key": "fields[builds]",
+                              "value": "<string>,<string>"
+                            },
+                            {
+                              "description": "Maximum number of resources to return (maximum 200)",
+                              "key": "limit",
+                              "value": "50"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "624f8a0d-8c52-479c-8bd0-3c51b39899bf",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier for the beta tester resource"
+                            }
+                          ]
+                        },
+                        "description": "Get a list of builds individually assigned to a specific beta tester."
+                      },
+                      "response": [
+                        {
+                          "id": "6c71cc86-e503-45e4-a374-7577f21e5045",
+                          "name": "List of builds for the beta tester",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/betaTesters/:id/builds?fields[builds]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "betaTesters",
+                                ":id",
+                                "builds"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for build resources",
+                                  "key": "fields[builds]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"type\": \"builds\",\n      \"id\": \"<string>\",\n      \"attributes\": {\n        \"version\": \"<string>\",\n        \"uploadedDate\": \"<dateTime>\",\n        \"expirationDate\": \"<dateTime>\",\n        \"expired\": \"<boolean>\",\n        \"minOsVersion\": \"<string>\",\n        \"lsMinimumSystemVersion\": \"<string>\",\n        \"computedMinMacOsVersion\": \"<string>\",\n        \"iconAssetToken\": {\n          \"templateUrl\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\"\n        },\n        \"processingState\": \"FAILED\",\n        \"buildAudienceType\": \"INTERNAL_ONLY\",\n        \"usesNonExemptEncryption\": \"<boolean,null>\"\n      },\n      \"relationships\": {\n        \"app\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"preReleaseVersion\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"individualTesters\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"betaGroups\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"betaBuildLocalizations\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"appEncryptionDeclaration\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"betaAppReviewSubmission\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"buildBetaDetail\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"appStoreVersion\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        }\n      },\n      \"links\": {\n        \"self\": \"<uri>\"\n      }\n    },\n    {\n      \"type\": \"builds\",\n      \"id\": \"<string>\",\n      \"attributes\": {\n        \"version\": \"<string>\",\n        \"uploadedDate\": \"<dateTime>\",\n        \"expirationDate\": \"<dateTime>\",\n        \"expired\": \"<boolean>\",\n        \"minOsVersion\": \"<string>\",\n        \"lsMinimumSystemVersion\": \"<string>\",\n        \"computedMinMacOsVersion\": \"<string>\",\n        \"iconAssetToken\": {\n          \"templateUrl\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\"\n        },\n        \"processingState\": \"FAILED\",\n        \"buildAudienceType\": \"APP_STORE_ELIGIBLE\",\n        \"usesNonExemptEncryption\": \"<boolean,null>\"\n      },\n      \"relationships\": {\n        \"app\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"preReleaseVersion\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"individualTesters\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"betaGroups\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"betaBuildLocalizations\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": [\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            },\n            {\n              \"type\": \"<string>\",\n              \"id\": \"<string>\"\n            }\n          ]\n        },\n        \"appEncryptionDeclaration\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"betaAppReviewSubmission\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"buildBetaDetail\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        },\n        \"appStoreVersion\": {\n          \"links\": {\n            \"self\": \"<uri>\",\n            \"related\": \"<uri>\"\n          },\n          \"data\": {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        }\n      },\n      \"links\": {\n        \"self\": \"<uri>\"\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": \"<uri>\",\n    \"first\": \"<uri>\",\n    \"next\": \"<uri>\"\n  },\n  \"meta\": {\n    \"paging\": {\n      \"total\": \"<integer>\",\n      \"limit\": \"<integer>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-6c71cc86-e503-45e4-a374-7577f21e5045"
+                        },
+                        {
+                          "id": "3a44371a-18a9-4000-88e8-438c9b31d94d",
+                          "name": "Bad request - the request was invalid or malformed",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/betaTesters/:id/builds?fields[builds]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "betaTesters",
+                                ":id",
+                                "builds"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for build resources",
+                                  "key": "fields[builds]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-3a44371a-18a9-4000-88e8-438c9b31d94d"
+                        },
+                        {
+                          "id": "63f6d283-3b44-4644-94d0-0f3f91b3da70",
+                          "name": "Unauthorized - authentication credentials are missing or invalid",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/betaTesters/:id/builds?fields[builds]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "betaTesters",
+                                ":id",
+                                "builds"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for build resources",
+                                  "key": "fields[builds]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-63f6d283-3b44-4644-94d0-0f3f91b3da70"
+                        },
+                        {
+                          "id": "4a38191f-d878-4a4a-a185-1a54ca751c0c",
+                          "name": "Forbidden - the API key does not have permission for this request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/betaTesters/:id/builds?fields[builds]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "betaTesters",
+                                ":id",
+                                "builds"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for build resources",
+                                  "key": "fields[builds]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-4a38191f-d878-4a4a-a185-1a54ca751c0c"
+                        },
+                        {
+                          "id": "4ec696a8-7c64-4c07-a403-4ed9b5d266a1",
+                          "name": "Not found - the requested resource does not exist",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/betaTesters/:id/builds?fields[builds]=<string>,<string>&limit=50",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "betaTesters",
+                                ":id",
+                                "builds"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Fields to return for build resources",
+                                  "key": "fields[builds]",
+                                  "value": "<string>,<string>"
+                                },
+                                {
+                                  "description": "Maximum number of resources to return (maximum 200)",
+                                  "key": "limit",
+                                  "value": "50"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    },\n    {\n      \"status\": \"<string>\",\n      \"title\": \"<string>\",\n      \"id\": \"<string>\",\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\",\n        \"parameter\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:03:41.000Z",
+                          "updatedAt": "2026-07-28T01:03:41.000Z",
+                          "uid": "35240-4ec696a8-7c64-4c07-a403-4ed9b5d266a1"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:03:41.000Z",
+                      "updatedAt": "2026-07-28T01:03:41.000Z",
+                      "uid": "35240-e1dfac95-6f12-4031-8ca9-cfa674cb22ed"
+                    }
+                  ],
+                  "id": "d7ca3d90-ed23-4c31-9736-1b28c797aed9",
+                  "createdAt": "2026-07-28T01:03:41.000Z",
+                  "updatedAt": "2026-07-28T01:03:41.000Z",
+                  "uid": "35240-d7ca3d90-ed23-4c31-9736-1b28c797aed9"
+                }
+              ],
+              "id": "e25d7476-52d1-415e-8463-ffbc25c926af",
+              "createdAt": "2026-07-28T01:03:41.000Z",
+              "updatedAt": "2026-07-28T01:03:41.000Z",
+              "uid": "35240-e25d7476-52d1-415e-8463-ffbc25c926af"
+            }
+          ],
+          "id": "03d1f1ba-87dd-4f2c-9a00-0508e83932c0",
+          "createdAt": "2026-07-28T01:03:41.000Z",
+          "updatedAt": "2026-07-28T01:03:41.000Z",
+          "uid": "35240-03d1f1ba-87dd-4f2c-9a00-0508e83932c0"
+        }
+      ],
+      "id": "4da80858-efc1-4b97-82c0-234e5944026b",
+      "createdAt": "2026-07-28T01:03:41.000Z",
+      "updatedAt": "2026-07-28T01:03:41.000Z",
+      "uid": "35240-4da80858-efc1-4b97-82c0-234e5944026b"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.appstoreconnect.apple.com"
+    }
+  ]
+}

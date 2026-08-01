@@ -1,0 +1,18 @@
+{
+  "provider": "apple",
+  "sources": [
+    "apple-apps-api-openapi.yml",
+    "apple-beta-testers-api-openapi.yml",
+    "apple-builds-api-openapi.yml"
+  ],
+  "outputs": [
+    "apple-apps-api-openapi.yml",
+    "apple-beta-testers-api-openapi.yml",
+    "apple-builds-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
