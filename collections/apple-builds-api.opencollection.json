@@ -1,0 +1,262 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apple App Store Connect Apps Builds API",
+    "version": "3.6.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Builds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Builds of an App",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/apps/:id/builds",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the app resource"
+              },
+              {
+                "name": "fields[builds]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for build resources"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return (maximum 200)"
+              }
+            ]
+          },
+          "docs": "Get a list of builds associated with a specific app."
+        },
+        {
+          "info": {
+            "name": "List Builds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/builds",
+            "params": [
+              {
+                "name": "filter[app]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by app resource ID"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by build resource ID"
+              },
+              {
+                "name": "filter[version]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by build version string"
+              },
+              {
+                "name": "filter[expired]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by expiration status"
+              },
+              {
+                "name": "filter[processingState]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by processing state"
+              },
+              {
+                "name": "filter[preReleaseVersion.platform]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by platform"
+              },
+              {
+                "name": "filter[preReleaseVersion.version]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by pre-release version string"
+              },
+              {
+                "name": "filter[betaGroups]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by beta group IDs"
+              },
+              {
+                "name": "filter[usesNonExemptEncryption]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by encryption usage"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for results"
+              },
+              {
+                "name": "fields[builds]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for build resources"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Relationship data to include in the response"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return (maximum 200)"
+              }
+            ]
+          },
+          "docs": "Find and list builds for all apps in App Store Connect. Returns a paginated list of builds."
+        },
+        {
+          "info": {
+            "name": "Read Build Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/builds/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the build resource"
+              },
+              {
+                "name": "fields[builds]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for build resources"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Relationship data to include in the response"
+              }
+            ]
+          },
+          "docs": "Get information about a specific build."
+        },
+        {
+          "info": {
+            "name": "Modify a Build",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.appstoreconnect.apple.com/v1/builds/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the build resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Expire a build or change its encryption exemption setting."
+        },
+        {
+          "info": {
+            "name": "List All Individual Testers for a Build",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/builds/:id/individualTesters",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the build resource"
+              },
+              {
+                "name": "fields[betaTesters]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for beta tester resources"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return (maximum 200)"
+              }
+            ]
+          },
+          "docs": "Get a list of beta testers individually assigned to a build."
+        },
+        {
+          "info": {
+            "name": "List All Builds Individually Assigned to a Beta Tester",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaTesters/:id/builds",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the beta tester resource"
+              },
+              {
+                "name": "fields[builds]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for build resources"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return (maximum 200)"
+              }
+            ]
+          },
+          "docs": "Get a list of builds individually assigned to a specific beta tester."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

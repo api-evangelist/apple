@@ -1,0 +1,5565 @@
+{
+  "item": [
+    {
+      "id": "83923eb7-2116-453f-8873-bd4f30824675",
+      "name": "Beta Testers",
+      "description": {
+        "content": "Manage TestFlight beta testers, including inviting testers, managing tester groups, and controlling access to beta builds.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "75e5fae1-1e9d-47a8-af7a-013e9dce1f94",
+          "name": "List All Individual Testers for a Build",
+          "request": {
+            "name": "List All Individual Testers for a Build",
+            "description": {
+              "content": "Get a list of beta testers individually assigned to a build.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "builds",
+                ":id",
+                "individualTesters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields[betaTesters]",
+                  "value": "<string>,<string>",
+                  "description": "Fields to return for beta tester resources"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of resources to return (maximum 200)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the build resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f9c0a15-a47f-4675-9430-f850ada5beef",
+              "name": "List of beta testers for the build",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "builds",
+                    ":id",
+                    "individualTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the build resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"abc123\"\n    }\n  ],\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\",\n    \"first\": \"https://www.example.com\",\n    \"next\": \"https://www.example.com\"\n  },\n  \"meta\": {\n    \"paging\": {\n      \"total\": 10,\n      \"limit\": 10\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b147578-44af-4e57-9924-ea0274d8cc90",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "builds",
+                    ":id",
+                    "individualTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the build resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbc0cc82-6cbc-499e-8ee9-43e7c99885c8",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "builds",
+                    ":id",
+                    "individualTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the build resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26a2b52e-f14a-42ff-ac7d-1a0ce3be5a9b",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "builds",
+                    ":id",
+                    "individualTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the build resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9bbfef6-06f0-47c3-9082-0159564865a3",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "builds",
+                    ":id",
+                    "individualTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the build resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a731c05-727a-40f1-b5d7-bc135f1b18cf",
+          "name": "List Beta Testers",
+          "request": {
+            "name": "List Beta Testers",
+            "description": {
+              "content": "Find and list beta testers for all apps, builds, and beta groups.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaTesters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[email]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by email address"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[firstName]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by first name"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[lastName]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by last name"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[inviteType]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by invitation type"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[apps]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by app resource IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[betaGroups]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by beta group resource IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[builds]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by build resource IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by beta tester resource ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>,<string>",
+                  "description": "Sort order for results"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[betaTesters]",
+                  "value": "<string>,<string>",
+                  "description": "Fields to return for beta tester resources"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>,<string>",
+                  "description": "Relationship data to include in the response"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of resources to return (maximum 200)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64e72231-22df-498d-b819-805b18360f57",
+              "name": "List of beta testers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[email]",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "filter[firstName]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[lastName]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[inviteType]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[betaGroups]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[builds]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort",
+                      "value": ""
+                    },
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"abc123\"\n    }\n  ],\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\",\n    \"first\": \"https://www.example.com\",\n    \"next\": \"https://www.example.com\"\n  },\n  \"meta\": {\n    \"paging\": {\n      \"total\": 10,\n      \"limit\": 10\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "313c191f-6b10-4421-9519-9dde8fd92c03",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[email]",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "filter[firstName]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[lastName]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[inviteType]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[betaGroups]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[builds]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort",
+                      "value": ""
+                    },
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df2c1a3f-9120-4711-9949-f03ea4ffcdad",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[email]",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "filter[firstName]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[lastName]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[inviteType]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[betaGroups]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[builds]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort",
+                      "value": ""
+                    },
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d93154b-831c-4b37-8370-ccd97b244154",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[email]",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "filter[firstName]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[lastName]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[inviteType]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[betaGroups]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[builds]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort",
+                      "value": ""
+                    },
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa33cf8e-8220-46f0-ba7c-cfd2579a8bad",
+          "name": "Create a Beta Tester",
+          "request": {
+            "name": "Create a Beta Tester",
+            "description": {
+              "content": "Create a beta tester assigned to a group, a build, or an app.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaTesters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"email\": \"<email>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\"\n    },\n    \"relationships\": {\n      \"betaGroups\": {\n        \"data\": [\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        ]\n      },\n      \"builds\": {\n        \"data\": [\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        ]\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "14cad4c3-3bd1-43f2-a28d-e4aa6a76188a",
+              "name": "Created beta tester",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaTesters\",\n    \"attributes\": {\n      \"firstName\": \"example_value\",\n      \"lastName\": \"example_value\",\n      \"email\": \"user@example.com\"\n    },\n    \"relationships\": {\n      \"betaGroups\": {\n        \"data\": {}\n      },\n      \"builds\": {\n        \"data\": {}\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"betaTesters\",\n    \"id\": \"abc123\"\n  },\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64766504-db72-4113-8eee-b5a8e4e4d753",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaTesters\",\n    \"attributes\": {\n      \"firstName\": \"example_value\",\n      \"lastName\": \"example_value\",\n      \"email\": \"user@example.com\"\n    },\n    \"relationships\": {\n      \"betaGroups\": {\n        \"data\": {}\n      },\n      \"builds\": {\n        \"data\": {}\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96d2cdb9-215f-4b58-ab30-1bfeff9241a7",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaTesters\",\n    \"attributes\": {\n      \"firstName\": \"example_value\",\n      \"lastName\": \"example_value\",\n      \"email\": \"user@example.com\"\n    },\n    \"relationships\": {\n      \"betaGroups\": {\n        \"data\": {}\n      },\n      \"builds\": {\n        \"data\": {}\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cd3f339-9b69-4699-810e-28c3f3e7e1f9",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaTesters\",\n    \"attributes\": {\n      \"firstName\": \"example_value\",\n      \"lastName\": \"example_value\",\n      \"email\": \"user@example.com\"\n    },\n    \"relationships\": {\n      \"betaGroups\": {\n        \"data\": {}\n      },\n      \"builds\": {\n        \"data\": {}\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c34fd9c-d2b9-4286-a5cc-acc742ed3e4d",
+              "name": "Conflict - the request conflicts with the current state of the resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaTesters\",\n    \"attributes\": {\n      \"firstName\": \"example_value\",\n      \"lastName\": \"example_value\",\n      \"email\": \"user@example.com\"\n    },\n    \"relationships\": {\n      \"betaGroups\": {\n        \"data\": {}\n      },\n      \"builds\": {\n        \"data\": {}\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6e5860c-b9f0-421e-95e9-60d9d2773941",
+          "name": "Read Beta Tester Information",
+          "request": {
+            "name": "Read Beta Tester Information",
+            "description": {
+              "content": "Get information about a specific beta tester.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaTesters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields[betaTesters]",
+                  "value": "<string>,<string>",
+                  "description": "Fields to return for beta tester resources"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>,<string>",
+                  "description": "Relationship data to include in the response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the beta tester resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34852e9f-4dd3-4273-a844-ae80861c412a",
+              "name": "Single beta tester response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"betaTesters\",\n    \"id\": \"abc123\"\n  },\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3328a5db-7b51-4c6f-a86f-e6581005e0c0",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cdaf928-9f32-4b19-91ee-581cf6d8014c",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5c47084-1b47-45a3-ab38-eda0c9bcdece",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b3fb2bd-32f7-43a1-aaea-c3ec63e62123",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46575dc8-83e1-456e-b3ad-87ef4e8a8ec8",
+          "name": "Delete a Beta Tester",
+          "request": {
+            "name": "Delete a Beta Tester",
+            "description": {
+              "content": "Remove a beta tester's ability to test all apps.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaTesters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the beta tester resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ef425c5-31d2-48ab-947c-89bc73c02403",
+              "name": "Beta tester successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9e64c590-7ba0-4324-bc99-d606b0b25890",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf23456c-96ed-4f30-a783-7667f15cca0e",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "455ab02f-0549-4878-8576-fbd1f43fe40d",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20decead-70cf-4ed0-8d03-6034cf77dcc9",
+              "name": "Conflict - the request conflicts with the current state of the resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6fe18b0-1422-434e-bf51-22e8ace5e744",
+          "name": "List All Apps for a Beta Tester",
+          "request": {
+            "name": "List All Apps for a Beta Tester",
+            "description": {
+              "content": "Get a list of apps that a beta tester can test.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaTesters",
+                ":id",
+                "apps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields[apps]",
+                  "value": "<string>,<string>",
+                  "description": "Fields to return for app resources"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of resources to return (maximum 200)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the beta tester resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "025e44b6-77d4-404b-9af8-feb2ab3a4a3b",
+              "name": "List of apps for the beta tester",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"apps\",\n      \"id\": \"abc123\"\n    }\n  ],\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\",\n    \"first\": \"https://www.example.com\",\n    \"next\": \"https://www.example.com\"\n  },\n  \"meta\": {\n    \"paging\": {\n      \"total\": 10,\n      \"limit\": 10\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e8bf2e1-7d2d-4a06-9086-575b56707a7d",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80a91e01-1ee7-4a33-bd8b-161be7803063",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40ffe14f-47a9-424e-8ba0-489844aa63ce",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39822ccd-38bd-4cc7-9b5a-ba93d550a86c",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c87d8ea6-10cb-4785-93c6-c48a809c41b5",
+          "name": "List All Builds Individually Assigned to a Beta Tester",
+          "request": {
+            "name": "List All Builds Individually Assigned to a Beta Tester",
+            "description": {
+              "content": "Get a list of builds individually assigned to a specific beta tester.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaTesters",
+                ":id",
+                "builds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields[builds]",
+                  "value": "<string>,<string>",
+                  "description": "Fields to return for build resources"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of resources to return (maximum 200)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the beta tester resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "01374cde-ffda-4298-853f-c8ab328a033c",
+              "name": "List of builds for the beta tester",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "builds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[builds]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"builds\",\n      \"id\": \"abc123\"\n    }\n  ],\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\",\n    \"first\": \"https://www.example.com\",\n    \"next\": \"https://www.example.com\"\n  },\n  \"meta\": {\n    \"paging\": {\n      \"total\": 10,\n      \"limit\": 10\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d615bf8-d2ad-4c49-85a6-09201388f804",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "builds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[builds]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0e05a47-cd8f-484f-a8ba-ddc6a5287fb2",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "builds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[builds]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50197177-5651-47ae-9980-6aaba17eae5e",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "builds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[builds]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46b206e4-ffef-4dce-9d8f-a6fd774e717c",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "builds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[builds]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1fd17a0f-606d-4f71-8aa7-0abe1bbfed75",
+          "name": "List Beta Groups",
+          "request": {
+            "name": "List Beta Groups",
+            "description": {
+              "content": "Find and list beta groups for all apps.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaGroups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[app]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by app resource ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[name]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by group name"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[isInternalGroup]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by internal group status"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[publicLinkEnabled]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by public link enabled status"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by beta group resource ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>,<string>",
+                  "description": "Sort order for results"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[betaGroups]",
+                  "value": "<string>,<string>",
+                  "description": "Fields to return for beta group resources"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>,<string>",
+                  "description": "Relationship data to include in the response"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of resources to return (maximum 200)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5360d233-50a5-4ad0-95a0-b68249f07858",
+              "name": "List of beta groups",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[app]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[name]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[isInternalGroup]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[publicLinkEnabled]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort",
+                      "value": ""
+                    },
+                    {
+                      "key": "fields[betaGroups]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"betaGroups\",\n      \"id\": \"abc123\"\n    }\n  ],\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\",\n    \"first\": \"https://www.example.com\",\n    \"next\": \"https://www.example.com\"\n  },\n  \"meta\": {\n    \"paging\": {\n      \"total\": 10,\n      \"limit\": 10\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02d675a6-8f13-4a37-bd1d-60c7f4596009",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[app]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[name]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[isInternalGroup]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[publicLinkEnabled]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort",
+                      "value": ""
+                    },
+                    {
+                      "key": "fields[betaGroups]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d45238a3-fbfd-4399-b12c-b1cf5c20bd3b",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[app]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[name]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[isInternalGroup]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[publicLinkEnabled]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort",
+                      "value": ""
+                    },
+                    {
+                      "key": "fields[betaGroups]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f836a22-50e3-4b8f-818d-f60ae360867f",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[app]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[name]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[isInternalGroup]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[publicLinkEnabled]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort",
+                      "value": ""
+                    },
+                    {
+                      "key": "fields[betaGroups]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b33193f1-fa07-4f2e-9646-f32840803473",
+          "name": "Create a Beta Group",
+          "request": {
+            "name": "Create a Beta Group",
+            "description": {
+              "content": "Create a beta group associated with an app, optionally enabling TestFlight public links.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaGroups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"name\": \"<string>\",\n      \"hasAccessToAllBuilds\": \"<boolean>\",\n      \"publicLinkEnabled\": \"<boolean>\",\n      \"publicLinkLimit\": \"<integer>\",\n      \"publicLinkLimitEnabled\": \"<boolean>\",\n      \"feedbackEnabled\": \"<boolean>\",\n      \"iosBuildsAvailableForAppleSiliconMac\": \"<boolean>\"\n    },\n    \"relationships\": {\n      \"app\": {\n        \"data\": {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      },\n      \"betaTesters\": {\n        \"data\": [\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        ]\n      },\n      \"builds\": {\n        \"data\": [\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"id\": \"<string>\"\n          }\n        ]\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "06244041-a537-4ee9-b71d-e0f7e16fccc0",
+              "name": "Created beta group",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaGroups\",\n    \"attributes\": {\n      \"name\": \"Example Title\",\n      \"hasAccessToAllBuilds\": true,\n      \"publicLinkEnabled\": true,\n      \"publicLinkLimit\": 10,\n      \"publicLinkLimitEnabled\": true,\n      \"feedbackEnabled\": true,\n      \"iosBuildsAvailableForAppleSiliconMac\": true\n    },\n    \"relationships\": {\n      \"app\": {},\n      \"betaTesters\": {\n        \"data\": {}\n      },\n      \"builds\": {\n        \"data\": {}\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"betaGroups\",\n    \"id\": \"abc123\"\n  },\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fb8cd91-84ae-4236-8b63-76e476a3e362",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaGroups\",\n    \"attributes\": {\n      \"name\": \"Example Title\",\n      \"hasAccessToAllBuilds\": true,\n      \"publicLinkEnabled\": true,\n      \"publicLinkLimit\": 10,\n      \"publicLinkLimitEnabled\": true,\n      \"feedbackEnabled\": true,\n      \"iosBuildsAvailableForAppleSiliconMac\": true\n    },\n    \"relationships\": {\n      \"app\": {},\n      \"betaTesters\": {\n        \"data\": {}\n      },\n      \"builds\": {\n        \"data\": {}\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27a68085-d5b6-44f6-a9d0-73d65e63ec34",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaGroups\",\n    \"attributes\": {\n      \"name\": \"Example Title\",\n      \"hasAccessToAllBuilds\": true,\n      \"publicLinkEnabled\": true,\n      \"publicLinkLimit\": 10,\n      \"publicLinkLimitEnabled\": true,\n      \"feedbackEnabled\": true,\n      \"iosBuildsAvailableForAppleSiliconMac\": true\n    },\n    \"relationships\": {\n      \"app\": {},\n      \"betaTesters\": {\n        \"data\": {}\n      },\n      \"builds\": {\n        \"data\": {}\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ce270d7-b0f2-4aca-96a4-e821a2ecd275",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaGroups\",\n    \"attributes\": {\n      \"name\": \"Example Title\",\n      \"hasAccessToAllBuilds\": true,\n      \"publicLinkEnabled\": true,\n      \"publicLinkLimit\": 10,\n      \"publicLinkLimitEnabled\": true,\n      \"feedbackEnabled\": true,\n      \"iosBuildsAvailableForAppleSiliconMac\": true\n    },\n    \"relationships\": {\n      \"app\": {},\n      \"betaTesters\": {\n        \"data\": {}\n      },\n      \"builds\": {\n        \"data\": {}\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1cb4c2ed-bf85-4baa-98a9-fded1437db04",
+              "name": "Conflict - the request conflicts with the current state of the resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaGroups\",\n    \"attributes\": {\n      \"name\": \"Example Title\",\n      \"hasAccessToAllBuilds\": true,\n      \"publicLinkEnabled\": true,\n      \"publicLinkLimit\": 10,\n      \"publicLinkLimitEnabled\": true,\n      \"feedbackEnabled\": true,\n      \"iosBuildsAvailableForAppleSiliconMac\": true\n    },\n    \"relationships\": {\n      \"app\": {},\n      \"betaTesters\": {\n        \"data\": {}\n      },\n      \"builds\": {\n        \"data\": {}\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f09e676-705e-4919-9fef-e4b4acb4b482",
+          "name": "Read Beta Group Information",
+          "request": {
+            "name": "Read Beta Group Information",
+            "description": {
+              "content": "Get information about a specific beta group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaGroups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields[betaGroups]",
+                  "value": "<string>,<string>",
+                  "description": "Fields to return for beta group resources"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>,<string>",
+                  "description": "Relationship data to include in the response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the beta group resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bcb77ace-1a8c-441b-b584-2c197d8242a4",
+              "name": "Single beta group response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaGroups]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"betaGroups\",\n    \"id\": \"abc123\"\n  },\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7756902f-62e5-4dfa-bacc-e2191524ba44",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaGroups]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bdf43fd9-2144-481d-ae8a-36ed9a42ea40",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaGroups]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "acc3fc07-c9d4-4944-8e3f-e87ac1252e3b",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaGroups]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08d95253-7e83-462c-9e90-4a0ad01fcf7b",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaGroups]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0fe2144-44b3-49cb-9d5a-a1c03758c1c4",
+          "name": "Modify a Beta Group",
+          "request": {
+            "name": "Modify a Beta Group",
+            "description": {
+              "content": "Modify a beta group's metadata, including name and public link status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaGroups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the beta group resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"<string>\",\n    \"id\": \"<string>\",\n    \"attributes\": {\n      \"name\": \"<string>\",\n      \"hasAccessToAllBuilds\": \"<boolean>\",\n      \"publicLinkEnabled\": \"<boolean>\",\n      \"publicLinkLimit\": \"<integer>\",\n      \"publicLinkLimitEnabled\": \"<boolean>\",\n      \"feedbackEnabled\": \"<boolean>\",\n      \"iosBuildsAvailableForAppleSiliconMac\": \"<boolean>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d57aac99-7259-4f2c-93bf-e7fb942ee255",
+              "name": "Updated beta group",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaGroups\",\n    \"id\": \"abc123\",\n    \"attributes\": {\n      \"name\": \"Example Title\",\n      \"hasAccessToAllBuilds\": true,\n      \"publicLinkEnabled\": true,\n      \"publicLinkLimit\": 10,\n      \"publicLinkLimitEnabled\": true,\n      \"feedbackEnabled\": true,\n      \"iosBuildsAvailableForAppleSiliconMac\": true\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"betaGroups\",\n    \"id\": \"abc123\"\n  },\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "210da51b-91d2-4914-a5d9-037ca4ee0d30",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaGroups\",\n    \"id\": \"abc123\",\n    \"attributes\": {\n      \"name\": \"Example Title\",\n      \"hasAccessToAllBuilds\": true,\n      \"publicLinkEnabled\": true,\n      \"publicLinkLimit\": 10,\n      \"publicLinkLimitEnabled\": true,\n      \"feedbackEnabled\": true,\n      \"iosBuildsAvailableForAppleSiliconMac\": true\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff2e42e0-c1ef-43e8-bd82-6a3d40adfcbc",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaGroups\",\n    \"id\": \"abc123\",\n    \"attributes\": {\n      \"name\": \"Example Title\",\n      \"hasAccessToAllBuilds\": true,\n      \"publicLinkEnabled\": true,\n      \"publicLinkLimit\": 10,\n      \"publicLinkLimitEnabled\": true,\n      \"feedbackEnabled\": true,\n      \"iosBuildsAvailableForAppleSiliconMac\": true\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5055ba5-fc54-492d-a05a-d87e4760f536",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaGroups\",\n    \"id\": \"abc123\",\n    \"attributes\": {\n      \"name\": \"Example Title\",\n      \"hasAccessToAllBuilds\": true,\n      \"publicLinkEnabled\": true,\n      \"publicLinkLimit\": 10,\n      \"publicLinkLimitEnabled\": true,\n      \"feedbackEnabled\": true,\n      \"iosBuildsAvailableForAppleSiliconMac\": true\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8e30203-1762-406b-815e-033bf1c57522",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaGroups\",\n    \"id\": \"abc123\",\n    \"attributes\": {\n      \"name\": \"Example Title\",\n      \"hasAccessToAllBuilds\": true,\n      \"publicLinkEnabled\": true,\n      \"publicLinkLimit\": 10,\n      \"publicLinkLimitEnabled\": true,\n      \"feedbackEnabled\": true,\n      \"iosBuildsAvailableForAppleSiliconMac\": true\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a992d39b-45fe-453e-b01e-d6dc8e14ffb5",
+              "name": "Conflict - the request conflicts with the current state of the resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"betaGroups\",\n    \"id\": \"abc123\",\n    \"attributes\": {\n      \"name\": \"Example Title\",\n      \"hasAccessToAllBuilds\": true,\n      \"publicLinkEnabled\": true,\n      \"publicLinkLimit\": 10,\n      \"publicLinkLimitEnabled\": true,\n      \"feedbackEnabled\": true,\n      \"iosBuildsAvailableForAppleSiliconMac\": true\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69ac8135-6975-4b56-929a-59c8821e0b8d",
+          "name": "Delete a Beta Group",
+          "request": {
+            "name": "Delete a Beta Group",
+            "description": {
+              "content": "Delete a beta group and remove beta tester access to associated builds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaGroups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the beta group resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "841463bc-73b5-48a0-bce3-d8fe7cac84ca",
+              "name": "Beta group successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "debdceb3-58b4-4400-9fa1-f15cc5bf59d3",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f1d581a-e8a1-46e3-8f62-17663e2e5029",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1f1416f-e390-48f9-9c51-076850ef286b",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4be765cf-f0e5-4383-b8f1-2950e67c0763",
+              "name": "Conflict - the request conflicts with the current state of the resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d20da911-cc93-4827-a747-40a7207a8efe",
+          "name": "List All Beta Testers in a Beta Group",
+          "request": {
+            "name": "List All Beta Testers in a Beta Group",
+            "description": {
+              "content": "Get a list of beta testers contained in a specific beta group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaGroups",
+                ":id",
+                "betaTesters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields[betaTesters]",
+                  "value": "<string>,<string>",
+                  "description": "Fields to return for beta tester resources"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of resources to return (maximum 200)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the beta group resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07afc0f1-4291-4c6f-8225-fb9c6e6092cf",
+              "name": "List of beta testers in the group",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"abc123\"\n    }\n  ],\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\",\n    \"first\": \"https://www.example.com\",\n    \"next\": \"https://www.example.com\"\n  },\n  \"meta\": {\n    \"paging\": {\n      \"total\": 10,\n      \"limit\": 10\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e3620a4-3689-47d3-b26d-0e62e3d980b7",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d79135f2-bf7b-4a08-b434-5813d14b5869",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "044980f6-f62f-41e9-b944-d6c5bb6fd753",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d6b3b01-8c3e-4ce4-b14b-9ff8aa53ea20",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[betaTesters]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5fa0ef0-1618-4ea4-9527-ae09b22adc13",
+          "name": "Add Beta Testers to a Beta Group",
+          "request": {
+            "name": "Add Beta Testers to a Beta Group",
+            "description": {
+              "content": "Add one or more beta testers to a specific beta group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaGroups",
+                ":id",
+                "relationships",
+                "betaTesters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the beta group resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a2e61981-8544-461d-988b-9856cc07ddf3",
+              "name": "Beta testers successfully added to group",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "relationships",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"abc123\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b5b6e3f2-d2df-43d8-80be-abed538e4fb0",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "relationships",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"abc123\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad63fadf-67b3-4fc7-92b6-fd3a6b13e4ae",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "relationships",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"abc123\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44fd50a6-cd4a-4de4-9e27-28c4d865cad4",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "relationships",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"abc123\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ac8ca45-7e8d-4582-bddc-88da4e6f57d2",
+              "name": "Conflict - the request conflicts with the current state of the resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "relationships",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"abc123\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01356abf-cbde-4e3c-883b-be322dc86de1",
+          "name": "Remove Beta Testers From a Beta Group",
+          "request": {
+            "name": "Remove Beta Testers From a Beta Group",
+            "description": {
+              "content": "Remove one or more beta testers from a specific beta group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaGroups",
+                ":id",
+                "relationships",
+                "betaTesters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the beta group resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c8974038-2f29-4feb-8248-498aa941554e",
+              "name": "Beta testers successfully removed from group",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "relationships",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"abc123\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "19f4380b-5981-4fca-bb8c-4f7237c2f7d5",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "relationships",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"abc123\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fea4902c-e0f3-47e6-9f28-33b77e56f1d1",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "relationships",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"abc123\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57d30cf0-9b17-4984-987c-c1ef66030f1d",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "relationships",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"abc123\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e6d8e79-fbcf-4d09-b739-55c1b7b82b4e",
+              "name": "Conflict - the request conflicts with the current state of the resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaGroups",
+                    ":id",
+                    "relationships",
+                    "betaTesters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta group resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"betaTesters\",\n      \"id\": \"abc123\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.appstoreconnect.apple.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e3785dfb-e3e8-4767-8319-d536d69d2431",
+    "name": "Apple App Store Connect Apps Beta Testers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Automate the tasks you perform on the Apple Developer website and in App Store Connect. The App Store Connect API is a REST API that enables the automation of actions you take in App Store Connect, including managing apps, builds, beta testers, provisioning, and more. This specification covers the Apps, Builds, and Beta Testers resource groups.\n\nContact Support:\n Name: Apple Developer Relations\n Email: developer@apple.com",
+      "type": "text/plain"
+    }
+  }
+}

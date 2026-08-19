@@ -1,0 +1,499 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apple App Store Connect Apps Beta Testers API",
+    "version": "3.6.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Beta Testers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Individual Testers for a Build",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/builds/:id/individualTesters",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the build resource"
+              },
+              {
+                "name": "fields[betaTesters]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for beta tester resources"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return (maximum 200)"
+              }
+            ]
+          },
+          "docs": "Get a list of beta testers individually assigned to a build."
+        },
+        {
+          "info": {
+            "name": "List Beta Testers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaTesters",
+            "params": [
+              {
+                "name": "filter[email]",
+                "value": "user@example.com",
+                "type": "query",
+                "description": "Filter by email address"
+              },
+              {
+                "name": "filter[firstName]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by first name"
+              },
+              {
+                "name": "filter[lastName]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by last name"
+              },
+              {
+                "name": "filter[inviteType]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by invitation type"
+              },
+              {
+                "name": "filter[apps]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by app resource IDs"
+              },
+              {
+                "name": "filter[betaGroups]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by beta group resource IDs"
+              },
+              {
+                "name": "filter[builds]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by build resource IDs"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by beta tester resource ID"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for results"
+              },
+              {
+                "name": "fields[betaTesters]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for beta tester resources"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Relationship data to include in the response"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return (maximum 200)"
+              }
+            ]
+          },
+          "docs": "Find and list beta testers for all apps, builds, and beta groups."
+        },
+        {
+          "info": {
+            "name": "Create a Beta Tester",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaTesters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a beta tester assigned to a group, a build, or an app."
+        },
+        {
+          "info": {
+            "name": "Read Beta Tester Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaTesters/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the beta tester resource"
+              },
+              {
+                "name": "fields[betaTesters]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for beta tester resources"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Relationship data to include in the response"
+              }
+            ]
+          },
+          "docs": "Get information about a specific beta tester."
+        },
+        {
+          "info": {
+            "name": "Delete a Beta Tester",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaTesters/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the beta tester resource"
+              }
+            ]
+          },
+          "docs": "Remove a beta tester's ability to test all apps."
+        },
+        {
+          "info": {
+            "name": "List All Apps for a Beta Tester",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaTesters/:id/apps",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the beta tester resource"
+              },
+              {
+                "name": "fields[apps]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for app resources"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return (maximum 200)"
+              }
+            ]
+          },
+          "docs": "Get a list of apps that a beta tester can test."
+        },
+        {
+          "info": {
+            "name": "List All Builds Individually Assigned to a Beta Tester",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaTesters/:id/builds",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the beta tester resource"
+              },
+              {
+                "name": "fields[builds]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for build resources"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return (maximum 200)"
+              }
+            ]
+          },
+          "docs": "Get a list of builds individually assigned to a specific beta tester."
+        },
+        {
+          "info": {
+            "name": "List Beta Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaGroups",
+            "params": [
+              {
+                "name": "filter[app]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by app resource ID"
+              },
+              {
+                "name": "filter[name]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by group name"
+              },
+              {
+                "name": "filter[isInternalGroup]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by internal group status"
+              },
+              {
+                "name": "filter[publicLinkEnabled]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by public link enabled status"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by beta group resource ID"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for results"
+              },
+              {
+                "name": "fields[betaGroups]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for beta group resources"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Relationship data to include in the response"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return (maximum 200)"
+              }
+            ]
+          },
+          "docs": "Find and list beta groups for all apps."
+        },
+        {
+          "info": {
+            "name": "Create a Beta Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaGroups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a beta group associated with an app, optionally enabling TestFlight public links."
+        },
+        {
+          "info": {
+            "name": "Read Beta Group Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaGroups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the beta group resource"
+              },
+              {
+                "name": "fields[betaGroups]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for beta group resources"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Relationship data to include in the response"
+              }
+            ]
+          },
+          "docs": "Get information about a specific beta group."
+        },
+        {
+          "info": {
+            "name": "Modify a Beta Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaGroups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the beta group resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify a beta group's metadata, including name and public link status."
+        },
+        {
+          "info": {
+            "name": "Delete a Beta Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaGroups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the beta group resource"
+              }
+            ]
+          },
+          "docs": "Delete a beta group and remove beta tester access to associated builds."
+        },
+        {
+          "info": {
+            "name": "List All Beta Testers in a Beta Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaGroups/:id/betaTesters",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the beta group resource"
+              },
+              {
+                "name": "fields[betaTesters]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for beta tester resources"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return (maximum 200)"
+              }
+            ]
+          },
+          "docs": "Get a list of beta testers contained in a specific beta group."
+        },
+        {
+          "info": {
+            "name": "Add Beta Testers to a Beta Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaGroups/:id/relationships/betaTesters",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the beta group resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add one or more beta testers to a specific beta group."
+        },
+        {
+          "info": {
+            "name": "Remove Beta Testers From a Beta Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaGroups/:id/relationships/betaTesters",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the beta group resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove one or more beta testers from a specific beta group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

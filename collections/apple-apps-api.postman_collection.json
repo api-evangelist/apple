@@ -1,0 +1,1996 @@
+{
+  "item": [
+    {
+      "id": "1e2adbb4-c647-4c1b-b243-29aebe7c2117",
+      "name": "Apps",
+      "description": {
+        "content": "Manage your apps in App Store Connect, including app metadata, pricing, availability, and app information.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "83ba6fee-8f2f-4980-a4e2-720438b13e47",
+          "name": "List Apps",
+          "request": {
+            "name": "List Apps",
+            "description": {
+              "content": "Find and list apps in App Store Connect. Returns a paginated list of apps associated with your Apple Developer account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "apps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[bundleId]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by bundle identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by app resource ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[name]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by app name"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[sku]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by SKU"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[appStoreVersions.platform]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by platform"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[appStoreVersions.appStoreState]",
+                  "value": "<string>,<string>",
+                  "description": "Filter by App Store version state"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>,<string>",
+                  "description": "Sort order for the results"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[apps]",
+                  "value": "<string>,<string>",
+                  "description": "Fields to return for app resources"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of resources to return (maximum 200)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d58c39b4-12ad-4093-ae95-8966e6441395",
+              "name": "List of apps",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[bundleId]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[name]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[sku]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[appStoreVersions.platform]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[appStoreVersions.appStoreState]",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort",
+                      "value": ""
+                    },
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"apps\",\n      \"id\": \"abc123\"\n    }\n  ],\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\",\n    \"first\": \"https://www.example.com\",\n    \"next\": \"https://www.example.com\"\n  },\n  \"meta\": {\n    \"paging\": {\n      \"total\": 10,\n      \"limit\": 10\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6eaf3408-3c2e-4bc0-90dd-c6789c30e14d",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[bundleId]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[name]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[sku]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[appStoreVersions.platform]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[appStoreVersions.appStoreState]",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort",
+                      "value": ""
+                    },
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e120ee9d-2cff-4657-ba48-c598786977fa",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[bundleId]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[name]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[sku]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[appStoreVersions.platform]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[appStoreVersions.appStoreState]",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort",
+                      "value": ""
+                    },
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da3fe202-673b-4ec1-b6c6-482fd571517b",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[bundleId]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[name]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[sku]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[appStoreVersions.platform]",
+                      "value": ""
+                    },
+                    {
+                      "key": "filter[appStoreVersions.appStoreState]",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort",
+                      "value": ""
+                    },
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8715f01c-4ff1-44a8-a2a5-ecadbf91be1c",
+          "name": "Read App Information",
+          "request": {
+            "name": "Read App Information",
+            "description": {
+              "content": "Get information about a specific app.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "apps",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields[apps]",
+                  "value": "<string>,<string>",
+                  "description": "Fields to return for app resources"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>,<string>",
+                  "description": "Relationship data to include in the response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the app resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99d46867-a470-423c-8002-4feb4b5d15ad",
+              "name": "Single app response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"apps\",\n    \"id\": \"abc123\"\n  },\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd450b0a-1f00-45ae-a1bb-f893ca91de1b",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fdc93af-66ce-45f7-adf1-56980e869d3f",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e1a8670-78a3-408a-a550-7752397cdffc",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dea9b378-d581-40ef-a3db-0425e131e3b8",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "include",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80f5e716-ecfa-4222-b7e1-674276148c70",
+          "name": "Modify an App",
+          "request": {
+            "name": "Modify an App",
+            "description": {
+              "content": "Update app information including app-level attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "apps",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the app resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"<string>\",\n    \"id\": \"<string>\",\n    \"attributes\": {\n      \"contentRightsDeclaration\": \"<string>\",\n      \"subscriptionStatusUrl\": \"<string,null-uri>\",\n      \"subscriptionStatusUrlForSandbox\": \"<string,null-uri>\",\n      \"subscriptionStatusUrlVersion\": \"<string,null>\",\n      \"subscriptionStatusUrlVersionForSandbox\": \"<string,null>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cd212ded-3b3f-424e-9508-4fae84064378",
+              "name": "Updated app",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"apps\",\n    \"id\": \"abc123\",\n    \"attributes\": {\n      \"contentRightsDeclaration\": \"DOES_NOT_USE_THIRD_PARTY_CONTENT\",\n      \"subscriptionStatusUrl\": \"https://www.example.com\",\n      \"subscriptionStatusUrlForSandbox\": \"https://www.example.com\",\n      \"subscriptionStatusUrlVersion\": \"V1\",\n      \"subscriptionStatusUrlVersionForSandbox\": \"V1\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"apps\",\n    \"id\": \"abc123\"\n  },\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8ede5e7-aa68-46eb-89cd-b94df4aea540",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"apps\",\n    \"id\": \"abc123\",\n    \"attributes\": {\n      \"contentRightsDeclaration\": \"DOES_NOT_USE_THIRD_PARTY_CONTENT\",\n      \"subscriptionStatusUrl\": \"https://www.example.com\",\n      \"subscriptionStatusUrlForSandbox\": \"https://www.example.com\",\n      \"subscriptionStatusUrlVersion\": \"V1\",\n      \"subscriptionStatusUrlVersionForSandbox\": \"V1\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8fba0520-47b2-4e5d-a55b-62a9d2f5c1de",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"apps\",\n    \"id\": \"abc123\",\n    \"attributes\": {\n      \"contentRightsDeclaration\": \"DOES_NOT_USE_THIRD_PARTY_CONTENT\",\n      \"subscriptionStatusUrl\": \"https://www.example.com\",\n      \"subscriptionStatusUrlForSandbox\": \"https://www.example.com\",\n      \"subscriptionStatusUrlVersion\": \"V1\",\n      \"subscriptionStatusUrlVersionForSandbox\": \"V1\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "654a040f-d1b6-4066-84c4-8047fc1b4654",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"apps\",\n    \"id\": \"abc123\",\n    \"attributes\": {\n      \"contentRightsDeclaration\": \"DOES_NOT_USE_THIRD_PARTY_CONTENT\",\n      \"subscriptionStatusUrl\": \"https://www.example.com\",\n      \"subscriptionStatusUrlForSandbox\": \"https://www.example.com\",\n      \"subscriptionStatusUrlVersion\": \"V1\",\n      \"subscriptionStatusUrlVersionForSandbox\": \"V1\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "348ff70f-4fd9-4fe1-b197-91bb4b14a74c",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"apps\",\n    \"id\": \"abc123\",\n    \"attributes\": {\n      \"contentRightsDeclaration\": \"DOES_NOT_USE_THIRD_PARTY_CONTENT\",\n      \"subscriptionStatusUrl\": \"https://www.example.com\",\n      \"subscriptionStatusUrlForSandbox\": \"https://www.example.com\",\n      \"subscriptionStatusUrlVersion\": \"V1\",\n      \"subscriptionStatusUrlVersionForSandbox\": \"V1\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85798dd5-69de-4c03-8cab-924f2ffdb299",
+              "name": "Conflict - the request conflicts with the current state of the resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"apps\",\n    \"id\": \"abc123\",\n    \"attributes\": {\n      \"contentRightsDeclaration\": \"DOES_NOT_USE_THIRD_PARTY_CONTENT\",\n      \"subscriptionStatusUrl\": \"https://www.example.com\",\n      \"subscriptionStatusUrlForSandbox\": \"https://www.example.com\",\n      \"subscriptionStatusUrlVersion\": \"V1\",\n      \"subscriptionStatusUrlVersionForSandbox\": \"V1\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a414176b-8b10-44b1-8b19-decc1e117880",
+          "name": "List All Builds of an App",
+          "request": {
+            "name": "List All Builds of an App",
+            "description": {
+              "content": "Get a list of builds associated with a specific app.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "apps",
+                ":id",
+                "builds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields[builds]",
+                  "value": "<string>,<string>",
+                  "description": "Fields to return for build resources"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of resources to return (maximum 200)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the app resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93acfc15-a223-4480-abff-5308d2b5a566",
+              "name": "List of builds for the app",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id",
+                    "builds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[builds]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"builds\",\n      \"id\": \"abc123\"\n    }\n  ],\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\",\n    \"first\": \"https://www.example.com\",\n    \"next\": \"https://www.example.com\"\n  },\n  \"meta\": {\n    \"paging\": {\n      \"total\": 10,\n      \"limit\": 10\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbe40d36-747a-47e4-a44b-05f5c799e393",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id",
+                    "builds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[builds]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "841667c2-9df9-49c3-bc83-4959f53969f3",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id",
+                    "builds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[builds]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4bb6bc6-655b-41b1-b7f1-14c16186c9ea",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id",
+                    "builds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[builds]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e3fde08-b93a-4c29-a2d2-f8f269471153",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apps",
+                    ":id",
+                    "builds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[builds]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the app resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35f21d0a-781f-43bd-883b-84a733f225ad",
+          "name": "List All Apps for a Beta Tester",
+          "request": {
+            "name": "List All Apps for a Beta Tester",
+            "description": {
+              "content": "Get a list of apps that a beta tester can test.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "betaTesters",
+                ":id",
+                "apps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields[apps]",
+                  "value": "<string>,<string>",
+                  "description": "Fields to return for app resources"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of resources to return (maximum 200)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the beta tester resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1e03594-85a0-4d78-852c-896909d21e9f",
+              "name": "List of apps for the beta tester",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"apps\",\n      \"id\": \"abc123\"\n    }\n  ],\n  \"included\": [],\n  \"links\": {\n    \"self\": \"https://www.example.com\",\n    \"first\": \"https://www.example.com\",\n    \"next\": \"https://www.example.com\"\n  },\n  \"meta\": {\n    \"paging\": {\n      \"total\": 10,\n      \"limit\": 10\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb4440bc-67d7-4195-82fc-67502a9e527f",
+              "name": "Bad request - the request was invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbc7290d-faca-4458-9415-abca1b75e03f",
+              "name": "Unauthorized - authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f848179f-332c-4a5e-81ec-32f47778402d",
+              "name": "Forbidden - the API key does not have permission for this request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c59b96f1-8aa6-4f8f-b68e-fffac6a740cb",
+              "name": "Not found - the requested resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "betaTesters",
+                    ":id",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[apps]",
+                      "value": ""
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the beta tester resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.appstoreconnect.apple.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0cd6c70a-7b83-470c-93c8-8d04f5fc9354",
+    "name": "Apple App Store Connect Apps API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Automate the tasks you perform on the Apple Developer website and in App Store Connect. The App Store Connect API is a REST API that enables the automation of actions you take in App Store Connect, including managing apps, builds, beta testers, provisioning, and more. This specification covers the Apps, Builds, and Beta Testers resource groups.\n\nContact Support:\n Name: Apple Developer Relations\n Email: developer@apple.com",
+      "type": "text/plain"
+    }
+  }
+}

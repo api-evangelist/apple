@@ -1,0 +1,207 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apple App Store Connect Apps API",
+    "version": "3.6.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Apps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/apps",
+            "params": [
+              {
+                "name": "filter[bundleId]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by bundle identifier"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by app resource ID"
+              },
+              {
+                "name": "filter[name]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by app name"
+              },
+              {
+                "name": "filter[sku]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by SKU"
+              },
+              {
+                "name": "filter[appStoreVersions.platform]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by platform"
+              },
+              {
+                "name": "filter[appStoreVersions.appStoreState]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by App Store version state"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for the results"
+              },
+              {
+                "name": "fields[apps]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for app resources"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return (maximum 200)"
+              }
+            ]
+          },
+          "docs": "Find and list apps in App Store Connect. Returns a paginated list of apps associated with your Apple Developer account."
+        },
+        {
+          "info": {
+            "name": "Read App Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/apps/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the app resource"
+              },
+              {
+                "name": "fields[apps]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for app resources"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Relationship data to include in the response"
+              }
+            ]
+          },
+          "docs": "Get information about a specific app."
+        },
+        {
+          "info": {
+            "name": "Modify an App",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.appstoreconnect.apple.com/v1/apps/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the app resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update app information including app-level attributes."
+        },
+        {
+          "info": {
+            "name": "List All Builds of an App",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/apps/:id/builds",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the app resource"
+              },
+              {
+                "name": "fields[builds]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for build resources"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return (maximum 200)"
+              }
+            ]
+          },
+          "docs": "Get a list of builds associated with a specific app."
+        },
+        {
+          "info": {
+            "name": "List All Apps for a Beta Tester",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appstoreconnect.apple.com/v1/betaTesters/:id/apps",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the beta tester resource"
+              },
+              {
+                "name": "fields[apps]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return for app resources"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return (maximum 200)"
+              }
+            ]
+          },
+          "docs": "Get a list of apps that a beta tester can test."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
