@@ -22,6 +22,13 @@ type: Index
 access: 3rd-Party
 position: Consumer
 tags:
+- Developers
+- iOS
+- macOS
+- Mobile
+- Technology
+- Fortune 100
+tags_raw:
 - Developer
 - iOS
 - macOS
@@ -72,6 +79,10 @@ apis:
   humanURL: https://developer.apple.com/documentation/mapkitjs
   baseURL: https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js
   tags:
+  - JavaScript
+  - Location
+  - Maps
+  tags_raw:
   - Javascript
   - Location
   - Maps
@@ -90,6 +101,9 @@ apis:
   tags:
   - Authentication
   - Identity
+  tags_raw:
+  - Authentication
+  - Identity
   - OAuth
   properties:
   - type: Documentation
@@ -102,6 +116,10 @@ apis:
   humanURL: https://developer.apple.com/documentation/usernotifications
   baseURL: https://api.push.apple.com
   tags:
+  - Messaging
+  - Notification
+  - Push
+  tags_raw:
   - Messaging
   - Notifications
   - Push
@@ -119,6 +137,10 @@ apis:
   baseURL: https://api.storekit.itunes.apple.com
   tags:
   - In-App Purchases
+  - Subscription
+  - Transaction
+  tags_raw:
+  - In-App Purchases
   - Subscriptions
   - Transactions
   properties:
@@ -135,6 +157,10 @@ apis:
     Receive real-time notifications about in-app purchase events and subscription lifecycle changes.
   humanURL: https://developer.apple.com/documentation/appstoreservernotifications
   tags:
+  - In-App Purchases
+  - Subscription
+  - Webhook
+  tags_raw:
   - In-App Purchases
   - Subscriptions
   - Webhooks
@@ -215,6 +241,10 @@ apis:
   tags:
   - Passes
   - Payments
+  - Wallets
+  tags_raw:
+  - Passes
+  - Payments
   - Wallet
   properties:
   - type: Documentation
@@ -276,6 +306,10 @@ apis:
   description: Create, distribute, and update orders in Apple Wallet for order tracking.
   humanURL: https://developer.apple.com/documentation/walletorders
   tags:
+  - Order
+  - Tracking
+  - Wallets
+  tags_raw:
   - Orders
   - Tracking
   - Wallet
@@ -313,6 +347,8 @@ apis:
   humanURL: https://developer.apple.com/documentation/applemusicapi
   baseURL: https://api.music.apple.com/v1
   tags:
+  - Application
+  tags_raw:
   - Apps
   properties:
   - type: OpenAPI
