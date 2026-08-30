@@ -91,7 +91,7 @@ apis:
   humanURL: https://developer.apple.com/documentation/mapkitjs
   baseURL: https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js
   tags:
-  - JavaScript
+  - Javascript
   - Location
   - Maps
   tags_raw:
