@@ -19,11 +19,12 @@ accessModel:
   try_now: true
   public: false
   label: Free · Self-serve signup
-  confidence: high
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png
 created: '2024-01-15'
@@ -32,7 +33,7 @@ url: https://developer.apple.com
 specificationVersion: '0.23'
 type: Index
 access: 3rd-Party
-position: Consumer
+position: Consuming
 tags:
 - Developers
 - iOS
