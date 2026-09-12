@@ -643,6 +643,8 @@ apis:
     url: >-
       https://developer.apple.com/documentation/appstoreconnectapi/app-store-connect-api-release-notes
 common:
+- type: Website
+  url: https://www.apple.com/
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/apple/overview
 - type: AgenticAccess
