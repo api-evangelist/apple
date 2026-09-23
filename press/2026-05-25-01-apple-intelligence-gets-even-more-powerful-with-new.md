@@ -1,7 +1,9 @@
 ---
 title: Apple Intelligence gets even more powerful with new ...
 url: https://www.apple.com/newsroom/2025/06/apple-intelligence-gets-even-more-powerful-with-new-capabilities-across-apple-devices/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Apple" press release artificial intelligence'
 position: 1
 source: serpapi-google

@@ -1,7 +1,9 @@
 ---
 title: Joint statement from Google and Apple
 url: https://blog.google/company-news/inside-google/company-announcements/joint-statement-google-apple/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Apple" press release artificial intelligence'
 position: 4
 source: serpapi-google
