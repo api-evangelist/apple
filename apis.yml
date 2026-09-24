@@ -69,8 +69,6 @@ apis:
     url: https://developer.apple.com/documentation/applemusicapi/getting_keys_and_creating_tokens
   - type: Portal
     url: https://developer.apple.com/musickit/
-  - url: graphql/apple-graphql.md
-    type: GraphQL
 - name: WeatherKit REST API
   description: Access weather forecasts, current conditions, and historical weather data.
   humanURL: https://developer.apple.com/documentation/weatherkitrestapi
