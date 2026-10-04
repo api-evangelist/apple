@@ -1046,131 +1046,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    App:
-      type: object
-      required:
-      - type
-      - id
-      properties:
-        type:
-          type: string
-          enum:
-          - apps
-          example: apps
-        id:
-          type: string
-          description: The opaque resource ID that uniquely identifies the app
-          example: abc123
-        attributes:
-          $ref: '#/components/schemas/AppAttributes'
-        relationships:
-          $ref: '#/components/schemas/AppRelationships'
-        links:
-          $ref: '#/components/schemas/ResourceLink'
-    ErrorDetail:
-      type: object
-      required:
-      - status
-      - title
-      properties:
-        id:
-          type: string
-          description: A unique identifier for this error occurrence
-          example: abc123
-        status:
-          type: string
-          description: The HTTP status code for this error
-          example: example_value
-        code:
-          type: string
-          description: A machine-readable error code
-          example: example_value
-        title:
-          type: string
-          description: A short summary of the error
-          example: Example Title
-        detail:
-          type: string
-          description: A detailed explanation of the error
-          example: example_value
-        source:
-          type: object
-          properties:
-            pointer:
-              type: string
-              description: JSON pointer to the associated entity in the request body
-            parameter:
-              type: string
-              description: The query parameter that caused the error
-          example: example_value
-    BetaTesterRelationships:
-      type: object
-      properties:
-        apps:
-          type: object
-          properties:
-            links:
-              $ref: '#/components/schemas/RelationshipLinks'
-            data:
-              type: array
-              items:
-                $ref: '#/components/schemas/RelationshipData'
-          example: example_value
-        betaGroups:
-          type: object
-          properties:
-            links:
-              $ref: '#/components/schemas/RelationshipLinks'
-            data:
-              type: array
-              items:
-                $ref: '#/components/schemas/RelationshipData'
-          example: example_value
-        builds:
-          type: object
-          properties:
-            links:
-              $ref: '#/components/schemas/RelationshipLinks'
-            data:
-              type: array
-              items:
-                $ref: '#/components/schemas/RelationshipData'
-          example: example_value
-    BetaGroupUpdateRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - type
-          - id
-          properties:
-            type:
-              type: string
-              enum:
-              - betaGroups
-            id:
-              type: string
-            attributes:
-              type: object
-              properties:
-                name:
-                  type: string
-                hasAccessToAllBuilds:
-                  type: boolean
-                publicLinkEnabled:
-                  type: boolean
-                publicLinkLimit:
-                  type: integer
-                publicLinkLimitEnabled:
-                  type: boolean
-                feedbackEnabled:
-                  type: boolean
-                iosBuildsAvailableForAppleSiliconMac:
-                  type: boolean
-          example: example_value
     BuildsResponse:
       type: object
       required:
@@ -1190,465 +1065,6 @@ components:
           $ref: '#/components/schemas/PagedDocumentLinks'
         meta:
           $ref: '#/components/schemas/PagingInformation'
-    BetaTesterAttributes:
-      type: object
-      properties:
-        firstName:
-          type:
-          - string
-          - 'null'
-          description: The first name of the beta tester
-          example: example_value
-        lastName:
-          type:
-          - string
-          - 'null'
-          description: The last name of the beta tester
-          example: example_value
-        email:
-          type:
-          - string
-          - 'null'
-          format: email
-          description: The email address of the beta tester
-          example: user@example.com
-        inviteType:
-          type: string
-          enum:
-          - EMAIL
-          - PUBLIC_LINK
-          description: How the tester was invited
-          example: EMAIL
-        state:
-          type: string
-          enum:
-          - NOT_INVITED
-          - INVITED
-          - ACCEPTED
-          - INSTALLED
-          - REVOKED
-          description: The current state of the beta tester invitation
-          example: NOT_INVITED
-    AppsResponse:
-      type: object
-      required:
-      - data
-      - links
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/App'
-          example: []
-        included:
-          type: array
-          items: {}
-          example: []
-        links:
-          $ref: '#/components/schemas/PagedDocumentLinks'
-        meta:
-          $ref: '#/components/schemas/PagingInformation'
-    BetaTesterResponse:
-      type: object
-      required:
-      - data
-      - links
-      properties:
-        data:
-          $ref: '#/components/schemas/BetaTester'
-        included:
-          type: array
-          items: {}
-          example: []
-        links:
-          $ref: '#/components/schemas/DocumentLinks'
-    BetaTesterCreateRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - type
-          - attributes
-          properties:
-            type:
-              type: string
-              enum:
-              - betaTesters
-            attributes:
-              type: object
-              required:
-              - email
-              properties:
-                firstName:
-                  type: string
-                  description: The first name of the beta tester
-                lastName:
-                  type: string
-                  description: The last name of the beta tester
-                email:
-                  type: string
-                  format: email
-                  description: The email address of the beta tester
-            relationships:
-              type: object
-              properties:
-                betaGroups:
-                  type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/RelationshipData'
-                builds:
-                  type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/RelationshipData'
-          example: example_value
-    BetaGroup:
-      type: object
-      required:
-      - type
-      - id
-      properties:
-        type:
-          type: string
-          enum:
-          - betaGroups
-          example: betaGroups
-        id:
-          type: string
-          description: The opaque resource ID that uniquely identifies the beta group
-          example: abc123
-        attributes:
-          $ref: '#/components/schemas/BetaGroupAttributes'
-        relationships:
-          $ref: '#/components/schemas/BetaGroupRelationships'
-        links:
-          $ref: '#/components/schemas/ResourceLink'
-    DocumentLinks:
-      type: object
-      required:
-      - self
-      properties:
-        self:
-          type: string
-          format: uri
-          description: The URL for the resource
-          example: https://www.example.com
-    BetaGroupAttributes:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the beta group
-          example: Example Title
-        createdDate:
-          type: string
-          format: date-time
-          description: The date and time the beta group was created
-          example: '2026-01-15T10:30:00Z'
-        isInternalGroup:
-          type: boolean
-          description: Whether the group is an internal group
-          example: true
-        hasAccessToAllBuilds:
-          type: boolean
-          description: Whether the group has access to all builds
-          example: true
-        publicLinkEnabled:
-          type: boolean
-          description: Whether the public link is enabled
-          example: true
-        publicLinkId:
-          type:
-          - string
-          - 'null'
-          description: The ID component of the public link
-          example: '500123'
-        publicLink:
-          type:
-          - string
-          - 'null'
-          format: uri
-          description: The full public TestFlight link
-          example: https://www.example.com
-        publicLinkLimitEnabled:
-          type: boolean
-          description: Whether the public link limit is enabled
-          example: true
-        publicLinkLimit:
-          type:
-          - integer
-          - 'null'
-          description: Maximum number of testers via the public link
-          example: example_value
-        feedbackEnabled:
-          type: boolean
-          description: Whether beta feedback is enabled for this group
-          example: true
-        iosBuildsAvailableForAppleSiliconMac:
-          type: boolean
-          description: Whether iOS builds are available on Apple Silicon Macs
-          example: true
-    BetaGroupRelationships:
-      type: object
-      properties:
-        app:
-          type: object
-          properties:
-            links:
-              $ref: '#/components/schemas/RelationshipLinks'
-            data:
-              $ref: '#/components/schemas/RelationshipData'
-          example: example_value
-        betaTesters:
-          type: object
-          properties:
-            links:
-              $ref: '#/components/schemas/RelationshipLinks'
-            data:
-              type: array
-              items:
-                $ref: '#/components/schemas/RelationshipData'
-          example: example_value
-        builds:
-          type: object
-          properties:
-            links:
-              $ref: '#/components/schemas/RelationshipLinks'
-            data:
-              type: array
-              items:
-                $ref: '#/components/schemas/RelationshipData'
-          example: example_value
-    AppAttributes:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the app
-          example: Example Title
-        bundleId:
-          type: string
-          description: The bundle ID of the app
-          example: '500123'
-        sku:
-          type: string
-          description: The SKU of the app
-          example: example_value
-        primaryLocale:
-          type: string
-          description: The primary locale for the app (e.g., en-US)
-          example: example_value
-        isOrEverWasMadeForKids:
-          type: boolean
-          description: Whether the app is or was made for kids
-          example: true
-        contentRightsDeclaration:
-          type: string
-          enum:
-          - DOES_NOT_USE_THIRD_PARTY_CONTENT
-          - USES_THIRD_PARTY_CONTENT
-          description: Declaration of whether the app uses third-party content
-          example: DOES_NOT_USE_THIRD_PARTY_CONTENT
-        streamlinedPurchasingEnabled:
-          type: boolean
-          description: Whether streamlined purchasing is enabled
-          example: true
-        subscriptionStatusUrl:
-          type:
-          - string
-          - 'null'
-          format: uri
-          description: URL for subscription status notifications
-          example: https://www.example.com
-        subscriptionStatusUrlForSandbox:
-          type:
-          - string
-          - 'null'
-          format: uri
-          description: URL for sandbox subscription status notifications
-          example: https://www.example.com
-        subscriptionStatusUrlVersion:
-          type:
-          - string
-          - 'null'
-          enum:
-          - V1
-          - V2
-          - null
-          description: Version of the subscription status URL
-          example: V1
-        subscriptionStatusUrlVersionForSandbox:
-          type:
-          - string
-          - 'null'
-          enum:
-          - V1
-          - V2
-          - null
-          description: Version of the sandbox subscription status URL
-          example: V1
-    BetaGroupsResponse:
-      type: object
-      required:
-      - data
-      - links
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BetaGroup'
-          example: []
-        included:
-          type: array
-          items: {}
-          example: []
-        links:
-          $ref: '#/components/schemas/PagedDocumentLinks'
-        meta:
-          $ref: '#/components/schemas/PagingInformation'
-    Build:
-      type: object
-      required:
-      - type
-      - id
-      properties:
-        type:
-          type: string
-          enum:
-          - builds
-          example: builds
-        id:
-          type: string
-          description: The opaque resource ID that uniquely identifies the build
-          example: abc123
-        attributes:
-          $ref: '#/components/schemas/BuildAttributes'
-        relationships:
-          $ref: '#/components/schemas/BuildRelationships'
-        links:
-          $ref: '#/components/schemas/ResourceLink'
-    BetaGroupCreateRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - type
-          - attributes
-          - relationships
-          properties:
-            type:
-              type: string
-              enum:
-              - betaGroups
-            attributes:
-              type: object
-              required:
-              - name
-              properties:
-                name:
-                  type: string
-                  description: The name of the beta group
-                hasAccessToAllBuilds:
-                  type: boolean
-                  description: Whether the group has access to all builds
-                publicLinkEnabled:
-                  type: boolean
-                  description: Whether the public link is enabled
-                publicLinkLimit:
-                  type: integer
-                  description: Maximum number of testers via the public link
-                publicLinkLimitEnabled:
-                  type: boolean
-                  description: Whether the public link limit is enabled
-                feedbackEnabled:
-                  type: boolean
-                  description: Whether feedback is enabled
-                iosBuildsAvailableForAppleSiliconMac:
-                  type: boolean
-                  description: Whether iOS builds are available on Apple Silicon Macs
-            relationships:
-              type: object
-              required:
-              - app
-              properties:
-                app:
-                  type: object
-                  required:
-                  - data
-                  properties:
-                    data:
-                      $ref: '#/components/schemas/RelationshipData'
-                betaTesters:
-                  type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/RelationshipData'
-                builds:
-                  type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/RelationshipData'
-          example: example_value
-    BetaGroupResponse:
-      type: object
-      required:
-      - data
-      - links
-      properties:
-        data:
-          $ref: '#/components/schemas/BetaGroup'
-        included:
-          type: array
-          items: {}
-          example: []
-        links:
-          $ref: '#/components/schemas/DocumentLinks'
-    RelationshipLinks:
-      type: object
-      properties:
-        self:
-          type: string
-          format: uri
-          example: https://www.example.com
-        related:
-          type: string
-          format: uri
-          example: https://www.example.com
-    PagedDocumentLinks:
-      type: object
-      required:
-      - self
-      properties:
-        self:
-          type: string
-          format: uri
-          description: The URL for the current page of results
-          example: https://www.example.com
-        first:
-          type: string
-          format: uri
-          description: The URL for the first page of results
-          example: https://www.example.com
-        next:
-          type: string
-          format: uri
-          description: The URL for the next page of results
-          example: https://www.example.com
     RelationshipData:
       type: object
       required:
@@ -1661,14 +1077,6 @@ components:
         id:
           type: string
           example: abc123
-    ResourceLink:
-      type: object
-      properties:
-        self:
-          type: string
-          format: uri
-          description: The URL for the resource
-          example: https://www.example.com
     BetaTestersResponse:
       type: object
       required:
@@ -1747,6 +1155,187 @@ components:
               items:
                 $ref: '#/components/schemas/RelationshipData'
           example: example_value
+    BetaGroupCreateRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - type
+          - attributes
+          - relationships
+          properties:
+            type:
+              type: string
+              enum:
+              - betaGroups
+            attributes:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the beta group
+                hasAccessToAllBuilds:
+                  type: boolean
+                  description: Whether the group has access to all builds
+                publicLinkEnabled:
+                  type: boolean
+                  description: Whether the public link is enabled
+                publicLinkLimit:
+                  type: integer
+                  description: Maximum number of testers via the public link
+                publicLinkLimitEnabled:
+                  type: boolean
+                  description: Whether the public link limit is enabled
+                feedbackEnabled:
+                  type: boolean
+                  description: Whether feedback is enabled
+                iosBuildsAvailableForAppleSiliconMac:
+                  type: boolean
+                  description: Whether iOS builds are available on Apple Silicon Macs
+            relationships:
+              type: object
+              required:
+              - app
+              properties:
+                app:
+                  type: object
+                  required:
+                  - data
+                  properties:
+                    data:
+                      $ref: '#/components/schemas/RelationshipData'
+                betaTesters:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/RelationshipData'
+                builds:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+    BetaTesterCreateRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - type
+          - attributes
+          properties:
+            type:
+              type: string
+              enum:
+              - betaTesters
+            attributes:
+              type: object
+              required:
+              - email
+              properties:
+                firstName:
+                  type: string
+                  description: The first name of the beta tester
+                lastName:
+                  type: string
+                  description: The last name of the beta tester
+                email:
+                  type: string
+                  format: email
+                  description: The email address of the beta tester
+            relationships:
+              type: object
+              properties:
+                betaGroups:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/RelationshipData'
+                builds:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+    BetaGroupsResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BetaGroup'
+          example: []
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/PagedDocumentLinks'
+        meta:
+          $ref: '#/components/schemas/PagingInformation'
+    BetaGroupUpdateRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - type
+          - id
+          properties:
+            type:
+              type: string
+              enum:
+              - betaGroups
+            id:
+              type: string
+            attributes:
+              type: object
+              properties:
+                name:
+                  type: string
+                hasAccessToAllBuilds:
+                  type: boolean
+                publicLinkEnabled:
+                  type: boolean
+                publicLinkLimit:
+                  type: integer
+                publicLinkLimitEnabled:
+                  type: boolean
+                feedbackEnabled:
+                  type: boolean
+                iosBuildsAvailableForAppleSiliconMac:
+                  type: boolean
+          example: example_value
+    ErrorResponse:
+      type: object
+      required:
+      - errors
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          example: []
     BuildRelationships:
       type: object
       properties:
@@ -1828,6 +1417,27 @@ components:
             data:
               $ref: '#/components/schemas/RelationshipData'
           example: example_value
+    BetaGroup:
+      type: object
+      required:
+      - type
+      - id
+      properties:
+        type:
+          type: string
+          enum:
+          - betaGroups
+          example: betaGroups
+        id:
+          type: string
+          description: The opaque resource ID that uniquely identifies the beta group
+          example: abc123
+        attributes:
+          $ref: '#/components/schemas/BetaGroupAttributes'
+        relationships:
+          $ref: '#/components/schemas/BetaGroupRelationships'
+        links:
+          $ref: '#/components/schemas/ResourceLink'
     BetaGroupBetaTestersLinkagesRequest:
       type: object
       required:
@@ -1848,35 +1458,7 @@ components:
               id:
                 type: string
           example: []
-    PagingInformation:
-      type: object
-      required:
-      - paging
-      properties:
-        paging:
-          type: object
-          required:
-          - total
-          - limit
-          properties:
-            total:
-              type: integer
-              description: Total number of resources matching the request
-            limit:
-              type: integer
-              description: Maximum number of resources returned per page
-          example: example_value
-    ErrorResponse:
-      type: object
-      required:
-      - errors
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-          example: []
-    BetaTester:
+    Build:
       type: object
       required:
       - type
@@ -1885,18 +1467,57 @@ components:
         type:
           type: string
           enum:
-          - betaTesters
-          example: betaTesters
+          - builds
+          example: builds
         id:
           type: string
-          description: The opaque resource ID that uniquely identifies the beta tester
+          description: The opaque resource ID that uniquely identifies the build
           example: abc123
         attributes:
-          $ref: '#/components/schemas/BetaTesterAttributes'
+          $ref: '#/components/schemas/BuildAttributes'
         relationships:
-          $ref: '#/components/schemas/BetaTesterRelationships'
+          $ref: '#/components/schemas/BuildRelationships'
         links:
           $ref: '#/components/schemas/ResourceLink'
+    BetaTesterAttributes:
+      type: object
+      properties:
+        firstName:
+          type:
+          - string
+          - 'null'
+          description: The first name of the beta tester
+          example: example_value
+        lastName:
+          type:
+          - string
+          - 'null'
+          description: The last name of the beta tester
+          example: example_value
+        email:
+          type:
+          - string
+          - 'null'
+          format: email
+          description: The email address of the beta tester
+          example: user@example.com
+        inviteType:
+          type: string
+          enum:
+          - EMAIL
+          - PUBLIC_LINK
+          description: How the tester was invited
+          example: EMAIL
+        state:
+          type: string
+          enum:
+          - NOT_INVITED
+          - INVITED
+          - ACCEPTED
+          - INSTALLED
+          - REVOKED
+          description: The current state of the beta tester invitation
+          example: NOT_INVITED
     BuildAttributes:
       type: object
       properties:
@@ -1963,38 +1584,398 @@ components:
           - 'null'
           description: Whether the build uses non-exempt encryption
           example: example_value
-  parameters:
-    LimitParam:
-      name: limit
-      in: query
-      description: Maximum number of resources to return (maximum 200)
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        default: 50
-    BetaGroupIdParam:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier for the beta group resource
-      schema:
-        type: string
-    BuildIdParam:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier for the build resource
-      schema:
-        type: string
-    BetaTesterIdParam:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier for the beta tester resource
-      schema:
-        type: string
+    AppsResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/App'
+          example: []
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/PagedDocumentLinks'
+        meta:
+          $ref: '#/components/schemas/PagingInformation'
+    DocumentLinks:
+      type: object
+      required:
+      - self
+      properties:
+        self:
+          type: string
+          format: uri
+          description: The URL for the resource
+          example: https://www.example.com
+    RelationshipLinks:
+      type: object
+      properties:
+        self:
+          type: string
+          format: uri
+          example: https://www.example.com
+        related:
+          type: string
+          format: uri
+          example: https://www.example.com
+    BetaGroupResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          $ref: '#/components/schemas/BetaGroup'
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/DocumentLinks'
+    BetaTesterResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          $ref: '#/components/schemas/BetaTester'
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/DocumentLinks'
+    PagedDocumentLinks:
+      type: object
+      required:
+      - self
+      properties:
+        self:
+          type: string
+          format: uri
+          description: The URL for the current page of results
+          example: https://www.example.com
+        first:
+          type: string
+          format: uri
+          description: The URL for the first page of results
+          example: https://www.example.com
+        next:
+          type: string
+          format: uri
+          description: The URL for the next page of results
+          example: https://www.example.com
+    ResourceLink:
+      type: object
+      properties:
+        self:
+          type: string
+          format: uri
+          description: The URL for the resource
+          example: https://www.example.com
+    ErrorDetail:
+      type: object
+      required:
+      - status
+      - title
+      properties:
+        id:
+          type: string
+          description: A unique identifier for this error occurrence
+          example: abc123
+        status:
+          type: string
+          description: The HTTP status code for this error
+          example: example_value
+        code:
+          type: string
+          description: A machine-readable error code
+          example: example_value
+        title:
+          type: string
+          description: A short summary of the error
+          example: Example Title
+        detail:
+          type: string
+          description: A detailed explanation of the error
+          example: example_value
+        source:
+          type: object
+          properties:
+            pointer:
+              type: string
+              description: JSON pointer to the associated entity in the request body
+            parameter:
+              type: string
+              description: The query parameter that caused the error
+          example: example_value
+    BetaGroupRelationships:
+      type: object
+      properties:
+        app:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        betaTesters:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        builds:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+    App:
+      type: object
+      required:
+      - type
+      - id
+      properties:
+        type:
+          type: string
+          enum:
+          - apps
+          example: apps
+        id:
+          type: string
+          description: The opaque resource ID that uniquely identifies the app
+          example: abc123
+        attributes:
+          $ref: '#/components/schemas/AppAttributes'
+        relationships:
+          $ref: '#/components/schemas/AppRelationships'
+        links:
+          $ref: '#/components/schemas/ResourceLink'
+    BetaGroupAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the beta group
+          example: Example Title
+        createdDate:
+          type: string
+          format: date-time
+          description: The date and time the beta group was created
+          example: '2026-01-15T10:30:00Z'
+        isInternalGroup:
+          type: boolean
+          description: Whether the group is an internal group
+          example: true
+        hasAccessToAllBuilds:
+          type: boolean
+          description: Whether the group has access to all builds
+          example: true
+        publicLinkEnabled:
+          type: boolean
+          description: Whether the public link is enabled
+          example: true
+        publicLinkId:
+          type:
+          - string
+          - 'null'
+          description: The ID component of the public link
+          example: '500123'
+        publicLink:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: The full public TestFlight link
+          example: https://www.example.com
+        publicLinkLimitEnabled:
+          type: boolean
+          description: Whether the public link limit is enabled
+          example: true
+        publicLinkLimit:
+          type:
+          - integer
+          - 'null'
+          description: Maximum number of testers via the public link
+          example: example_value
+        feedbackEnabled:
+          type: boolean
+          description: Whether beta feedback is enabled for this group
+          example: true
+        iosBuildsAvailableForAppleSiliconMac:
+          type: boolean
+          description: Whether iOS builds are available on Apple Silicon Macs
+          example: true
+    AppAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the app
+          example: Example Title
+        bundleId:
+          type: string
+          description: The bundle ID of the app
+          example: '500123'
+        sku:
+          type: string
+          description: The SKU of the app
+          example: example_value
+        primaryLocale:
+          type: string
+          description: The primary locale for the app (e.g., en-US)
+          example: example_value
+        isOrEverWasMadeForKids:
+          type: boolean
+          description: Whether the app is or was made for kids
+          example: true
+        contentRightsDeclaration:
+          type: string
+          enum:
+          - DOES_NOT_USE_THIRD_PARTY_CONTENT
+          - USES_THIRD_PARTY_CONTENT
+          description: Declaration of whether the app uses third-party content
+          example: DOES_NOT_USE_THIRD_PARTY_CONTENT
+        streamlinedPurchasingEnabled:
+          type: boolean
+          description: Whether streamlined purchasing is enabled
+          example: true
+        subscriptionStatusUrl:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL for subscription status notifications
+          example: https://www.example.com
+        subscriptionStatusUrlForSandbox:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL for sandbox subscription status notifications
+          example: https://www.example.com
+        subscriptionStatusUrlVersion:
+          type:
+          - string
+          - 'null'
+          enum:
+          - V1
+          - V2
+          - null
+          description: Version of the subscription status URL
+          example: V1
+        subscriptionStatusUrlVersionForSandbox:
+          type:
+          - string
+          - 'null'
+          enum:
+          - V1
+          - V2
+          - null
+          description: Version of the sandbox subscription status URL
+          example: V1
+    PagingInformation:
+      type: object
+      required:
+      - paging
+      properties:
+        paging:
+          type: object
+          required:
+          - total
+          - limit
+          properties:
+            total:
+              type: integer
+              description: Total number of resources matching the request
+            limit:
+              type: integer
+              description: Maximum number of resources returned per page
+          example: example_value
+    BetaTester:
+      type: object
+      required:
+      - type
+      - id
+      properties:
+        type:
+          type: string
+          enum:
+          - betaTesters
+          example: betaTesters
+        id:
+          type: string
+          description: The opaque resource ID that uniquely identifies the beta tester
+          example: abc123
+        attributes:
+          $ref: '#/components/schemas/BetaTesterAttributes'
+        relationships:
+          $ref: '#/components/schemas/BetaTesterRelationships'
+        links:
+          $ref: '#/components/schemas/ResourceLink'
+    BetaTesterRelationships:
+      type: object
+      properties:
+        apps:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        betaGroups:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        builds:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
   responses:
+    NotFound:
+      description: Not found - the requested resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     Forbidden:
       description: Forbidden - the API key does not have permission for this request
       content:
@@ -2013,18 +1994,37 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not found - the requested resource does not exist
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    LimitParam:
+      name: limit
+      in: query
+      description: Maximum number of resources to return (maximum 200)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 50
+    BuildIdParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier for the build resource
+      schema:
+        type: string
+    BetaGroupIdParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier for the beta group resource
+      schema:
+        type: string
+    BetaTesterIdParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier for the beta tester resource
+      schema:
+        type: string
   securitySchemes:
     BearerAuth:
       type: http

@@ -487,63 +487,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    App:
-      type: object
-      required:
-      - type
-      - id
-      properties:
-        type:
-          type: string
-          enum:
-          - apps
-          example: apps
-        id:
-          type: string
-          description: The opaque resource ID that uniquely identifies the app
-          example: abc123
-        attributes:
-          $ref: '#/components/schemas/AppAttributes'
-        relationships:
-          $ref: '#/components/schemas/AppRelationships'
-        links:
-          $ref: '#/components/schemas/ResourceLink'
-    ErrorDetail:
-      type: object
-      required:
-      - status
-      - title
-      properties:
-        id:
-          type: string
-          description: A unique identifier for this error occurrence
-          example: abc123
-        status:
-          type: string
-          description: The HTTP status code for this error
-          example: example_value
-        code:
-          type: string
-          description: A machine-readable error code
-          example: example_value
-        title:
-          type: string
-          description: A short summary of the error
-          example: Example Title
-        detail:
-          type: string
-          description: A detailed explanation of the error
-          example: example_value
-        source:
-          type: object
-          properties:
-            pointer:
-              type: string
-              description: JSON pointer to the associated entity in the request body
-            parameter:
-              type: string
-              description: The query parameter that caused the error
-          example: example_value
     BuildsResponse:
       type: object
       required:
@@ -563,207 +506,6 @@ components:
           $ref: '#/components/schemas/PagedDocumentLinks'
         meta:
           $ref: '#/components/schemas/PagingInformation'
-    AppsResponse:
-      type: object
-      required:
-      - data
-      - links
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/App'
-          example: []
-        included:
-          type: array
-          items: {}
-          example: []
-        links:
-          $ref: '#/components/schemas/PagedDocumentLinks'
-        meta:
-          $ref: '#/components/schemas/PagingInformation'
-    DocumentLinks:
-      type: object
-      required:
-      - self
-      properties:
-        self:
-          type: string
-          format: uri
-          description: The URL for the resource
-          example: https://www.example.com
-    AppUpdateRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - type
-          - id
-          properties:
-            type:
-              type: string
-              enum:
-              - apps
-            id:
-              type: string
-            attributes:
-              type: object
-              properties:
-                contentRightsDeclaration:
-                  type: string
-                  enum:
-                  - DOES_NOT_USE_THIRD_PARTY_CONTENT
-                  - USES_THIRD_PARTY_CONTENT
-                subscriptionStatusUrl:
-                  type:
-                  - string
-                  - 'null'
-                  format: uri
-                subscriptionStatusUrlForSandbox:
-                  type:
-                  - string
-                  - 'null'
-                  format: uri
-                subscriptionStatusUrlVersion:
-                  type:
-                  - string
-                  - 'null'
-                  enum:
-                  - V1
-                  - V2
-                  - null
-                subscriptionStatusUrlVersionForSandbox:
-                  type:
-                  - string
-                  - 'null'
-                  enum:
-                  - V1
-                  - V2
-                  - null
-          example: example_value
-    AppAttributes:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the app
-          example: Example Title
-        bundleId:
-          type: string
-          description: The bundle ID of the app
-          example: '500123'
-        sku:
-          type: string
-          description: The SKU of the app
-          example: example_value
-        primaryLocale:
-          type: string
-          description: The primary locale for the app (e.g., en-US)
-          example: example_value
-        isOrEverWasMadeForKids:
-          type: boolean
-          description: Whether the app is or was made for kids
-          example: true
-        contentRightsDeclaration:
-          type: string
-          enum:
-          - DOES_NOT_USE_THIRD_PARTY_CONTENT
-          - USES_THIRD_PARTY_CONTENT
-          description: Declaration of whether the app uses third-party content
-          example: DOES_NOT_USE_THIRD_PARTY_CONTENT
-        streamlinedPurchasingEnabled:
-          type: boolean
-          description: Whether streamlined purchasing is enabled
-          example: true
-        subscriptionStatusUrl:
-          type:
-          - string
-          - 'null'
-          format: uri
-          description: URL for subscription status notifications
-          example: https://www.example.com
-        subscriptionStatusUrlForSandbox:
-          type:
-          - string
-          - 'null'
-          format: uri
-          description: URL for sandbox subscription status notifications
-          example: https://www.example.com
-        subscriptionStatusUrlVersion:
-          type:
-          - string
-          - 'null'
-          enum:
-          - V1
-          - V2
-          - null
-          description: Version of the subscription status URL
-          example: V1
-        subscriptionStatusUrlVersionForSandbox:
-          type:
-          - string
-          - 'null'
-          enum:
-          - V1
-          - V2
-          - null
-          description: Version of the sandbox subscription status URL
-          example: V1
-    Build:
-      type: object
-      required:
-      - type
-      - id
-      properties:
-        type:
-          type: string
-          enum:
-          - builds
-          example: builds
-        id:
-          type: string
-          description: The opaque resource ID that uniquely identifies the build
-          example: abc123
-        attributes:
-          $ref: '#/components/schemas/BuildAttributes'
-        relationships:
-          $ref: '#/components/schemas/BuildRelationships'
-        links:
-          $ref: '#/components/schemas/ResourceLink'
-    PagedDocumentLinks:
-      type: object
-      required:
-      - self
-      properties:
-        self:
-          type: string
-          format: uri
-          description: The URL for the current page of results
-          example: https://www.example.com
-        first:
-          type: string
-          format: uri
-          description: The URL for the first page of results
-          example: https://www.example.com
-        next:
-          type: string
-          format: uri
-          description: The URL for the next page of results
-          example: https://www.example.com
-    RelationshipLinks:
-      type: object
-      properties:
-        self:
-          type: string
-          format: uri
-          example: https://www.example.com
-        related:
-          type: string
-          format: uri
-          example: https://www.example.com
     RelationshipData:
       type: object
       required:
@@ -776,28 +518,6 @@ components:
         id:
           type: string
           example: abc123
-    ResourceLink:
-      type: object
-      properties:
-        self:
-          type: string
-          format: uri
-          description: The URL for the resource
-          example: https://www.example.com
-    AppResponse:
-      type: object
-      required:
-      - data
-      - links
-      properties:
-        data:
-          $ref: '#/components/schemas/App'
-        included:
-          type: array
-          items: {}
-          example: []
-        links:
-          $ref: '#/components/schemas/DocumentLinks'
     AppRelationships:
       type: object
       properties:
@@ -857,6 +577,16 @@ components:
               items:
                 $ref: '#/components/schemas/RelationshipData'
           example: example_value
+    ErrorResponse:
+      type: object
+      required:
+      - errors
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          example: []
     BuildRelationships:
       type: object
       properties:
@@ -938,34 +668,27 @@ components:
             data:
               $ref: '#/components/schemas/RelationshipData'
           example: example_value
-    PagingInformation:
+    Build:
       type: object
       required:
-      - paging
+      - type
+      - id
       properties:
-        paging:
-          type: object
-          required:
-          - total
-          - limit
-          properties:
-            total:
-              type: integer
-              description: Total number of resources matching the request
-            limit:
-              type: integer
-              description: Maximum number of resources returned per page
-          example: example_value
-    ErrorResponse:
-      type: object
-      required:
-      - errors
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-          example: []
+        type:
+          type: string
+          enum:
+          - builds
+          example: builds
+        id:
+          type: string
+          description: The opaque resource ID that uniquely identifies the build
+          example: abc123
+        attributes:
+          $ref: '#/components/schemas/BuildAttributes'
+        relationships:
+          $ref: '#/components/schemas/BuildRelationships'
+        links:
+          $ref: '#/components/schemas/ResourceLink'
     BuildAttributes:
       type: object
       properties:
@@ -1032,6 +755,314 @@ components:
           - 'null'
           description: Whether the build uses non-exempt encryption
           example: example_value
+    AppsResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/App'
+          example: []
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/PagedDocumentLinks'
+        meta:
+          $ref: '#/components/schemas/PagingInformation'
+    DocumentLinks:
+      type: object
+      required:
+      - self
+      properties:
+        self:
+          type: string
+          format: uri
+          description: The URL for the resource
+          example: https://www.example.com
+    RelationshipLinks:
+      type: object
+      properties:
+        self:
+          type: string
+          format: uri
+          example: https://www.example.com
+        related:
+          type: string
+          format: uri
+          example: https://www.example.com
+    PagedDocumentLinks:
+      type: object
+      required:
+      - self
+      properties:
+        self:
+          type: string
+          format: uri
+          description: The URL for the current page of results
+          example: https://www.example.com
+        first:
+          type: string
+          format: uri
+          description: The URL for the first page of results
+          example: https://www.example.com
+        next:
+          type: string
+          format: uri
+          description: The URL for the next page of results
+          example: https://www.example.com
+    ResourceLink:
+      type: object
+      properties:
+        self:
+          type: string
+          format: uri
+          description: The URL for the resource
+          example: https://www.example.com
+    ErrorDetail:
+      type: object
+      required:
+      - status
+      - title
+      properties:
+        id:
+          type: string
+          description: A unique identifier for this error occurrence
+          example: abc123
+        status:
+          type: string
+          description: The HTTP status code for this error
+          example: example_value
+        code:
+          type: string
+          description: A machine-readable error code
+          example: example_value
+        title:
+          type: string
+          description: A short summary of the error
+          example: Example Title
+        detail:
+          type: string
+          description: A detailed explanation of the error
+          example: example_value
+        source:
+          type: object
+          properties:
+            pointer:
+              type: string
+              description: JSON pointer to the associated entity in the request body
+            parameter:
+              type: string
+              description: The query parameter that caused the error
+          example: example_value
+    App:
+      type: object
+      required:
+      - type
+      - id
+      properties:
+        type:
+          type: string
+          enum:
+          - apps
+          example: apps
+        id:
+          type: string
+          description: The opaque resource ID that uniquely identifies the app
+          example: abc123
+        attributes:
+          $ref: '#/components/schemas/AppAttributes'
+        relationships:
+          $ref: '#/components/schemas/AppRelationships'
+        links:
+          $ref: '#/components/schemas/ResourceLink'
+    AppAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the app
+          example: Example Title
+        bundleId:
+          type: string
+          description: The bundle ID of the app
+          example: '500123'
+        sku:
+          type: string
+          description: The SKU of the app
+          example: example_value
+        primaryLocale:
+          type: string
+          description: The primary locale for the app (e.g., en-US)
+          example: example_value
+        isOrEverWasMadeForKids:
+          type: boolean
+          description: Whether the app is or was made for kids
+          example: true
+        contentRightsDeclaration:
+          type: string
+          enum:
+          - DOES_NOT_USE_THIRD_PARTY_CONTENT
+          - USES_THIRD_PARTY_CONTENT
+          description: Declaration of whether the app uses third-party content
+          example: DOES_NOT_USE_THIRD_PARTY_CONTENT
+        streamlinedPurchasingEnabled:
+          type: boolean
+          description: Whether streamlined purchasing is enabled
+          example: true
+        subscriptionStatusUrl:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL for subscription status notifications
+          example: https://www.example.com
+        subscriptionStatusUrlForSandbox:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL for sandbox subscription status notifications
+          example: https://www.example.com
+        subscriptionStatusUrlVersion:
+          type:
+          - string
+          - 'null'
+          enum:
+          - V1
+          - V2
+          - null
+          description: Version of the subscription status URL
+          example: V1
+        subscriptionStatusUrlVersionForSandbox:
+          type:
+          - string
+          - 'null'
+          enum:
+          - V1
+          - V2
+          - null
+          description: Version of the sandbox subscription status URL
+          example: V1
+    PagingInformation:
+      type: object
+      required:
+      - paging
+      properties:
+        paging:
+          type: object
+          required:
+          - total
+          - limit
+          properties:
+            total:
+              type: integer
+              description: Total number of resources matching the request
+            limit:
+              type: integer
+              description: Maximum number of resources returned per page
+          example: example_value
+    AppResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          $ref: '#/components/schemas/App'
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/DocumentLinks'
+    AppUpdateRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - type
+          - id
+          properties:
+            type:
+              type: string
+              enum:
+              - apps
+            id:
+              type: string
+            attributes:
+              type: object
+              properties:
+                contentRightsDeclaration:
+                  type: string
+                  enum:
+                  - DOES_NOT_USE_THIRD_PARTY_CONTENT
+                  - USES_THIRD_PARTY_CONTENT
+                subscriptionStatusUrl:
+                  type:
+                  - string
+                  - 'null'
+                  format: uri
+                subscriptionStatusUrlForSandbox:
+                  type:
+                  - string
+                  - 'null'
+                  format: uri
+                subscriptionStatusUrlVersion:
+                  type:
+                  - string
+                  - 'null'
+                  enum:
+                  - V1
+                  - V2
+                  - null
+                subscriptionStatusUrlVersionForSandbox:
+                  type:
+                  - string
+                  - 'null'
+                  enum:
+                  - V1
+                  - V2
+                  - null
+          example: example_value
+  responses:
+    NotFound:
+      description: Not found - the requested resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Forbidden - the API key does not have permission for this request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Conflict:
+      description: Conflict - the request conflicts with the current state of the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request - the request was invalid or malformed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
     LimitParam:
       name: limit
@@ -1056,37 +1087,6 @@ components:
       description: The unique identifier for the beta tester resource
       schema:
         type: string
-  responses:
-    Forbidden:
-      description: Forbidden - the API key does not have permission for this request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Conflict:
-      description: Conflict - the request conflicts with the current state of the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request - the request was invalid or malformed
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not found - the requested resource does not exist
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     BearerAuth:
       type: http
