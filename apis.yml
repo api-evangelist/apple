@@ -643,6 +643,12 @@ apis:
     url: >-
       https://developer.apple.com/documentation/appstoreconnectapi/app-store-connect-api-release-notes
 common:
+- type: Plans
+  url: plans/apple-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/apple-rate-limits.yml
+- type: FinOps
+  url: finops/apple-finops.yml
 - type: Website
   url: https://www.apple.com/
 - type: PostmanWorkspace
