@@ -1,0 +1,55 @@
+edges:
+- partner_name: Connectivity Standards Alliance (Matter)
+  partner: null
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors/4937
+  category: Matter certified products
+  contract_reference:
+    register: CSA Distributed Compliance Ledger (Matter certification)
+    spec_file: null
+    standard: Matter
+    role: Matter vendor ID holder (no certified product)
+    vendor_id: 4937
+    registered_name: Apple Home
+    legal_name: Apple Inc.
+    landing_page: https://www.apple.com/home-app
+    identity_source: vendorLandingPageURL
+    matched_domain: apple.com
+    matched_by: domain+name-among-holders
+    certified_models: 0
+    certified_products: []
+    signal_note: certified_products = one entry per device type (diversity), not per model
+    detected_by: sweep-iot.py
+    detected: '2026-10-14'
+- partner_name: Connectivity Standards Alliance (Matter)
+  partner: null
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors/4996
+  category: Matter certified products
+  contract_reference:
+    register: CSA Distributed Compliance Ledger (Matter certification)
+    spec_file: null
+    standard: Matter
+    role: Matter vendor ID holder (no certified product)
+    vendor_id: 4996
+    registered_name: Apple Keychain
+    legal_name: Apple Inc.
+    landing_page: https://support.apple.com/en-us/HT213441
+    identity_source: vendorLandingPageURL
+    matched_domain: apple.com
+    matched_by: domain+name-among-holders
+    certified_models: 0
+    certified_products: []
+    signal_note: certified_products = one entry per device type (diversity), not per model
+    detected_by: sweep-iot.py
+    detected: '2026-10-14'
+generated: '2026-10-14'
+method: searched
+checked:
+- https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors
