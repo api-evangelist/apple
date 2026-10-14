@@ -49,7 +49,32 @@ edges:
     signal_note: certified_products = one entry per device type (diversity), not per model
     detected_by: sweep-iot.py
     detected: '2026-10-14'
+- partner_name: FDX (Financial Data Exchange)
+  partner: fdx
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://registry.financialdataexchange.org/
+  contract_reference:
+    register: FDX Registry
+    standard: FDX API
+    spec_file: null
+    register_api: https://registry.financialdataexchange.org/fdxregistryapi/organizations/search/listingTags
+    role: other
+    member_type: MEMBER
+    registered_name: Apple, Inc.
+    register_id: 428
+    registered_website: www.apple.com
+    country: United States
+    fdx_version: null
+    matched_by: domain+name-among-holders:apple.com
+    detected_by: sweep-fdx.py
+    detected: '2026-10-14'
+  detected_by: sweep-fdx.py
+  first_seen: '2026-10-14'
 generated: '2026-10-14'
 method: searched
 checked:
 - https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors
+- https://registry.financialdataexchange.org/
