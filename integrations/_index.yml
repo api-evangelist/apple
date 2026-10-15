@@ -57,3 +57,26 @@
     detected: '2026-10-14'
   status: not-a-workflow
   arazzo: null
+- slug: apple-ddex-digital-data-exchange
+  label: DDEX (Digital Data Exchange)
+  partner_name: DDEX (Digital Data Exchange)
+  category: music metadata and rights messaging standard
+  type: register
+  channel: standard-directory
+  evidence: https://ddex.net/membership/current-members/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: DDEX current members (ddex.net/membership/current-members)
+    spec_file: null
+    role: ddex-charter-member
+    registered_name: Apple Inc
+    register_id: Apple Inc
+    tier: charter
+    matched_domain: apple.com
+    matched_by: domain+name-among-holders
+    identity: wikidata Q312 'Apple Inc.' P856 https://apple.com/at/
+    detected_by: sweep-media.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null

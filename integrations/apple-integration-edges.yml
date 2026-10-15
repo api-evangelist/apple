@@ -73,8 +73,36 @@ edges:
     detected: '2026-10-14'
   detected_by: sweep-fdx.py
   first_seen: '2026-10-14'
+- partner_name: DDEX (Digital Data Exchange)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  channel: standard-directory
+  relationship: standard-participant
+  evidence: https://ddex.net/membership/current-members/
+  category: music metadata and rights messaging standard
+  contract_reference:
+    register: DDEX current members (ddex.net/membership/current-members)
+    spec_file: null
+    role: ddex-charter-member
+    registered_name: Apple Inc
+    register_id: Apple Inc
+    tier: charter
+    matched_domain: apple.com
+    matched_by: domain+name-among-holders
+    identity: wikidata Q312 'Apple Inc.' P856 https://apple.com/at/
+    detected_by: sweep-media.py
+    detected: '2026-10-15'
+  detected_by: sweep-media.py
+  first_seen: '2026-10-15'
 generated: '2026-10-14'
 method: searched
 checked:
+- https://ddex.net/membership/current-members/
 - https://on.dcl.csa-iot.org/dcl/vendorinfo/vendors
+- https://raw.githubusercontent.com/c2pa-org/conformance-public/main/conforming-products/conforming-products-list.json
 - https://registry.financialdataexchange.org/
+source:
+- https://ddex.net/membership/current-members/
+- https://raw.githubusercontent.com/c2pa-org/conformance-public/main/conforming-products/conforming-products-list.json
