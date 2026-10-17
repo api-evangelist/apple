@@ -552,56 +552,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    BuildsResponse:
-      type: object
-      required:
-      - data
-      - links
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Build'
-          example: []
-        included:
-          type: array
-          items: {}
-          example: []
-        links:
-          $ref: '#/components/schemas/PagedDocumentLinks'
-        meta:
-          $ref: '#/components/schemas/PagingInformation'
-    RelationshipData:
-      type: object
-      required:
-      - type
-      - id
-      properties:
-        type:
-          type: string
-          example: example_value
-        id:
-          type: string
-          example: abc123
-    BetaTestersResponse:
-      type: object
-      required:
-      - data
-      - links
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BetaTester'
-          example: []
-        included:
-          type: array
-          items: {}
-          example: []
-        links:
-          $ref: '#/components/schemas/PagedDocumentLinks'
-        meta:
-          $ref: '#/components/schemas/PagingInformation'
     ErrorResponse:
       type: object
       required:
@@ -714,6 +664,94 @@ components:
           $ref: '#/components/schemas/BuildRelationships'
         links:
           $ref: '#/components/schemas/ResourceLink'
+    ErrorDetail:
+      type: object
+      required:
+      - status
+      - title
+      properties:
+        id:
+          type: string
+          description: A unique identifier for this error occurrence
+          example: abc123
+        status:
+          type: string
+          description: The HTTP status code for this error
+          example: example_value
+        code:
+          type: string
+          description: A machine-readable error code
+          example: example_value
+        title:
+          type: string
+          description: A short summary of the error
+          example: Example Title
+        detail:
+          type: string
+          description: A detailed explanation of the error
+          example: example_value
+        source:
+          type: object
+          properties:
+            pointer:
+              type: string
+              description: JSON pointer to the associated entity in the request body
+            parameter:
+              type: string
+              description: The query parameter that caused the error
+          example: example_value
+    BetaTesterRelationships:
+      type: object
+      properties:
+        apps:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        betaGroups:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+        builds:
+          type: object
+          properties:
+            links:
+              $ref: '#/components/schemas/RelationshipLinks'
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelationshipData'
+          example: example_value
+    BuildsResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Build'
+          example: []
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/PagedDocumentLinks'
+        meta:
+          $ref: '#/components/schemas/PagingInformation'
     BetaTesterAttributes:
       type: object
       properties:
@@ -819,6 +857,110 @@ components:
           - 'null'
           description: Whether the build uses non-exempt encryption
           example: example_value
+    PagingInformation:
+      type: object
+      required:
+      - paging
+      properties:
+        paging:
+          type: object
+          required:
+          - total
+          - limit
+          properties:
+            total:
+              type: integer
+              description: Total number of resources matching the request
+            limit:
+              type: integer
+              description: Maximum number of resources returned per page
+          example: example_value
+    BetaTestersResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BetaTester'
+          example: []
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/PagedDocumentLinks'
+        meta:
+          $ref: '#/components/schemas/PagingInformation'
+    BetaTester:
+      type: object
+      required:
+      - type
+      - id
+      properties:
+        type:
+          type: string
+          enum:
+          - betaTesters
+          example: betaTesters
+        id:
+          type: string
+          description: The opaque resource ID that uniquely identifies the beta tester
+          example: abc123
+        attributes:
+          $ref: '#/components/schemas/BetaTesterAttributes'
+        relationships:
+          $ref: '#/components/schemas/BetaTesterRelationships'
+        links:
+          $ref: '#/components/schemas/ResourceLink'
+    RelationshipData:
+      type: object
+      required:
+      - type
+      - id
+      properties:
+        type:
+          type: string
+          example: example_value
+        id:
+          type: string
+          example: abc123
+    PagedDocumentLinks:
+      type: object
+      required:
+      - self
+      properties:
+        self:
+          type: string
+          format: uri
+          description: The URL for the current page of results
+          example: https://www.example.com
+        first:
+          type: string
+          format: uri
+          description: The URL for the first page of results
+          example: https://www.example.com
+        next:
+          type: string
+          format: uri
+          description: The URL for the next page of results
+          example: https://www.example.com
+    BuildResponse:
+      type: object
+      required:
+      - data
+      - links
+      properties:
+        data:
+          $ref: '#/components/schemas/Build'
+        included:
+          type: array
+          items: {}
+          example: []
+        links:
+          $ref: '#/components/schemas/DocumentLinks'
     DocumentLinks:
       type: object
       required:
@@ -829,16 +971,13 @@ components:
           format: uri
           description: The URL for the resource
           example: https://www.example.com
-    RelationshipLinks:
+    ResourceLink:
       type: object
       properties:
         self:
           type: string
           format: uri
-          example: https://www.example.com
-        related:
-          type: string
-          format: uri
+          description: The URL for the resource
           example: https://www.example.com
     BuildUpdateRequest:
       type: object
@@ -867,171 +1006,20 @@ components:
                   type: boolean
                   description: Whether the build uses non-exempt encryption
           example: example_value
-    PagedDocumentLinks:
-      type: object
-      required:
-      - self
-      properties:
-        self:
-          type: string
-          format: uri
-          description: The URL for the current page of results
-          example: https://www.example.com
-        first:
-          type: string
-          format: uri
-          description: The URL for the first page of results
-          example: https://www.example.com
-        next:
-          type: string
-          format: uri
-          description: The URL for the next page of results
-          example: https://www.example.com
-    ResourceLink:
+    RelationshipLinks:
       type: object
       properties:
         self:
           type: string
           format: uri
-          description: The URL for the resource
           example: https://www.example.com
-    ErrorDetail:
-      type: object
-      required:
-      - status
-      - title
-      properties:
-        id:
+        related:
           type: string
-          description: A unique identifier for this error occurrence
-          example: abc123
-        status:
-          type: string
-          description: The HTTP status code for this error
-          example: example_value
-        code:
-          type: string
-          description: A machine-readable error code
-          example: example_value
-        title:
-          type: string
-          description: A short summary of the error
-          example: Example Title
-        detail:
-          type: string
-          description: A detailed explanation of the error
-          example: example_value
-        source:
-          type: object
-          properties:
-            pointer:
-              type: string
-              description: JSON pointer to the associated entity in the request body
-            parameter:
-              type: string
-              description: The query parameter that caused the error
-          example: example_value
-    BuildResponse:
-      type: object
-      required:
-      - data
-      - links
-      properties:
-        data:
-          $ref: '#/components/schemas/Build'
-        included:
-          type: array
-          items: {}
-          example: []
-        links:
-          $ref: '#/components/schemas/DocumentLinks'
-    PagingInformation:
-      type: object
-      required:
-      - paging
-      properties:
-        paging:
-          type: object
-          required:
-          - total
-          - limit
-          properties:
-            total:
-              type: integer
-              description: Total number of resources matching the request
-            limit:
-              type: integer
-              description: Maximum number of resources returned per page
-          example: example_value
-    BetaTester:
-      type: object
-      required:
-      - type
-      - id
-      properties:
-        type:
-          type: string
-          enum:
-          - betaTesters
-          example: betaTesters
-        id:
-          type: string
-          description: The opaque resource ID that uniquely identifies the beta tester
-          example: abc123
-        attributes:
-          $ref: '#/components/schemas/BetaTesterAttributes'
-        relationships:
-          $ref: '#/components/schemas/BetaTesterRelationships'
-        links:
-          $ref: '#/components/schemas/ResourceLink'
-    BetaTesterRelationships:
-      type: object
-      properties:
-        apps:
-          type: object
-          properties:
-            links:
-              $ref: '#/components/schemas/RelationshipLinks'
-            data:
-              type: array
-              items:
-                $ref: '#/components/schemas/RelationshipData'
-          example: example_value
-        betaGroups:
-          type: object
-          properties:
-            links:
-              $ref: '#/components/schemas/RelationshipLinks'
-            data:
-              type: array
-              items:
-                $ref: '#/components/schemas/RelationshipData'
-          example: example_value
-        builds:
-          type: object
-          properties:
-            links:
-              $ref: '#/components/schemas/RelationshipLinks'
-            data:
-              type: array
-              items:
-                $ref: '#/components/schemas/RelationshipData'
-          example: example_value
+          format: uri
+          example: https://www.example.com
   responses:
-    NotFound:
-      description: Not found - the requested resource does not exist
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: Forbidden - the API key does not have permission for this request
+    BadRequest:
+      description: Bad request - the request was invalid or malformed
       content:
         application/json:
           schema:
@@ -1042,22 +1030,25 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request - the request was invalid or malformed
+    Forbidden:
+      description: Forbidden - the API key does not have permission for this request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found - the requested resource does not exist
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
   parameters:
-    LimitParam:
-      name: limit
-      in: query
-      description: Maximum number of resources to return (maximum 200)
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        default: 50
     BuildIdParam:
       name: id
       in: path
@@ -1072,6 +1063,15 @@ components:
       description: The unique identifier for the app resource
       schema:
         type: string
+    LimitParam:
+      name: limit
+      in: query
+      description: Maximum number of resources to return (maximum 200)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 50
     BetaTesterIdParam:
       name: id
       in: path
