@@ -108,7 +108,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: apple-fivetran
   label: Fivetran
@@ -135,7 +135,7 @@
     - connectors/applications/apple-search-ads
     vendor_link: https://itunesconnect.apple.com/login
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: apple-meltano
   label: Meltano
@@ -169,5 +169,5 @@
     quality:
     - silver
     builder: 'community (Meltano Hub variant maintainers: automattic, felippecaso, mighty-digital, miroapp, ticketswap)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
