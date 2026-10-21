@@ -707,3 +707,57 @@
     - subscription_support
   status: not-a-workflow
   arazzo: null
+- slug: apple-deeploi
+  label: deeploi
+  partner: deeploi
+  partner_name: deeploi
+  category: Apple business / technical partner
+  type: coverage
+  marketplace: apple-partner-network
+  channel: standard-directory
+  evidence: https://partnernetwork.apple.com/de/partnerprofile/13698
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Apple Partner Network partner discovery (partnernetwork.apple.com)
+    standard: Apple Partner Network
+    spec_file: null
+    role: apple-partner-network
+    registered_name: deeploi
+    register_id: '13698'
+    matched_domain: deeploi.io
+    matched_by: domain
+    country: DE
+    identity_source: the register's own website field for the partner (no lookup)
+    signal_note: 'participation only: partner type is partner_tier, never counted'
+    detected_by: sweep-apple-mfi-ecosystem.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null
+- slug: apple-electric
+  label: Electric
+  partner: electric
+  partner_name: Electric
+  category: Apple business / technical partner
+  type: coverage
+  marketplace: apple-partner-network
+  channel: standard-directory
+  evidence: https://partnernetwork.apple.com/us/partnerprofile/12534
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    register: Apple Partner Network partner discovery (partnernetwork.apple.com)
+    standard: Apple Partner Network
+    spec_file: null
+    role: apple-partner-network
+    registered_name: Electric
+    register_id: '12534'
+    matched_domain: electric.ai
+    matched_by: domain
+    country: US
+    identity_source: the register's own website field for the partner (no lookup)
+    signal_note: 'participation only: partner type is partner_tier, never counted'
+    detected_by: sweep-apple-mfi-ecosystem.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null

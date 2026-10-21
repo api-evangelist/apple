@@ -736,6 +736,62 @@ edges:
     - subscription_support
   detected_by: sweep-podcasting-2-0.py
   detected: '2026-10-21'
+- partner_name: deeploi
+  partner: deeploi
+  partner_match: domain
+  partner_url: https://deeploi.io
+  type: coverage
+  marketplace: apple-partner-network
+  channel: standard-directory
+  relationship: system-coverage
+  direction: partner-built
+  evidence: https://partnernetwork.apple.com/de/partnerprofile/13698
+  category: Apple business / technical partner
+  partner_tier: Technical Partner
+  contract_reference:
+    register: Apple Partner Network partner discovery (partnernetwork.apple.com)
+    standard: Apple Partner Network
+    spec_file: null
+    role: apple-partner-network
+    registered_name: deeploi
+    register_id: '13698'
+    matched_domain: deeploi.io
+    matched_by: domain
+    country: DE
+    identity_source: the register's own website field for the partner (no lookup)
+    signal_note: 'participation only: partner type is partner_tier, never counted'
+    detected_by: sweep-apple-mfi-ecosystem.py
+    detected: '2026-10-21'
+  detected_by: sweep-apple-mfi-ecosystem.py
+  first_seen: '2026-10-21'
+- partner_name: Electric
+  partner: electric
+  partner_match: domain
+  partner_url: https://electric.ai
+  type: coverage
+  marketplace: apple-partner-network
+  channel: standard-directory
+  relationship: system-coverage
+  direction: partner-built
+  evidence: https://partnernetwork.apple.com/us/partnerprofile/12534
+  category: Apple business / technical partner
+  partner_tier: Business Partner
+  contract_reference:
+    register: Apple Partner Network partner discovery (partnernetwork.apple.com)
+    standard: Apple Partner Network
+    spec_file: null
+    role: apple-partner-network
+    registered_name: Electric
+    register_id: '12534'
+    matched_domain: electric.ai
+    matched_by: domain
+    country: US
+    identity_source: the register's own website field for the partner (no lookup)
+    signal_note: 'participation only: partner type is partner_tier, never counted'
+    detected_by: sweep-apple-mfi-ecosystem.py
+    detected: '2026-10-21'
+  detected_by: sweep-apple-mfi-ecosystem.py
+  first_seen: '2026-10-21'
 generated: '2026-10-14'
 method: searched
 checked:
@@ -758,6 +814,9 @@ checked:
 - https://podcastindex.org/api/apps
 - https://raw.githubusercontent.com/Podcastindex-org/podcast-namespace/main/docs/element-support.md
 - https://support.spotify.com/us/creators/article/getting-your-podcast-on-spotify/
+- https://csa-iot.org/csa-iot_products/
+- https://mfi.apple.com/en/account/accessory-search
+- https://partnernetwork.apple.com/
 source:
 - https://ddex.net/membership/current-members/
 - https://raw.githubusercontent.com/c2pa-org/conformance-public/main/conforming-products/conforming-products-list.json
