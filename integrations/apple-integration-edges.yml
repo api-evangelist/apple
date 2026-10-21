@@ -288,6 +288,454 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-xr-graphics.py
   first_seen: '2026-10-20'
+- partner_name: Acast
+  app: Acast
+  partner: acast
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.acast.com
+  category: podcast hosting
+  contract_reference:
+    register: Apple Podcasts partner search (podcasters.apple.com/partner-search)
+    spec_file: null
+    role: apple-app
+    registered_name: Acast
+    matched_domain: acast.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Acast
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+    features:
+    - chapters
+    - dynamic_audio_ads
+    - dynamic_video_ads
+    - show_submission
+    - video
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+  partner_tier: preferred
+- partner_name: ART19
+  app: ART19
+  partner: art19
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.art19.com
+  category: podcast hosting
+  contract_reference:
+    register: Apple Podcasts partner search (podcasters.apple.com/partner-search)
+    spec_file: null
+    role: apple-app
+    registered_name: ART19
+    matched_domain: art19.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - ART19
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+    features:
+    - dynamic_audio_ads
+    - video
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+  partner_tier: preferred
+- partner_name: beehiiv
+  app: beehiiv
+  partner: beehiiv
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.beehiiv.com/beehiiv-for/podcasters
+  category: podcast hosting
+  contract_reference:
+    register: Apple Podcasts partner search (podcasters.apple.com/partner-search)
+    spec_file: null
+    role: apple-app
+    registered_name: beehiiv
+    matched_domain: beehiiv.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - beehiiv
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+    features:
+    - show_submission
+    - transcripts
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+- partner_name: Blubrry
+  app: Blubrry
+  partner: blubrry-api-restful-api-for-podcast-publishing-statistics
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://blubrry.com/
+  category: podcast hosting
+  contract_reference:
+    register: Apple Podcasts partner search (podcasters.apple.com/partner-search)
+    spec_file: null
+    role: apple-app
+    registered_name: Blubrry
+    matched_domain: blubrry.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Blubrry
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+    features:
+    - chapters
+    - dynamic_audio_ads
+    - show_submission
+    - subscription_support
+    - transcripts
+    - video
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+  partner_tier: preferred
+- partner_name: Buzzsprout
+  app: Buzzsprout
+  partner: buzzsprout
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.buzzsprout.com
+  category: podcast hosting
+  contract_reference:
+    register: Apple Podcasts partner search (podcasters.apple.com/partner-search)
+    spec_file: null
+    role: apple-app
+    registered_name: Buzzsprout
+    matched_domain: buzzsprout.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Buzzsprout
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+    features:
+    - chapters
+    - dynamic_audio_ads
+    - show_submission
+    - subscription_support
+    - transcripts
+    - video
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+  partner_tier: preferred
+- partner_name: Captivate
+  app: Captivate
+  partner: captivate-fm
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.captivate.fm
+  category: podcast hosting
+  contract_reference:
+    register: Apple Podcasts partner search (podcasters.apple.com/partner-search)
+    spec_file: null
+    role: apple-app
+    registered_name: Captivate
+    matched_domain: captivate.fm
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Captivate
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+    features:
+    - chapters
+    - dynamic_audio_ads
+    - show_submission
+    - subscription_support
+    - transcripts
+    - video
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+  partner_tier: preferred
+- partner_name: Firstory
+  app: Firstory
+  partner: firstory
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://firstory.me
+  category: podcast hosting
+  contract_reference:
+    register: Apple Podcasts partner search (podcasters.apple.com/partner-search)
+    spec_file: null
+    role: apple-app
+    registered_name: Firstory
+    matched_domain: firstory.me
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Firstory
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+    features:
+    - chapters
+    - dynamic_audio_ads
+    - show_submission
+    - subscription_support
+    - video
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+  partner_tier: preferred
+- partner_name: Podbean
+  app: Podbean
+  partner: podbean
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.podbean.com
+  category: podcast hosting
+  contract_reference:
+    register: Apple Podcasts partner search (podcasters.apple.com/partner-search)
+    spec_file: null
+    role: apple-app
+    registered_name: Podbean
+    matched_domain: podbean.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Podbean
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+    features:
+    - chapters
+    - dynamic_audio_ads
+    - show_submission
+    - subscription_support
+    - transcripts
+    - video
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+  partner_tier: preferred
+- partner_name: RedCircle
+  app: RedCircle
+  partner: redcircle
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://redcircle.com
+  category: podcast hosting
+  contract_reference:
+    register: Apple Podcasts partner search (podcasters.apple.com/partner-search)
+    spec_file: null
+    role: apple-app
+    registered_name: RedCircle
+    matched_domain: redcircle.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - RedCircle
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+    features:
+    - dynamic_audio_ads
+    - transcripts
+    - video
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+  partner_tier: preferred
+- partner_name: Simplecast
+  app: Simplecast
+  partner: simplecast
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.simplecast.com
+  category: podcast hosting
+  contract_reference:
+    register: Apple Podcasts partner search (podcasters.apple.com/partner-search)
+    spec_file: null
+    role: apple-app
+    registered_name: Simplecast
+    matched_domain: simplecast.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Simplecast
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+    features:
+    - chapters
+    - dynamic_audio_ads
+    - subscription_support
+    - transcripts
+    - video
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+  partner_tier: preferred
+- partner_name: Spotify for Creators
+  app: Spotify for Creators
+  partner: spotify
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://creators.spotify.com
+  category: podcast hosting
+  contract_reference:
+    register: Apple Podcasts partner search (podcasters.apple.com/partner-search)
+    spec_file: null
+    role: apple-app
+    registered_name: Spotify for Creators
+    matched_domain: spotify.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - Spotify for Creators
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+    features:
+    - dynamic_audio_ads
+    - transcripts
+    - video
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+  partner_tier: preferred
+- partner_name: Spreaker
+  app: Spreaker
+  partner: spreaker
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.spreaker.com
+  category: podcast hosting
+  contract_reference:
+    register: Apple Podcasts partner search (podcasters.apple.com/partner-search)
+    spec_file: null
+    role: apple-app
+    registered_name: Spreaker
+    matched_domain: spreaker.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Spreaker
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+    features:
+    - chapters
+    - dynamic_audio_ads
+    - transcripts
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+- partner_name: Transistor
+  app: Transistor
+  partner: transistor
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://transistor.fm
+  category: podcast hosting
+  contract_reference:
+    register: Apple Podcasts partner search (podcasters.apple.com/partner-search)
+    spec_file: null
+    role: apple-app
+    registered_name: Transistor
+    matched_domain: transistor.fm
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Transistor
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+    features:
+    - chapters
+    - dynamic_audio_ads
+    - show_submission
+    - subscription_support
+    - transcripts
+    - video
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
+  partner_tier: preferred
+- partner_name: Ximalaya
+  app: Ximalaya
+  partner: ximalaya
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://studio.ximalaya.com/podcast/
+  category: podcast hosting
+  contract_reference:
+    register: Apple Podcasts partner search (podcasters.apple.com/partner-search)
+    spec_file: null
+    role: apple-app
+    registered_name: Ximalaya
+    matched_domain: ximalaya.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Ximalaya
+    signal_note: one edge per (builder, platform); listings and badges are context, never read
+    detected_by: sweep-podcasting-2-0.py
+    detected: '2026-10-21'
+    features:
+    - subscription_support
+  detected_by: sweep-podcasting-2-0.py
+  detected: '2026-10-21'
 generated: '2026-10-14'
 method: searched
 checked:
@@ -305,6 +753,20 @@ checked:
 - https://www.khronos.org/conformance/adopters/conformant-products
 - https://www.khronos.org/conformance/adopters/file-format-adopters
 - https://www.khronos.org/members/list
+- https://iabtechlab.com/compliance-programs/compliant-companies/
+- https://podcasters.apple.com/partner-search
+- https://podcastindex.org/api/apps
+- https://raw.githubusercontent.com/Podcastindex-org/podcast-namespace/main/docs/element-support.md
+- https://support.spotify.com/us/creators/article/getting-your-podcast-on-spotify/
 source:
 - https://ddex.net/membership/current-members/
 - https://raw.githubusercontent.com/c2pa-org/conformance-public/main/conforming-products/conforming-products-list.json
+marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: apple
+  url: https://podcasters.apple.com/partner-search
+  app_count: 40
+  adapter: sweep-podcasting-2-0.py:apple-podcast-hosting-partners
+  listed: 14
+  note: 40 hosting partners read; only domain-linked vendors are written
