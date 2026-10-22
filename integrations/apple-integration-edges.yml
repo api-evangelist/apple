@@ -938,6 +938,54 @@ edges:
     detected: '2026-10-22'
   detected_by: sweep-vulnerability-disclosure-cna.py
   first_seen: '2026-10-22'
+- partner_name: APIs.guru OpenAPI Directory
+  partner: apis-guru
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: third-party
+  evidence: https://apis.guru/
+  category: API definition directory listing (OpenAPI)
+  contract_reference:
+    register: APIs.guru OpenAPI Directory
+    spec_file: null
+    standard: APIs.guru OpenAPI Directory
+    role: listed-in-directory
+    directory_provider: apple.com
+    matched_domain: apple.com
+    matched_by: domain+name-among-holders
+    apis_listed: 2
+    version_count: 2
+    first_added: '2021-02-04'
+    last_updated: '2021-06-09'
+    origin_publisher_hosted: false
+    origin_hosts: []
+    categories:
+    - developer_tools
+    - media
+    own_openapi_files: 3
+    listings:
+    - key: apple.com:app-store-connect
+      title: App Store Connect API
+      preferred: 1.4.1
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/apple.com/app-store-connect/1.4.1/openapi.json
+      origin_url: app-store-connect-openapi-specification.json
+      openapi_version: 3.0.1
+    - key: apple.com:sirikit-cloud-media
+      title: SiriKit Cloud Media
+      preferred: 1.0.2
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/apple.com/sirikit-cloud-media/1.0.2/openapi.json
+      origin_url: sirikit-cloud-media.json
+      openapi_version: 3.0.1
+    signal_note: 'participation only: a community directory listing (APIs.guru collects definitions; the provider
+      did not file them). Signals: version_count, apis_listed, origin_publisher_hosted.'
+    detected_by: sweep-openapi-directory-apis-guru.py
+    detected: '2026-10-22'
+  detected_by: sweep-openapi-directory-apis-guru.py
+  first_seen: '2026-10-22'
 generated: '2026-10-14'
 method: searched
 checked:
@@ -969,6 +1017,8 @@ checked:
 - https://api.first.org/data/v1/teams
 - https://raw.githubusercontent.com/CVEProject/cve-website/dev/src/assets/data/CNAsList.json
 - https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+- https://api.apis.guru/v2/list.json
+- https://api.apis.guru/v2/providers.json
 source:
 - https://ddex.net/membership/current-members/
 - https://raw.githubusercontent.com/c2pa-org/conformance-public/main/conforming-products/conforming-products-list.json

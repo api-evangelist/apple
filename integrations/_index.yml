@@ -907,3 +907,52 @@
     detected: '2026-10-22'
   status: not-a-workflow
   arazzo: null
+- slug: apple-apis-guru-openapi-directory
+  label: APIs.guru OpenAPI Directory
+  partner: apis-guru
+  partner_name: APIs.guru OpenAPI Directory
+  category: API definition directory listing (OpenAPI)
+  type: register
+  channel: standard-directory
+  evidence: https://apis.guru/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: APIs.guru OpenAPI Directory
+    spec_file: null
+    standard: APIs.guru OpenAPI Directory
+    role: listed-in-directory
+    directory_provider: apple.com
+    matched_domain: apple.com
+    matched_by: domain+name-among-holders
+    apis_listed: 2
+    version_count: 2
+    first_added: '2021-02-04'
+    last_updated: '2021-06-09'
+    origin_publisher_hosted: false
+    origin_hosts: []
+    categories:
+    - developer_tools
+    - media
+    own_openapi_files: 3
+    listings:
+    - key: apple.com:app-store-connect
+      title: App Store Connect API
+      preferred: 1.4.1
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/apple.com/app-store-connect/1.4.1/openapi.json
+      origin_url: app-store-connect-openapi-specification.json
+      openapi_version: 3.0.1
+    - key: apple.com:sirikit-cloud-media
+      title: SiriKit Cloud Media
+      preferred: 1.0.2
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/apple.com/sirikit-cloud-media/1.0.2/openapi.json
+      origin_url: sirikit-cloud-media.json
+      openapi_version: 3.0.1
+    signal_note: 'participation only: a community directory listing (APIs.guru collects definitions; the provider
+      did not file them). Signals: version_count, apis_listed, origin_publisher_hosted.'
+    detected_by: sweep-openapi-directory-apis-guru.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
