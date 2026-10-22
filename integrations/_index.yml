@@ -761,3 +761,83 @@
     detected: '2026-10-21'
   status: not-a-workflow
   arazzo: null
+- slug: apple-wi-fi-alliance-certified-products
+  label: Wi-Fi Alliance certified products
+  partner_name: Wi-Fi Alliance certified products
+  category: Wi-Fi certification
+  type: register
+  channel: standard-directory
+  evidence: https://www.wi-fi.org/product-finder
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Wi-Fi Alliance product finder (wi-fi.org/product-finder; prf.cert.wi-fi.org public JSON / CSV)
+    standard: Wi-Fi CERTIFIED
+    spec_file: null
+    role: wi-fi-certified-product
+    registered_name: Apple
+    register_id: WFA91241
+    matched_domain: null
+    matched_by: register-name
+    register_name_note: register-name 'apple' = apple; wikidata P856 apple.com, apple.com.cn, mac.com agrees or
+      unheld
+    certified_products:
+    - product: Computers & Accessories
+      lapsed: false
+      newest_certification: '2012-08-30'
+      generations:
+      - Wi-Fi 7
+      - Wi-Fi 6
+      - Wi-Fi 5 (ac)
+      - Wi-Fi 4 (n)
+    - product: Gaming, Media & Music
+      lapsed: false
+      newest_certification: '2009-09-16'
+      generations:
+      - Wi-Fi 7
+      - Wi-Fi 6
+      - Wi-Fi 5 (ac)
+      - Wi-Fi 4 (n)
+    - product: Other
+      lapsed: false
+      newest_certification: '2019-10-03'
+      generations:
+      - Wi-Fi 7
+      - Wi-Fi 6
+      - Wi-Fi 5 (ac)
+      - Wi-Fi 4 (n)
+    - product: Phones
+      lapsed: false
+      newest_certification: '2011-10-05'
+      generations:
+      - Wi-Fi 7
+      - Wi-Fi 6
+      - Wi-Fi 5 (ac)
+      - Wi-Fi 4 (n)
+    - product: Routers
+      lapsed: false
+      newest_certification: '2012-07-05'
+      generations:
+      - Wi-Fi 7
+      - Wi-Fi 6
+      - Wi-Fi 5 (ac)
+      - Wi-Fi 4 (n)
+    products_sample:
+    - 2010 MacBook Air 11.6 Inch
+    - 2010 MacBook Air 13 Inch
+    - 2011 Mac mini
+    - 2011 MacBook Air 11.6 Inch
+    - 2011 MacBook Air 13 Inch
+    - 2011 MacBook Pro 13 Inch
+    - 2011 MacBook Pro 15 Inch
+    - 2011 MacBook Pro 17 Inch
+    signal_note: certified_products = one entry per Wi-Fi Alliance product category, never per product, variant
+      or CID; generations are context. Wi-Fi CERTIFIED does not expire and the finder marks nothing withdrawn, so
+      lapsed is false
+    detected_by: sweep-wireless-connectivity-certification.py
+    detected: '2026-10-22'
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
