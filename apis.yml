@@ -13,18 +13,21 @@ deliveryModel:
   generated: '2026-08-28'
   method: derived
 accessModel:
-  pricing: free
+  pricing: freemium
   onboarding: self-serve
   trial: false
   try_now: true
   public: false
-  label: Free · Self-serve signup
+  gated: none
+  gated_source:
+  - onboarding
+  label: Freemium · Self-serve signup
   confidence: medium
   source:
   - plans
   - authentication
   - security
-  generated: '2026-09-03'
+  generated: '2026-11-02'
   method: derived
 image: https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png
 created: '2024-01-15'
