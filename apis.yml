@@ -27,7 +27,7 @@ accessModel:
   - plans
   - authentication
   - security
-  generated: '2026-11-02'
+  generated: '2026-11-06'
   method: derived
 image: https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png
 created: '2024-01-15'
