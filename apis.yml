@@ -27,7 +27,7 @@ accessModel:
   - plans
   - authentication
   - security
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   method: derived
 image: https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png
 created: '2024-01-15'
@@ -409,39 +409,7 @@ apis:
   - type: JSONSchema
     url: json-schema/app-store-connect-build-relationships-schema.json
   - type: JSONSchema
-    url: json-schema/app-store-connect-build-response-schema.json
-  - type: JSONSchema
     url: json-schema/app-store-connect-builds-response-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-build-update-request-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-tester-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-tester-attributes-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-tester-relationships-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-tester-response-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-testers-response-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-tester-create-request-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-group-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-group-attributes-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-group-relationships-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-group-response-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-groups-response-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-group-create-request-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-group-update-request-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-group-beta-testers-linkages-request-schema.json
   - type: JSONLD
     url: json-ld/app-store-connect-context.jsonld
   - type: Authentication
@@ -493,11 +461,7 @@ apis:
   - type: JSONSchema
     url: json-schema/app-store-connect-app-relationships-schema.json
   - type: JSONSchema
-    url: json-schema/app-store-connect-app-response-schema.json
-  - type: JSONSchema
     url: json-schema/app-store-connect-apps-response-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-app-update-request-schema.json
   - type: JSONSchema
     url: json-schema/app-store-connect-build-schema.json
   - type: JSONSchema
@@ -505,11 +469,7 @@ apis:
   - type: JSONSchema
     url: json-schema/app-store-connect-build-relationships-schema.json
   - type: JSONSchema
-    url: json-schema/app-store-connect-build-response-schema.json
-  - type: JSONSchema
     url: json-schema/app-store-connect-builds-response-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-build-update-request-schema.json
   - type: JSONSchema
     url: json-schema/app-store-connect-beta-tester-schema.json
   - type: JSONSchema
@@ -583,18 +543,6 @@ apis:
   - type: JSONSchema
     url: json-schema/app-store-connect-error-detail-schema.json
   - type: JSONSchema
-    url: json-schema/app-store-connect-app-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-app-attributes-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-app-relationships-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-app-response-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-apps-response-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-app-update-request-schema.json
-  - type: JSONSchema
     url: json-schema/app-store-connect-build-schema.json
   - type: JSONSchema
     url: json-schema/app-store-connect-build-attributes-schema.json
@@ -613,27 +561,7 @@ apis:
   - type: JSONSchema
     url: json-schema/app-store-connect-beta-tester-relationships-schema.json
   - type: JSONSchema
-    url: json-schema/app-store-connect-beta-tester-response-schema.json
-  - type: JSONSchema
     url: json-schema/app-store-connect-beta-testers-response-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-tester-create-request-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-group-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-group-attributes-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-group-relationships-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-group-response-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-groups-response-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-group-create-request-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-group-update-request-schema.json
-  - type: JSONSchema
-    url: json-schema/app-store-connect-beta-group-beta-testers-linkages-request-schema.json
   - type: JSONLD
     url: json-ld/app-store-connect-context.jsonld
   - type: Authentication
